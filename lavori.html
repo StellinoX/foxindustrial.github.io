@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lavori - Fox Industrial Contracting S.r.l.</title>
+  <meta name="description" content="Scopri i nostri lavori in corso e completati in Italia ed Europa: piping, carpenteria, saldatura, manutenzioni e molto altro.">
+  <link rel="icon" href="./foto/LOGO.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    /* Sfondo leggermente meno bianco */
+    body {
+      background-color: #fafbff !important;
+    }
+    /* Mobile menu styles */
+    .mobileMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
+      z-index: 1000;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+    .mobileMenu.open {
+      transform: translateY(0);
+    }
+    .menu-container {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: #1f2937;
+      cursor: pointer;
+    }
+    .menu-container a {
+      color: #1f2937;
+      text-decoration: none;
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      transition: color 0.3s ease;
+    }
+    .menu-container a:hover {
+      color: #3FBFFF;
+    }
+    /* Section padding */
+    .section-padding {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    /* Animazioni progressive */
+    .stagger-fade {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .stagger-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-gray-900 overflow-x-hidden">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center space-x-3">
+          <a href="index.html">
+            <img src="./foto/LOGO.png" alt="Logo" class="w-10 h-10 rounded-xl" />
+          </a>
+          <a href="index.html" class="text-xl font-semibold text-gray-900 hover:text-[#3FBFFF] transition-colors">Fox Industrial Contracting S.r.l.</a>
+        </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Home</a>
+          <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Chi Siamo</a>
+          <a href="services.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Servizi</a>
+          <a href="lavori.html" class="text-sm font-medium text-[#3FBFFF] border-b-2 border-[#3FBFFF]">Lavori</a>
+          <a href="certifications.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Certificazioni</a>
+          <a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Contatti</a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button
+            onclick="toggleMobileMenu()"
+            class="mobile-menu-btn text-gray-900 focus:outline-none"
+            aria-label="Apri menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                id="menuIcon"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobileMenu">
+    <div class="menu-container">
+      <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="about.html" onclick="toggleMobileMenu()">Chi Siamo</a>
+      <a href="services.html" onclick="toggleMobileMenu()">Servizi</a>
+      <a href="lavori.html" onclick="toggleMobileMenu()">Lavori</a>
+      <a href="certifications.html" onclick="toggleMobileMenu()">Certificazioni</a>
+      <a href="contact.html" onclick="toggleMobileMenu()">Contatti</a>
+    </div>
+  </div>
+  <!-- Hero -->
+  <section class="pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold mb-6">I Nostri Lavori</h1>
+      <p class="text-2xl text-gray-600">Progetti in corso e completati in Italia ed Europa</p>
+    </div>
+  </section>
+  <!-- Lavori in Corso (VERDE) -->
+  <section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-emerald-500 mb-6">Lavori in Corso</h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        <div class="glass-effect rounded-2xl p-8 border border-emerald-500/30 stagger-fade">
+          <div class="flex items-start space-x-4">
+            <div class="w-3 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
+            <div>
+              <h3 class="text-2xl font-bold text-emerald-500 mb-2">FINCIMEC (LONIGO)</h3>
+              <p class="text-gray-600 mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio e inossidabile, rivestite in PTFE, valvole manuali e strumentali presso lo stabilimento "FIS" di Lonigo (VI)</p>
+              <p class="text-gray-400">Lonigo (VI)</p>
+            </div>
+          </div>
+        </div>
+        <div class="glass-effect rounded-2xl p-8 border border-emerald-500/30 stagger-fade">
+          <div class="flex items-start space-x-4">
+            <div class="w-3 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
+            <div>
+              <h3 class="text-2xl font-bold text-emerald-500 mb-2">FINCIMEC (MONTECCHIO MAGGIORE)</h3>
+              <p class="text-gray-600 mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio - linee servizi e inossidabile - linee processo; montaggio tubazioni rivestite internamente in PTFE, valvole e strumenti presso lo stabilimento "F.I.S." ALTE di Montecchio Maggiore (VI)</p>
+              <p class="text-gray-400">Montecchio Maggiore (VI)</p>
+            </div>
+          </div>
+        </div>
+        <div class="glass-effect rounded-2xl p-8 border border-emerald-500/30 stagger-fade">
+          <div class="flex items-start space-x-4">
+            <div class="w-3 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
+            <div>
+              <h3 class="text-2xl font-bold text-emerald-500 mb-2">SAFAS (VICENZA)</h3>
+              <p class="text-gray-600 mb-2">Molatura, Spianatura e Saldatura di apparecchiature meccaniche presso cantiere e Fonderia SAFAS di Altavilla Vicentina, Vicenza</p>
+              <p class="text-gray-400">Altavilla Vicentina (VI)</p>
+            </div>
+          </div>
+        </div>
+        <div class="glass-effect rounded-2xl p-8 border border-emerald-500/30 stagger-fade">
+          <div class="flex items-start space-x-4">
+            <div class="w-3 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
+            <div>
+              <h3 class="text-2xl font-bold text-emerald-500 mb-2">MAC IMPIANTI (ROVIGO)</h3>
+              <p class="text-gray-600 mb-2">Saldatura e installazione piping presso il Cantiere Cargill di Castelmassa (RO)</p>
+              <p class="text-gray-400">Castelmassa (RO)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Lavori Terminati 2025 (NERO + BLU) -->
+  <section class="section-padding bg-white/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Lavori Terminati 2025</h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">MAC IMPIANTI (IVRY SUR SEINE)</h3>
+          <p class="text-gray-600 mb-2">Attività di pulizia presso Inceneritore Syctom Ivry Sur Seine (Francia)</p>
+          <p class="text-gray-400">Ivry Sur Seine (Francia)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">FINCIMEC (NOVARA)</h3>
+          <p class="text-gray-600 mb-2">Esecuzione di attività di montaggi meccanici presso il Cantiere Radici-Chimica di Novara (NO)</p>
+          <p class="text-gray-400">Novara (NO)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">ITALPROGETTI (CHADRAC – FR)</h3>
+          <p class="text-gray-600 mb-2">Montaggio di pipings comprensivo di saldatura per nuovo impianto di depurazione acque reflue di scarico presso il cantiere Le Pouy en Velay (Francia)</p>
+          <p class="text-gray-400">Le Pouy en Velay (Francia)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">STEEL TECH (DUINO)</h3>
+          <p class="text-gray-600 mb-2">Lavori di Saldatura su Manufatti di acciaio di varie dimensioni presso la Cartiera Mondi di Duino (TS)</p>
+          <p class="text-gray-400">Duino (TS)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">MONDI (DUINO)</h3>
+          <p class="text-gray-600 mb-2">Lavori di Saldatura su Manufatti di acciaio di varie dimensioni presso in spazi confinati presso la Cartiera Mondi di Duino (TS)</p>
+          <p class="text-gray-400">Duino (TS)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">DELTA IMPIANTI (OSOPPO)</h3>
+          <p class="text-gray-600 mb-2">Attività di Fabbricazione, Montaggio e Saldatura Pipings presso lo Stabilimento Ofar di Cividale del Friuli (UD)</p>
+          <p class="text-gray-400">Cividale del Friuli (UD)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">DELTA IMPIANTI (UDINE)</h3>
+          <p class="text-gray-600 mb-2">Lavori di Piping presso l'Officina Delta Impianti di Nimis (UD)</p>
+          <p class="text-gray-400">Nimis (UD)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">CMS (REZZATO)</h3>
+          <p class="text-gray-600 mb-2">Lavori di Carpenteria e tubisteria presso lo stabilimento Heidelberg Cementi Italia di Rezzato (BS)</p>
+          <p class="text-gray-400">Rezzato (BS)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">MAC IMPIANTI (NOVARA)</h3>
+          <p class="text-gray-600 mb-2">Opere di manutenzione delle utilities consistenti nella posa di nuove tubazioni e modifica di quelle esistenti comprese opere relative alle strutture di sostegno presso lo stabilimento MEMC ELECTRONIC MATERIALS di Novara (NO)</p>
+          <p class="text-gray-400">Novara (NO)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">MAC IMPIANTI (ORIGNY)</h3>
+          <p class="text-gray-600 mb-2">Lavori di Piping presso il Cantiere Rue de Obernaude - 02390 - Origny Sainte Benoite (FR)</p>
+          <p class="text-gray-400">Origny Sainte Benoite (FR)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SIMIND (CASERTA)</h3>
+          <p class="text-gray-600 mb-2">Interventi di costruzione e montaggio impianti presso il cantiere Warehouse Nippon Gases di Caserta</p>
+          <p class="text-gray-400">Caserta</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">CMS (GERMANIA)</h3>
+          <p class="text-gray-600 mb-2">Lavori di carpenteria e tubisteria presso lo stabilimento Spenner a Erwitte – Germania</p>
+          <p class="text-gray-400">Erwitte (Germania)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">MATI GROUP (NAPOLI)</h3>
+          <p class="text-gray-600 mb-2">Saldature e carpenteria per realizzazione di opere meccaniche presso la raffineria Q8 di Napoli</p>
+          <p class="text-gray-400">Napoli</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">NUOVA IMPRESA COSTRUZIONI E MANUTENZIONI INDUSTRIALI (ARBATAX)</h3>
+          <p class="text-gray-600 mb-2">Montaggio e carpenteria piping presso l'Officina Nuova Icom sita in Tortolì (NU)</p>
+          <p class="text-gray-400">Tortolì (NU)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">NUOVA IMPRESA COSTRUZIONI E MANUTENZIONI INDUSTRIALI (MACCHIAREDDU)</h3>
+          <p class="text-gray-600 mb-2">Lavori di Montaggio, saldatura e carpenteria piping presso lo Stabilimento Fluorsid di Cagliari - Macchiareddu 09032 Assemini (CA)</p>
+          <p class="text-gray-400">Assemini (CA)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Lavori Terminati 2024 (NERO + BLU) -->
+  <section class="section-padding bg-white/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Lavori Terminati 2024</h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">FCM Construction SRL</h3>
+          <p class="text-gray-600 mb-2">Prefabbricazione tubazioni presso l'officina di Novara</p>
+          <p class="text-gray-400">Novara</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">FINCIMEC SPA</h3>
+          <p class="text-gray-600 mb-2">Esecuzione di attività di saldature di tubazioni e supporti presso l'impianto Radici Group di Novara</p>
+          <p class="text-gray-400">Novara</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">CMS SRL</h3>
+          <p class="text-gray-600 mb-2">Lavori di Carpenteria e tubisteria presso stabilimento Unicalce SPA di Lecco</p>
+          <p class="text-gray-400">Lecco</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">CMS SRL</h3>
+          <p class="text-gray-600 mb-2">Assemblaggio e posa in opera strutture e Piping di servizio per linea impianto conductex presso lo stabilimento Birla Carbon (Novara)</p>
+          <p class="text-gray-400">Novara</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">CMS SRL</h3>
+          <p class="text-gray-600 mb-2">Lavori di carpenteria metallica presso lo stabilimento Marcegaglia di Gazoldo degli Ippoliti</p>
+          <p class="text-gray-400">Gazoldo degli Ippoliti</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">FINCIMEC SPA</h3>
+          <p class="text-gray-600 mb-2">Esecuzione di montaggio, pipings, supporti e valvole presso Impianto MEMC ELECTRONIC MATERIALS di Novara</p>
+          <p class="text-gray-400">Novara</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">PPM SRLS</h3>
+          <p class="text-gray-600 mb-2">Attività di prefabbricazione e montaggio di pipings, carpenteria metallica e saldature svolte presso l'Officina di Calcinaia (Pisa)</p>
+          <p class="text-gray-400">Calcinaia (PI)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SIMIND</h3>
+          <p class="text-gray-600 mb-2">Interventi di costruzione e montaggio impianti presso il cantiere Warehouse Nippon Gases di Caserta</p>
+          <p class="text-gray-400">Caserta</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">DELTA IMPIANTI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Montaggio, tubazioni e saldature per impianto di trattamento acque di servizio circuito diretti, circuiti forno e circuiti freddi presso Pittini Acciaierie di Verona (VR)</p>
+          <p class="text-gray-400">Verona (VR)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">CMS SRL</h3>
+          <p class="text-gray-600 mb-2">Lavori specialistici di manutenzione impianti presso lo stabilimento Spenner GmbH & Co. KG di Erwitte (Germania)</p>
+          <p class="text-gray-400">Erwitte (Germania)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">NUOVA IMPRESA COSTRUZIONI MANUTENZIONI INDUSTRIALI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Saldatura di carpenteria metallica presso Officina della NUOVA IMPRESA COSTRUZIONI MANUTENZIONI INDUSTRIALI SRL sita in Macchiareddu Assemini (CA)</p>
+          <p class="text-gray-400">Assemini (CA)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">MATI GROUP NAPOLI</h3>
+          <p class="text-gray-600 mb-2">Saldature e carpenteria per realizzazione di opere meccaniche presso la raffineria Q8 di Napoli</p>
+          <p class="text-gray-400">Napoli</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">NUOVA IMPRESA COSTRUZIONI MANUTENZIONI INDUSTRIALI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Montaggio di strutture portanti e saldature di Jacket sideshore presso cantiere Saipem – Intermare Sarda in Tortolì (NU)</p>
+          <p class="text-gray-400">Tortolì (NU)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SIMIND COSTRUZIONI E MONTAGGI IMPIANTI INDUSTRIALI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Fabbricazione di Carpenteria e Saldatura per costruzione serbatoio e Cold Box con montaggio tubazioni e saldature presso l'Officina Mozzanica (BG)</p>
+          <p class="text-gray-400">Mozzanica (BG)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">TECNOMEC ENGINEERING SRL</h3>
+          <p class="text-gray-600 mb-2">Lavori di pre-fabbricazione e saldatura piping presso l'officina tecnomec di Taranto (TA)</p>
+          <p class="text-gray-400">Taranto (TA)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">CMS SRL</h3>
+          <p class="text-gray-600 mb-2">Montaggio di piping e saldature presso lo stabilimento Frati Luigi SPA sito in Pomponisco (MB)</p>
+          <p class="text-gray-400">Pomponisco (MB)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">ENERMAC</h3>
+          <p class="text-gray-600 mb-2">Revamping area chiller presso lo stabilimenti FIDIA Farmaceutici sito ad Abano Terme; (PD)</p>
+          <p class="text-gray-400">Abano Terme (PD)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Lavori Terminati 2023 (NERO + BLU) -->
+  <section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Lavori Terminati 2023</h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">GRUPPO ITEC SRL</h3>
+          <p class="text-gray-600 mb-2">Montaggio di pipings e saldatura di carpenteria metallica presso il cantiere Baker Hughes sito ad Avenza; (MS)</p>
+          <p class="text-gray-400">Avenza (MS)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">NAVAL SOLUTION TECHNOLOGY SRL</h3>
+          <p class="text-gray-600 mb-2">Saldatura, costruzione ed assemblaggio tubi, montature e assitenza valvole presso la raffineria Q8 di Napoli</p>
+          <p class="text-gray-400">Napoli</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">FAV SRL</h3>
+          <p class="text-gray-600 mb-2">Lavori di Montaggio e Saldatura di carpenteria metallica presso Cinisello Balsamo</p>
+          <p class="text-gray-400">Cinisello Balsamo</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">ENERGY WAY</h3>
+          <p class="text-gray-600 mb-2">Montaggio di carpenteria leggera di canali per alloggio cavi elettrici presso il cantiere Baker Hughes sito ad Avenza (MS)</p>
+          <p class="text-gray-400">Avenza (MS)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">ITAL IMPIANTI SRL</h3>
+          <p class="text-gray-600 mb-2">Demolizione e Smontaggio di impianto industriale presso lo stabilimento Thyssen Krupp Still Europe sito in Bochum (Germania)</p>
+          <p class="text-gray-400">Bochum (Germania)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">NUOVA IMPRESA COSTRUZIONI MANUTENZIONI INDUSTRIALI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Montaggio di pipings, lavori di saldatura e di carpenteria metallica presso stabilimento ENI Versalis (RA)</p>
+          <p class="text-gray-400">Ravenna (RA)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">ENERGY WAY</h3>
+          <p class="text-gray-600 mb-2">Montaggio canaline per alloggio cavi elettrici presso Cogne Acciai Speciali S.P.A. Aosta (AO)</p>
+          <p class="text-gray-400">Aosta (AO)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SIMIND COSTRUZIONI E MONTAGGI IMPIANTI INDUSTRIALI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Montaggio di Piping per servizi di aria compressa e oleo-dinamica per installazione nuove macchine volte alla produzione di lavorati in vetro presso lo stabilimento Revimac (Montecchio Maggiore)</p>
+          <p class="text-gray-400">Montecchio Maggiore</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SIMIND COSTRUZIONI E MONTAGGI IMPIANTI INDUSTRIALI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Lavori di manutenzione di Piping e Componenti Meccanici – Fermata Invernale presso Corteva Agriscience, Mozzanica (BG)</p>
+          <p class="text-gray-400">Mozzanica (BG)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SIMIND COSTRUZIONI E MONTAGGI IMPIANTI INDUSTRIALI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Montaggio di Piping presso il cantiere di Besana Brianza (MB)</p>
+          <p class="text-gray-400">Besana Brianza (MB)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SIMIND COSTRUZIONI E MONTAGGI IMPIANTI INDUSTRIALI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Montaggio e saldature di Piping nuovo impianto presso lo stabilimento SIAD di Belgioioso (PV)</p>
+          <p class="text-gray-400">Belgioioso (PV)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SIMIND COSTRUZIONI E MONTAGGI IMPIANTI INDUSTRIALI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Fabbricazione, Montaggio e Saldatura di Carpenteria Metallica per costruzione Cold Box presso lo stabilimento di Marghera (VE)</p>
+          <p class="text-gray-400">Marghera (VE)</p>
+        </div>
+        <div class="glass-effect rounded-2xl p-6 border border-[#3FBFFF]/30 stagger-fade">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SIMIND COSTRUZIONI E MONTAGGI IMPIANTI INDUSTRIALI S.r.l.</h3>
+          <p class="text-gray-600 mb-2">Prefabbricazione e Montaggio di Piping presso lo stabilimento IGAT di Pignataro Maggiore (CE)</p>
+          <p class="text-gray-400">Pignataro Maggiore (CE)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 py-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="privacy-policy.html" class="text-gray-400 hover:text-gray-900 text-sm transition-colors">Privacy Policy</a>
+          <a href="cookie-policy.html" class="text-gray-400 hover:text-gray-900 text-sm transition-colors">Cookie Policy</a>
+          <a href="https://www.linkedin.com/company/fox-industrial-contracting-srl/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-900 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.07-.93-1.5-1.5-1.5s-1.5.43-1.5 1.5v4.5h-3v-9h3v1.22c.41-.63 1.19-1.22 2.5-1.22 2.07 0 3.5 1.34 3.5 4.08v5.92z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./js/app.js"></script>
+  <script>
+    // Funzione per rendere visibili gli elementi con classe stagger-fade
+    function initStaggerFade() {
+      const elements = document.querySelectorAll('.stagger-fade');
+      elements.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, index * 100);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) mobileMenu.classList.remove('open');
+      initStaggerFade();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificazioni - Fox Industrial Contracting S.r.l.</title>
+  <meta name="description" content="Scopri le nostre certificazioni: ISO 9001, WEL, e altre qualifiche per saldatura e qualità in ambito industriale.">
+  <link rel="icon" href="./foto/logo.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    /* Mobile menu styles */
+    .mobileMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
+      z-index: 1000;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobileMenu.open {
+      transform: translateY(0);
+    }
+    
+    .menu-container {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: #1f2937;
+      cursor: pointer;
+    }
+    
+    .menu-container a {
+      color: #1f2937;
+      text-decoration: none;
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      transition: color 0.3s ease;
+    }
+    
+    .menu-container a:hover {
+      color: #3FBFFF;
+    }
+    
+    /* Section padding */
+    .section-padding {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    
+    /* Animazioni progressive */
+    .stagger-fade {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .stagger-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Stile per il modale zoom immagine */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal.active {
+      opacity: 1;
+    }
+    
+    .modal-content {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      cursor: zoom-out;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center space-x-3">
+          <a href="index.html">
+            <img src="./foto/logo.png" alt="Logo" class="w-10 h-10 rounded-xl" />
+          </a>
+          <a href="index.html" class="text-xl font-semibold text-gray-900 hover:text-[#3FBFFF] transition-colors">Fox Industrial Contracting S.r.l.</a>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Home</a>
+          <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Chi Siamo</a>
+          <a href="services.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Servizi</a>
+          <a href="lavori.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Lavori</a>
+          <a href="certifications.html" class="text-sm font-medium text-[#3FBFFF] border-b-2 border-[#3FBFFF]">Certificazioni</a>
+          <a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Contatti</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button
+            onclick="toggleMobileMenu()"
+            class="text-gray-900 focus:outline-none"
+            aria-label="Apri menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                id="menuIcon"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobileMenu">
+    <div class="menu-container">
+      <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="about.html" onclick="toggleMobileMenu()">Chi Siamo</a>
+      <a href="services.html" onclick="toggleMobileMenu()">Servizi</a>
+      <a href="lavori.html" onclick="toggleMobileMenu()">Lavori</a>
+      <a href="certifications.html" onclick="toggleMobileMenu()">Certificazioni</a>
+      <a href="contact.html" onclick="toggleMobileMenu()">Contatti</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold mb-6">Certificazioni</h1>
+      <p class="text-xl text-gray-600">Le Nostre Certificazioni</p>
+    </div>
+  </section>
+
+  <!-- Certifications List -->
+  <section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Certificazione 1 -->
+        <div class="glass-effect rounded-2xl p-8 border border-gray-200 certification-card stagger-fade">
+          <div class="flex items-start mb-6">
+            <div class="service-icon mr-4">
+              <svg class="w-8 h-8 text-[#3FBFFF]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold">ISO 9001:2015</h3>
+              <p class="text-[#3FBFFF]">30/01/2024 - 29/01/2027</p>
+            </div>
+          </div>
+          <p class="text-gray-600 leading-relaxed mb-6">Certificato Qualità ISO 9001:2015 per lavori di Meccanica Generale, Saldatura di Carpenteria Metallica e Realizzazione Piping presso terzi.</p>
+          <div class="space-y-2 text-sm text-gray-400">
+            <p><span class="font-semibold">Rilasciato da:</span> Certinspect Register SRL</p>
+          </div>
+          <div class="mt-6">
+            <img src="./foto/iso9001.jpg" alt="Certificato ISO 9001" class="w-full max-w-xs rounded-lg cursor-zoom-in hover:scale-105 transition-transform duration-300" onclick="openModal('./foto/iso9001.jpg')" />
+          </div>
+        </div>
+
+        <!-- Certificazione 2 -->
+        <div class="glass-effect rounded-2xl p-8 border border-gray-200 certification-card stagger-fade">
+          <div class="flex items-start mb-6">
+            <div class="service-icon mr-4">
+              <svg class="w-8 h-8 text-[#3FBFFF]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold">WEL 24-0703-C015-4099</h3>
+              <p class="text-[#3FBFFF]">06/05/2024</p>
+            </div>
+          </div>
+          <p class="text-gray-600 leading-relaxed mb-6">Certificato Qualità di qualifica procedura specifica di Saldatura per lavori di Meccanica Generale, Carpenteria Metallica e Realizzazione Piping presso terzi. Procedura di Saldatura Carbon Steel Tig Elettrodo (141/111)</p>
+          <div class="space-y-2 text-sm text-gray-400">
+            <p><span class="font-semibold">Rilasciato da:</span> Areas Certificazioni S.r.l.</p>
+            <p><span class="font-semibold">Norma di Riferimento:</span> UNI EN ISO 15614-1:2019</p>
+          </div>
+          <div class="mt-6">
+            <img src="./foto/wel 24-0703-c015-4099.jpg" alt="Certificato WEL 24-0703-C015-4099" class="w-full max-w-xs rounded-lg cursor-zoom-in hover:scale-105 transition-transform duration-300" onclick="openModal('./foto/wel 24-0703-c015-4099.jpg')" />
+          </div>
+        </div>
+
+        <!-- Certificazione 3 -->
+        <div class="glass-effect rounded-2xl p-8 border border-gray-200 certification-card stagger-fade">
+          <div class="flex items-start mb-6">
+            <div class="service-icon mr-4">
+              <svg class="w-8 h-8 text-[#3FBFFF]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold">WEL-24-0703-C015-4100</h3>
+              <p class="text-[#3FBFFF]">06/05/2024</p>
+            </div>
+          </div>
+          <p class="text-gray-600 leading-relaxed mb-6">Certificato Qualità di qualifica procedura specifica di Saldatura per lavori di Meccanica Generale, Carpenteria Metallica e Realizzazione Piping presso terzi. Procedura di Saldatura Carbon Steel Tig (141)</p>
+          <div class="space-y-2 text-sm text-gray-400">
+            <p><span class="font-semibold">Rilasciato da:</span> Areas Certificazioni S.r.l.</p>
+            <p><span class="font-semibold">Norma di Riferimento:</span> UNI EN ISO 15614-1:2019</p>
+          </div>
+          <div class="mt-6">
+            <img src="./foto/WEL-24-0703-C015-4100.jpg" alt="Certificato WEL-24-0703-C015-4100" class="w-full max-w-xs rounded-lg cursor-zoom-in hover:scale-105 transition-transform duration-300" onclick="openModal('./foto/WEL-24-0703-C015-4100.jpg')" />
+          </div>
+        </div>
+
+        <!-- Certificazione 4 -->
+        <div class="glass-effect rounded-2xl p-8 border border-gray-200 certification-card stagger-fade">
+          <div class="flex items-start mb-6">
+            <div class="service-icon mr-4">
+              <svg class="w-8 h-8 text-[#3FBFFF]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold">WEL-24-0703-C015-4101</h3>
+              <p class="text-[#3FBFFF]">06/05/2024</p>
+            </div>
+          </div>
+          <p class="text-gray-600 leading-relaxed mb-6">Certificato Qualità di qualifica procedura specifica di Saldatura per lavori di Meccanica Generale, Carpenteria Metallica e Realizzazione Piping presso terzi. Procedura di Saldatura Stainless Steel Tig Elettrodo (141/111)</p>
+          <div class="space-y-2 text-sm text-gray-400">
+            <p><span class="font-semibold">Rilasciato da:</span> Areas Certificazioni S.r.l.</p>
+            <p><span class="font-semibold">Norma di Riferimento:</span> UNI EN ISO 15614-1:2019</p>
+          </div>
+          <div class="mt-6">
+            <img src="./foto/WEL-24-0703-C015-4101.jpg" alt="Certificato WEL-24-0703-C015-4101" class="w-full max-w-xs rounded-lg cursor-zoom-in hover:scale-105 transition-transform duration-300" onclick="openModal('./foto/WEL-24-0703-C015-4101.jpg')" />
+          </div>
+        </div>
+
+        <!-- Certificazione 5 -->
+        <div class="glass-effect rounded-2xl p-8 border border-gray-200 certification-card stagger-fade">
+          <div class="flex items-start mb-6">
+            <div class="service-icon mr-4">
+              <svg class="w-8 h-8 text-[#3FBFFF]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold">WEL-24-0703-C015-4102</h3>
+              <p class="text-[#3FBFFF]">06/05/2024</p>
+            </div>
+          </div>
+          <p class="text-gray-600 leading-relaxed mb-6">Certificato Qualità di qualifica procedura specifica di Saldatura per lavori di Meccanica Generale, Carpenteria Metallica e Realizzazione Piping presso terzi. Procedura di Saldatura Stainless Steel Tig (141)</p>
+          <div class="space-y-2 text-sm text-gray-400">
+            <p><span class="font-semibold">Rilasciato da:</span> Areas Certificazioni S.r.l.</p>
+            <p><span class="font-semibold">Norma di Riferimento:</span> UNI EN ISO 15614-1:2019</p>
+          </div>
+          <div class="mt-6">
+            <img src="./foto/WEL-24-0703-C015-4102.jpg" alt="Certificato WEL-24-0703-C015-4102" class="w-full max-w-xs rounded-lg cursor-zoom-in hover:scale-105 transition-transform duration-300" onclick="openModal('./foto/WEL-24-0703-C015-4102.jpg')" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modale Zoom Immagine -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <img id="modalImage" class="modal-content" src="" alt="Certificato ingrandito" />
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 py-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="privacy-policy.html" class="text-gray-400 hover:text-gray-900 text-sm transition-colors">Privacy Policy</a>
+          <a href="cookie-policy.html" class="text-gray-400 hover:text-gray-900 text-sm transition-colors">Cookie Policy</a>
+          <a href="https://www.linkedin.com/company/fox-industrial-contracting-srl/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-900 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.07-.93-1.5-1.5-1.5s-1.5.43-1.5 1.5v4.5h-3v-9h3v1.22c.41-.63 1.19-1.22 2.5-1.22 2.07 0 3.5 1.34 3.5 4.08v5.92z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/app.js"></script>
+  <script>
+    // Funzioni per il modale zoom immagine
+    function openModal(src) {
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImage');
+      
+      // Blocca lo scroll della pagina
+      document.body.classList.add('modal-open');
+      
+      img.src = src;
+      img.loading = 'eager';
+      modal.style.display = 'flex';
+      setTimeout(() => {
+        modal.classList.add('active');
+      }, 10);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('active');
+      
+      // Rimuovi il blocco dello scroll
+      document.body.classList.remove('modal-open');
+      
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+    }
+
+    // Chiudi cliccando fuori dall'immagine
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Chiudi con ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Funzione per rendere visibili gli elementi con classe stagger-fade
+    function initStaggerFade() {
+      const elements = document.querySelectorAll('.stagger-fade');
+      elements.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, index * 100); // Ritardo progressivo per ogni elemento
+      });
+    }
+
+    // Assicura che il menu mobile funzioni
+    document.addEventListener('DOMContentLoaded', () => {
+      // Inizializza il menu mobile
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) {
+        mobileMenu.classList.remove('open');
+      }
+      
+      // Inizializza le animazioni progressive
+      initStaggerFade();
+    });
+  </script>
+</body>
+</html>

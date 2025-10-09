@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chi Siamo - Fox Industrial Contracting S.r.l.</title>
+  <meta name="description" content="Scopri chi siamo: Fox Industrial Contracting S.r.l., azienda specializzata in piping, carpenteria metallica e montaggio impianti in Italia ed Europa.">
+  <link rel="icon" href="./foto/LOGO.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    /* Sfondo leggermente meno bianco */
+    body {
+      background-color: #fafbff !important;
+    }
+    /* Mobile menu styles */
+    .mobileMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
+      z-index: 1000;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+    .mobileMenu.open {
+      transform: translateY(0);
+    }
+    .menu-container {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: #1f2937;
+      cursor: pointer;
+    }
+    .menu-container a {
+      color: #1f2937;
+      text-decoration: none;
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      transition: color 0.3s ease;
+    }
+    .menu-container a:hover {
+      color: #3FBFFF;
+    }
+    /* Section padding */
+    .section-padding {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-gray-900 overflow-x-hidden">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-white/30 backdrop-blur-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center space-x-3">
+          <a href="index.html">
+            <img src="./foto/LOGO.png" alt="Logo" class="w-10 h-10 rounded-xl" />
+          </a>
+          <a href="index.html" class="text-xl font-semibold text-gray-900 hover:text-[#3FBFFF] transition-colors">Fox Industrial Contracting S.r.l.</a>
+        </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Home</a>
+          <a href="about.html" class="text-sm font-medium text-[#3FBFFF] border-b-2 border-[#3FBFFF]">Chi Siamo</a>
+          <a href="services.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Servizi</a>
+          <a href="lavori.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Lavori</a>
+          <a href="certifications.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Certificazioni</a>
+          <a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Contatti</a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button
+            onclick="toggleMobileMenu()"
+            class="text-gray-900 focus:outline-none"
+            aria-label="Apri menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                id="menuIcon"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobileMenu">
+    <div class="menu-container">
+      <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="about.html" onclick="toggleMobileMenu()">Chi Siamo</a>
+      <a href="services.html" onclick="toggleMobileMenu()">Servizi</a>
+      <a href="lavori.html" onclick="toggleMobileMenu()">Lavori</a>
+      <a href="certifications.html" onclick="toggleMobileMenu()">Certificazioni</a>
+      <a href="contact.html" onclick="toggleMobileMenu()">Contatti</a>
+    </div>
+  </div>
+  <!-- Hero -->
+  <section class="pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold mb-6">Chi Siamo</h1>
+      <p class="text-2xl text-gray-600">La nostra storia, la nostra missione e i nostri valori</p>
+    </div>
+  </section>
+  <!-- About Content -->
+  <section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="glass-effect rounded-3xl p-12 border border-gray-200">
+        <p class="text-lg leading-relaxed text-gray-600 mb-6">
+          La Fox Industrial Constructing è un’azienda giovane, la cui amministratrice ha maturato una certa esperienza in un azienda di simile settore, e ottenute le dovute conoscenze ha deciso di portare le sue mansioni ad uno step successivo. Il nostro obiettivo è fornire al cliente, in tempi rapidi, personale estremamente qualificato adatto per svolgere incarichi di natura semplice o complessa, per progetti brevi o di di ampia entità. Forniamo, pertanto, figure adatte ad ogni tipo di cantiere: responsabili di cantiere, saldatori qualificati, tubisti a sketch, carpentieri e montatori a disegno e meccanici provetti. Attraverso un provetto modello di lavoro, ci occupiamo anche in maniera molto minuziosa della logistica interna ed esterna, dispiegando così in pochi giorni risorse umane e materiali in tutta Europa. Puntiamo, attraverso soprattutto la fidelizzazione dei clienti, a trasmettere i valori aziendali di Affidabilità e Trasparenza, creando delle soddisfacenti e durature collaborazioni tra il nostro eclettico team di giovani talenti e i dirigenti delle imprese e delle realtà già presenti da anni sul territorio italiano ed europeo.
+        </p>
+        <div class="mt-8 p-8 rounded-2xl bg-white/40 border border-gray-200">
+          <h3 class="text-2xl font-semibold text-[#3FBFFF] mb-4">Presenti in Italia ed in Europa</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Specializzata nella fabbricazione e montaggio di impianti di Piping, Carpenteria metallica e componenti meccanici per settori Pietrolchimici, siderurgici, cartari e navali, oltre che di Pipeline (metandotti, oleodotti, gasdotti) e piattaforme offshore/side shore.
+          </p>
+        </div>
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-2xl font-semibold mb-6">I Nostri Valori</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#3FBFFF] rounded-full mt-3 mr-4"></div>
+                <div>
+                  <h4 class="font-semibold text-lg">Affidabilità</h4>
+                  <p class="text-gray-600">Puntiamo sulla fidelizzazione dei clienti attraverso un servizio affidabile e di qualità.</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#3FBFFF] rounded-full mt-3 mr-4"></div>
+                <div>
+                  <h4 class="font-semibold text-lg">Trasparenza</h4>
+                  <p class="text-gray-600">Comunicazione chiara e trasparente con i nostri clienti e partner.</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#3FBFFF] rounded-full mt-3 mr-4"></div>
+                <div>
+                  <h4 class="font-semibold text-lg">Qualità</h4>
+                  <p class="text-gray-600">Standard elevati di qualità nei materiali e nei processi produttivi.</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#3FBFFF] rounded-full mt-3 mr-4"></div>
+                <div>
+                  <h4 class="font-semibold text-lg">Sicurezza</h4>
+                  <p class="text-gray-600">La sicurezza è un caposaldo fondamentale della nostra identità aziendale.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-2xl font-semibold mb-6">La Nostra Esperienza</h3>
+            <p class="text-gray-600 mb-6">
+              L'amministratrice della Fox Industrial Contracting ha maturato una solida esperienza in un'azienda del settore, acquisendo le conoscenze necessarie per portare le proprie competenze a un livello superiore.
+            </p>
+            <p class="text-gray-600">
+              Il nostro obiettivo è fornire al cliente, in tempi rapidi, personale estremamente qualificato adatto per svolgere incarichi di natura semplice o complessa, per progetti brevi o di ampia entità.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- LAVORA CON NOI -->
+  <section class="section-padding bg-[#f8fafc]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="glass-effect rounded-3xl p-12 border border-[#3FBFFF]/20 text-center">
+        <h2 class="text-3xl font-bold mb-6">Vuoi entrare a far parte del nostro team?</h2>
+        <p class="text-lg text-gray-600 mb-8">Invia la tua candidatura o richiedi informazioni.</p>
+        <a href="unisciti.html" class="btn-primary inline-block">Scrivici</a>      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 py-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="privacy-policy.html" class="text-gray-400 hover:text-gray-900 text-sm transition-colors">Privacy Policy</a>
+          <a href="cookie-policy.html" class="text-gray-400 hover:text-gray-900 text-sm transition-colors">Cookie Policy</a>
+          <a href="https://www.linkedin.com/company/fox-industrial-contracting-srl/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-900 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.07-.93-1.5-1.5-1.5s-1.5.43-1.5 1.5v4.5h-3v-9h3v1.22c.41-.63 1.19-1.22 2.5-1.22 2.07 0 3.5 1.34 3.5 4.08v5.92z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) mobileMenu.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
