@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
 /* New Color Palette - White and Blue Theme */
 :root {
   --c-bg-primary: #fafafa;      /* Sfondo neutro morbido invece di bianco puro */
@@ -13,6 +14,7 @@
   --c-border: #e2e8f0;          /* Border leggermente più scuro per coerenza */
   --c-border-accent: rgba(63, 191, 255, 0.3); /* Blue border */
 }
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,6 +24,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 /* Typography */
 .text-gradient {
   background: linear-gradient(90deg, var(--c-accent), var(--c-accent-hover));
@@ -29,38 +32,47 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 .text-5xl {
   font-size: 3.5rem;
   line-height: 1.1;
 }
+
 .text-4xl {
   font-size: 2.5rem;
   line-height: 1.2;
 }
+
 .text-3xl {
   font-size: 2rem;
   line-height: 1.25;
 }
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 1.3;
 }
+
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.4;
 }
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.5;
 }
+
 .text-base {
   font-size: 1rem;
   line-height: 1.6;
 }
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.5;
 }
+
 /* Buttons */
 .btn-primary {
   background: var(--c-accent);
@@ -73,11 +85,13 @@ body {
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(63, 191, 255, 0.2);
 }
+
 .btn-primary:hover {
   background: var(--c-accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(63, 191, 255, 0.3);
 }
+
 .btn-secondary {
   background: transparent;
   color: var(--c-accent);
@@ -89,12 +103,14 @@ body {
   display: inline-block;
   transition: all 0.3s ease;
 }
+
 .btn-secondary:hover {
   background: var(--c-accent);
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(63, 191, 255, 0.3);
 }
+
 /* Glass Effect - Adapted for Light Theme */
 .glass-effect {
   background: rgba(255, 255, 255, 0.85);
@@ -104,17 +120,21 @@ body {
   border-radius: 1rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
 }
+
 /* Hover Effects */
 .hover-scale {
   transition: transform 0.3s ease;
 }
+
 .hover-scale:hover {
   transform: translateY(-5px);
 }
+
 /* Service Icons */
 .service-icon {
   font-size: 2.5rem;
 }
+
 /* Layout */
 .max-w-7xl {
   max-width: 80rem;
@@ -123,10 +143,12 @@ body {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+
 .section-padding {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
 /* Smooth Transitions */
 .content-section {
   position: relative;
@@ -135,6 +157,7 @@ body {
   margin-top: -100px;
   padding-top: 100px;
 }
+
 /* Hero Section Updates */
 .fullscreen-carousel::after {
   content: '';
@@ -153,6 +176,7 @@ body {
   );
   z-index: 4;
 }
+
 .hero-content-overlay {
   background: linear-gradient(
     180deg,
@@ -161,6 +185,7 @@ body {
     transparent 100%
   );
 }
+
 /* Responsive */
 @media (max-width: 1024px) {
   .text-5xl {
@@ -177,6 +202,7 @@ body {
     padding-bottom: 3rem;
   }
 }
+
 @media (max-width: 768px) {
   .hero-content-overlay h1 {
     font-size: 2.5rem;
@@ -189,6 +215,7 @@ body {
     text-align: center;
   }
 }
+
 .dot {
   width: 10px;
   height: 10px;
@@ -198,11 +225,13 @@ body {
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
+
 .dot.active {
   background: var(--c-accent);
   transform: scale(1.2);
   box-shadow: 0 3px 12px rgba(63, 191, 255, 0.4);
 }
+
 .sr-only {
   position: absolute;
   width: 1px;

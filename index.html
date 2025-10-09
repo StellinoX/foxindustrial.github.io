@@ -4,19 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fox Industrial Contracting S.r.l.</title>
-  <!-- SEO & Social -->
   <meta name="description" content="Fox Industrial Contracting S.r.l. - Fabbricazione e montaggio di impianti di piping, carpenteria metallica e componenti meccanici in Italia ed Europa.">
   <meta name="keywords" content="piping, carpenteria, saldatura, industriale, Fox, Italia, Europa, impianti, metallica">
   <meta property="og:title" content="Fox Industrial Contracting S.r.l." />
   <meta property="og:description" content="Specializzata nella fabbricazione e montaggio di impianti di piping e carpenteria metallica." />
   <meta property="og:image" content="./foto/LOGO.png" />
-  <!-- Favicon -->
   <link rel="icon" href="./foto/LOGO.png" type="image/png">
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- CSS -->
   <link rel="stylesheet" href="./css/style.css">
-  <!-- Stili essenziali -->
   <style>
     /* Sfondo leggermente meno bianco */
     body {
@@ -385,10 +380,53 @@
       width: 100% !important;
       height: 100% !important;
     }
+    
+    /* === NUOVI STILI PER CAROSELLO PROGETTI (con animazione FADE) === */
+    #projects-carousel {
+      position: relative;
+      aspect-ratio: 16 / 9; /* Mantiene le proporzioni */
+      border-radius: 1rem; /* Arrotonda gli angoli */
+      overflow: hidden; /* Nasconde le parti di immagine che escono */
+    }
+
+    .project-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0; /* Nascosto di default */
+      transition: opacity 0.8s ease-in-out; /* Animazione di dissolvenza */
+      cursor: pointer;
+    }
+
+    .project-slide.active {
+      opacity: 1; /* Rende visibile la slide attiva */
+      z-index: 1; /* La porta in primo piano */
+    }
+
+    .project-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* L'immagine copre l'intera area */
+    }
+
+    .proj-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .proj-dot.active {
+      background-color: #3FBFFF; /* Colore accent */
+      transform: scale(1.3);
+    }
   </style>
 </head>
 <body class="min-h-screen text-gray-900 overflow-x-hidden">
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-white/30 backdrop-blur-lg shadow-sm">
       <div class="max-w-7xl mx-auto px-6 py-4">
         <div class="flex justify-between items-center">
@@ -431,24 +469,20 @@
         <a href="contact.html" onclick="toggleMobileMenu()">Contatti</a>
       </div>
     </div>
-    <!-- Hero Fullscreen Carousel -->
     <section class="fullscreen-carousel">
       <div id="hero-carousel" class="relative w-full h-full">
-        <!-- Officine Tecnomec Taranto -->
         <img src="./foto/officine tecnomec taranto (2024)1.jpg" alt="Hero 1" class="absolute inset-0 w-full h-full object-cover" />
         <img src="./foto/officine tecnomec taranto (2024)2.jpg" alt="Hero 2" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/officine tecnomec taranto (2024)3.jpg" alt="Hero 3" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/officine tecnomec taranto (2024)4.jpg" alt="Hero 4" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/officine tecnomec taranto (2024)5.jpg" alt="Hero 5" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/officine tecnomec taranto (2024)6.jpg" alt="Hero 6" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <!-- Warehouse Nippon Gases -->
         <img src="./foto/Warehouse Nippon Gases (1).jpg" alt="Hero 7" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/Warehouse Nippon Gases (2).jpg" alt="Hero 8" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/Warehouse Nippon Gases (3).jpg" alt="Hero 9" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/Warehouse Nippon Gases (4).jpg" alt="Hero 10" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/Warehouse Nippon Gases (5).jpg" alt="Hero 11" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/Warehouse Nippon Gases (6).jpg" alt="Hero 12" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <!-- Nuove foto -->
         <img src="./foto/Foto Nuove/IMG-20251006-WA0016.jpg" alt="Hero 13" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/Foto Nuove/IMG-20251006-WA0017.jpg" alt="Hero 14" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
         <img src="./foto/Foto Nuove/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.jpg" alt="Hero 15" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
@@ -474,18 +508,30 @@
         </div>
       </div>
     </section>
-    <!-- PROGETTI (Galleria Fotografica) -->
+    
     <section class="section-padding content-section">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-900">PROGETTI</h2>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-900">I NOSTRI PROGETTI</h2>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="projects-grid">
-          <!-- Generato dinamicamente -->
+
+        <div id="projects-carousel-container" class="relative">
+          <div id="projects-carousel" class="shadow-lg">
+            </div>
+
+          <button id="prev-btn-proj" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center text-gray-800 hover:bg-white transition z-20 shadow-md">
+            &#10094;
+          </button>
+          <button id="next-btn-proj" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center text-gray-800 hover:bg-white transition z-20 shadow-md">
+            &#10095;
+          </button>
+
+          <div id="projects-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 z-20 bg-white/50 backdrop-blur-sm p-2 rounded-full">
+            </div>
         </div>
       </div>
     </section>
-    <!-- Quick Services -->
+
     <section class="section-padding bg-gray-50">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
@@ -520,7 +566,6 @@
         </div>
       </div>
     </section>
-    <!-- Lavori in Corso (VERDE) -->
     <section class="section-padding bg-white">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
@@ -553,7 +598,6 @@
         </div>
       </div>
     </section>
-    <!-- Lavori Terminati (NERO + BLU) -->
     <section class="section-padding bg-gray-50">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
@@ -593,7 +637,6 @@
         </div>
       </div>
     </section>
-    <!-- LAVORA CON NOI -->
     <section class="section-padding bg-[#f8fafc]">
       <div class="max-w-7xl mx-auto px-6">
         <div class="glass-effect rounded-3xl p-12 border border-[#3FBFFF]/20 text-center">
@@ -603,7 +646,6 @@
         </div>
       </div>
     </section>
-    <!-- Modal per le foto -->
     <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <h2 id="modal-title" class="sr-only">Galleria immagini del progetto</h2>
       <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -612,7 +654,6 @@
         <div class="carousel-dots" id="carouselDots"></div>
       </div>
     </div>
-    <!-- Footer -->
     <footer class="bg-gray-100 border-t border-gray-200 py-8">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-center">
@@ -637,7 +678,6 @@
       </svg>
     </a>
 
-    <!-- Script inline aggiornato -->
     <script>
       // Unico array con TUTTE le immagini
       const allImages = [
@@ -661,31 +701,13 @@
         "./foto/Foto Nuove/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.jpg"
       ];
 
-      let currentSlideIndex = 0;
+      // Variabili globali per lo stato dei caroselli
+      let currentModalSlideIndex = 0;
       let swipeListeners = [];
       let currentHeroSlide = 0;
       let heroInterval;
-
-      // Genera griglia PROGETTI
-      function renderProjectsGrid() {
-        const grid = document.getElementById('projects-grid');
-        if (!grid) return;
-        grid.innerHTML = '';
-        allImages.forEach((src, index) => {
-          const div = document.createElement('div');
-          div.className = 'rounded-2xl overflow-hidden border border-gray-200 hover:scale-105 transition-transform cursor-pointer';
-          div.onclick = () => openModal(index);
-          const img = document.createElement('img');
-          img.src = src;
-          img.alt = `Progetto ${index + 1}`;
-          img.className = 'w-full h-40 object-cover';
-          img.loading = 'lazy';
-          img.onerror = () => img.src = 'https://via.placeholder.com/300x200/000/FFF?text=Immagine+non+trovata';
-          div.appendChild(img);
-          grid.appendChild(div);
-        });
-      }
-
+      
+      // === GESTIONE MODALE (quando si clicca su una foto) ===
       function openModal(startIndex) {
         const carousel = document.getElementById('carouselModal');
         const dotsContainer = document.getElementById('carouselDots');
@@ -713,7 +735,7 @@
         allImages.forEach((_, idx) => {
           const dot = document.createElement('span');
           dot.classList.toggle('active', idx === startIndex);
-          dot.addEventListener('click', () => goToSlide(idx));
+          dot.addEventListener('click', () => goToModalSlide(idx));
           dotsContainer.appendChild(dot);
         });
 
@@ -724,17 +746,17 @@
         const leftArrow = document.createElement('button');
         leftArrow.className = 'nav-button left';
         leftArrow.innerHTML = '&#10094;';
-        leftArrow.onclick = () => prevSlide();
+        leftArrow.onclick = () => prevModalSlide();
         modalContent.appendChild(leftArrow);
 
         const rightArrow = document.createElement('button');
         rightArrow.className = 'nav-button right';
         rightArrow.innerHTML = '&#10095;';
-        rightArrow.onclick = () => nextSlide();
+        rightArrow.onclick = () => nextModalSlide();
         modalContent.appendChild(rightArrow);
 
         modal.classList.add('active');
-        currentSlideIndex = startIndex;
+        currentModalSlideIndex = startIndex;
         addSwipeGestures(carousel);
       }
 
@@ -751,7 +773,7 @@
         removeSwipeGestures(carousel);
       }
 
-      function goToSlide(index) {
+      function goToModalSlide(index) {
         const images = document.querySelectorAll('#carouselModal img');
         const dots = document.querySelectorAll('#carouselDots span');
         if (images.length === 0 || index >= images.length) return;
@@ -766,20 +788,20 @@
           }
         });
         dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-        currentSlideIndex = index;
+        currentModalSlideIndex = index;
       }
 
-      function nextSlide() {
-        currentSlideIndex = (currentSlideIndex + 1) % allImages.length;
-        goToSlide(currentSlideIndex);
+      function nextModalSlide() {
+        currentModalSlideIndex = (currentModalSlideIndex + 1) % allImages.length;
+        goToModalSlide(currentModalSlideIndex);
       }
 
-      function prevSlide() {
-        currentSlideIndex = (currentSlideIndex - 1 + allImages.length) % allImages.length;
-        goToSlide(currentSlideIndex);
+      function prevModalSlide() {
+        currentModalSlideIndex = (currentModalSlideIndex - 1 + allImages.length) % allImages.length;
+        goToModalSlide(currentModalSlideIndex);
       }
 
-      // === SWIPE ===
+      // === GESTIONE SWIPE (solo per il modale) ===
       let touchStartX = 0;
       let touchEndX = 0;
       function addSwipeGestures(element) {
@@ -787,7 +809,7 @@
         const handleTouchEnd = (e) => {
           touchEndX = e.changedTouches[0].screenX;
           const diff = touchStartX - touchEndX;
-          if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+          if (Math.abs(diff) > 50) diff > 0 ? nextModalSlide() : prevModalSlide();
         };
         element.addEventListener('touchstart', handleTouchStart, { passive: true });
         element.addEventListener('touchend', handleTouchEnd, { passive: true });
@@ -801,9 +823,10 @@
         }
       }
 
-      // === HERO ===
+      // === GESTIONE HERO CAROUSEL (in alto) ===
       function initHeroCarousel() {
         const images = document.querySelectorAll('#hero-carousel img');
+        if (images.length === 0) return;
         heroInterval = setInterval(() => {
           images[currentHeroSlide].style.display = 'none';
           currentHeroSlide = (currentHeroSlide + 1) % images.length;
@@ -812,7 +835,7 @@
         images[0].style.display = 'block';
       }
 
-      // === MENU MOBILE ===
+      // === GESTIONE MENU MOBILE ===
       function toggleMobileMenu() {
         const menu = document.getElementById('mobileMenu');
         const icon = document.getElementById('menuIcon');
@@ -829,19 +852,110 @@
         }
       }
 
-      // === INIZIALIZZAZIONE ===
+      // --- NUOVA GESTIONE CAROSELLO PROGETTI (con FADE e AUTOPLAY) ---
+      let currentProjectSlide = 0;
+      let projectAutoplayInterval;
+
+      function renderProjectsCarousel() {
+        const carousel = document.getElementById('projects-carousel');
+        const dotsContainer = document.getElementById('projects-dots');
+        if (!carousel || !dotsContainer) return;
+
+        carousel.innerHTML = '';
+        dotsContainer.innerHTML = '';
+
+        allImages.forEach((src, index) => {
+          // Slide
+          const slide = document.createElement('div');
+          slide.className = 'project-slide';
+          if (index === 0) slide.classList.add('active'); // Attiva solo la prima slide
+          slide.onclick = () => openModal(index);
+
+          // Immagine
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = `Progetto ${index + 1}`;
+          img.loading = 'lazy';
+          img.onerror = () => img.src = 'https://via.placeholder.com/800x450/000/FFF?text=Immagine+non+disponibile';
+          
+          slide.appendChild(img);
+          carousel.appendChild(slide);
+
+          // Pallino (Dot)
+          const dot = document.createElement('div');
+          dot.className = 'proj-dot';
+          if (index === 0) dot.classList.add('active');
+          dot.onclick = () => goToProjectSlide(index);
+          dotsContainer.appendChild(dot);
+        });
+      }
+      
+      function updateProjectCarousel() {
+        const slides = document.querySelectorAll('#projects-carousel .project-slide');
+        const dots = document.querySelectorAll('#projects-dots .proj-dot');
+        
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentProjectSlide);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentProjectSlide);
+        });
+      }
+      
+      function startProjectAutoplay() {
+          clearInterval(projectAutoplayInterval); // Ferma il timer precedente
+          projectAutoplayInterval = setInterval(() => {
+              currentProjectSlide = (currentProjectSlide + 1) % allImages.length;
+              updateProjectCarousel();
+          }, 5000); // Cambia foto ogni 5 secondi
+      }
+
+      function goToProjectSlide(index) {
+          currentProjectSlide = index;
+          updateProjectCarousel();
+          startProjectAutoplay(); // Resetta il timer quando si clicca un pallino
+      }
+
+      function setupProjectCarouselNav() {
+          const prevBtn = document.getElementById('prev-btn-proj');
+          const nextBtn = document.getElementById('next-btn-proj');
+          if (!prevBtn || !nextBtn) return;
+
+          nextBtn.addEventListener('click', () => {
+              currentProjectSlide = (currentProjectSlide + 1) % allImages.length;
+              updateProjectCarousel();
+              startProjectAutoplay(); // Resetta il timer
+          });
+
+          prevBtn.addEventListener('click', () => {
+              currentProjectSlide = (currentProjectSlide - 1 + allImages.length) % allImages.length;
+              updateProjectCarousel();
+              startProjectAutoplay(); // Resetta il timer
+          });
+      }
+      
+      // === INIZIALIZZAZIONE DI TUTTO ===
       document.addEventListener('DOMContentLoaded', () => {
-        renderProjectsGrid();
+        // Carosello Progetti
+        renderProjectsCarousel();
+        setupProjectCarouselNav();
+        startProjectAutoplay(); // Avvia l'autoplay
+        
+        // Altre funzioni
         initHeroCarousel();
         const mobileMenu = document.getElementById('mobileMenu');
         if (mobileMenu) mobileMenu.classList.remove('open');
       });
 
-      // === TASTI ===
+      // === GESTIONE TASTI (per il modale) ===
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
+        const modal = document.getElementById('imageModal');
+        if (modal && modal.classList.contains('active')) {
+          if (e.key === 'Escape') closeModal();
+          if (e.key === 'ArrowRight') nextModalSlide();
+          if (e.key === 'ArrowLeft') prevModalSlide();
+        }
       });
 
       document.getElementById('imageModal').addEventListener('click', function(e) {
