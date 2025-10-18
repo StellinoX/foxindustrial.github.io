@@ -15,7 +15,12 @@
   <style>
     /* Sfondo leggermente meno bianco */
     body {
-      background-color: #fafbff !important;
+  background-color: #e0f0ff !important;
+    }
+    /* Colore primario del sito */
+    :root {
+        --primary-color: #3FBFFF;
+        --container-max-width: 1200px;
     }
     /* Modal base styles */
     .modal {
@@ -96,7 +101,7 @@
       box-shadow: 
         0 25px 50px rgba(0,0,0,0.5),
         0 10px 30px rgba(0,0,0,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.1);
+        inset 0 1px 0 rgba(240,248,255,0.1);
     }
     .carousel-modal img {
       width: 100%;
@@ -120,51 +125,81 @@
         transform: scale(1);
       }
     }
+    
+    /* Stili base per i pulsanti di navigazione */
     .nav-button {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.8));
-      color: white;
-      border: 2px solid #3FBFFF;
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       z-index: 100;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       opacity: 0.9;
+      border-radius: 50%;
+    }
+    
+    /* Stili SPECIFICI per i pulsanti del MODALE (meno aggressivi) */
+  .modal-content .nav-button {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.8));
+      color: black; 
+      border: 2px solid #3FBFFF;
+      width: 4rem;
+      height: 4rem;
+      font-size: 1.8rem;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       box-shadow: 
         0 8px 25px rgba(0,0,0,0.4),
         0 3px 10px rgba(0,0,0,0.3),
-        inset 0 1px 0 #ffffff1a;
-      font-weight: bold;
+    inset 0 1px 0 rgba(240,248,255,0.1);
     }
-    .nav-button:hover {
+    
+    .modal-content .nav-button:hover {
       background: linear-gradient(145deg, #3FBFFF, #0ea5e9);
       border-color: #3FBFFF;
       opacity: 1;
       transform: translateY(-50%) scale(1.15);
-      box-shadow: 
-        0 12px 35px rgba(16,185,129,0.4),
-        0 5px 15px rgba(255, 255, 255, 0.417),
-        inset 0 1px 0 rgba(255,255,255,0.2);
       color: white;
     }
-    .nav-button:active {
-      transform: translateY(-50%) scale(1.05);
-      transition: all 0.1s ease;
+
+    /* Stili SPECIFICI per i pulsanti del CAROSELLO 3D (Implementazione di momentaneo.html) */
+    .carousel-3d-nav .nav-button {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.5rem;
+        background: rgba(255, 255, 255, 0.2); 
+        color: #1f2937; 
+        border: 2px solid #1f2937;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        opacity: 0.9;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        pointer-events: all;
+        transition: all 0.3s ease;
     }
+    
+    .carousel-3d-nav .nav-button:hover {
+        background: rgba(0, 0, 0, 0.1);
+        color: var(--primary-color);
+        transform: translateY(-50%) scale(1.1);
+        border-color: var(--primary-color);
+        opacity: 1;
+    }
+
     .nav-button.left { left: 20px; }
     .nav-button.right { right: 20px; }
+    
     @media (max-width: 768px) {
-      .nav-button {
-        display: none !important;
+      /* Nasconde i pulsanti di navigazione del modale su mobile per usare lo swipe */
+      .modal-content .nav-button {
+        display: none !important; 
       }
     }
+    
     .carousel-dots {
       position: absolute;
       bottom: 2rem;
@@ -256,30 +291,46 @@
     .menu-container a:hover {
       color: #3FBFFF;
     }
-    .fullscreen-carousel {
+    /* MODIFICHE PER HERO FISSO */
+    .fullscreen-hero {
       position: relative;
       width: 100vw;
       height: 100vh;
       overflow: hidden;
+      /* Imposta l'immagine di sfondo */
+      background-image: url('./foto/Warehouse Nippon Gases (4).jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-    .fullscreen-carousel img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .hero-content-overlay {
+    /* GRADIENTE BIANCO PER LA TRANSIZIONE */
+    .fullscreen-hero::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
+      /* Gradiente che va da opaco a quasi bianco (0.98) */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 80%, rgba(224, 240, 255, 0.98) 100%);
+      z-index: 1; /* Sotto al contenuto ma sopra l'immagine */
+    }
+    /* FINE MODIFICHE HERO FISSO */
+
+    .hero-content-overlay {
+      position: relative; 
+      z-index: 5;
+      text-align: center;
+      padding: 2rem;
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 5;
-      text-align: center;
-      padding: 2rem;
     }
     .hero-title {
       font-size: clamp(1.75rem, 5vw, 4.5rem);
@@ -294,7 +345,7 @@
       line-height: 1.1;
     }
     .hero-subtitle {
-      font-size: clamp(1rem, 3.5vw, 2rem);
+      font-size: clamp(1rem, 3vw, 1.75rem); 
       margin-bottom: 2rem;
       text-shadow: 0 4px 25px rgba(0,0,0,0.7), 
                    0 2px 6px rgba(0,0,0,0.6),
@@ -327,10 +378,31 @@
     }
     .content-section {
       position: relative;
-      background-color: #ffffff;
       z-index: 2;
-      margin-top: -1px;
+      margin-top: -1px; /* per sovrapposizione visiva */
+      background-color: transparent; /* Assicurati che non ci sia uno sfondo solido qui */
     }
+    /* Sezione Progetti ora è su sfondo body color */
+    .section-projects {
+  background-color: #e0f0ff; /* Usa lo stesso colore del body per continuità */
+        min-height: 600px; /* Altezza minima aumentata per il carosello */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Allinea in alto */
+        align-items: center;
+        position: relative;
+        overflow: hidden; 
+        padding-top: 4rem; /* Spazio per evitare che il contenuto si attacchi troppo al bordo */
+        width: 100vw; /* Rendiamo la sezione full width */
+    }
+    /* Testo scuro per la sezione Progetti quando lo sfondo è bianco */
+    .section-projects .text-gray-900 {
+        color: #1a202c !important; /* Colore scuro per il testo */
+    }
+    .section-projects .text-gray-600 {
+        color: #4a5568 !important; /* Colore scuro per il testo */
+    }
+    
     .section-padding {
       padding-top: 4rem;
       padding-bottom: 4rem;
@@ -344,8 +416,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: white;
-      text-shadow: #000000;
+      color: white; /* Mantieni il testo bianco qui */
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Meno intenso */
       font-size: 1rem;
       opacity: 0.9;
       animation: float 2s ease-in-out infinite;
@@ -381,48 +453,184 @@
       height: 100% !important;
     }
     
-    /* === NUOVI STILI PER CAROSELLO PROGETTI (con animazione FADE) === */
-    #projects-carousel {
-      position: relative;
-      aspect-ratio: 16 / 9; /* Mantiene le proporzioni */
-      border-radius: 1rem; /* Arrotonda gli angoli */
-      overflow: hidden; /* Nasconde le parti di immagine che escono */
+    /* === STILI CAROSELLO PROGETTI 3D (Implementazione di momentaneo.html) === */
+    /* Container Carosello */
+    #projects-carousel-3d {
+        position: relative;
+        width: 100%; 
+        max-width: 100vw; 
+        height: 550px; /* Altezza fissa */
+        margin: 4rem 0; /* Margine sopra e sotto */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .slide-3d {
+        position: absolute;
+        width: 60%; /* Larghezza base della slide, aumentata */
+        height: 90%;
+        max-width: 800px; /* Aumentato il limite massimo */
+        border-radius: 1.5rem; 
+        overflow: hidden;
+        cursor: pointer;
+        transition: 
+            transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
+            opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+            filter 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+            z-index 0.7s step-end;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 10px 20px rgba(0, 0, 0, 0.3);
+        perspective: 1000px; 
+    }
+    
+    .slide-3d img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .project-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0; /* Nascosto di default */
-      transition: opacity 0.8s ease-in-out; /* Animazione di dissolvenza */
-      cursor: pointer;
+    /* Stato Centrale (Active) */
+    .slide-3d.center {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+        z-index: 10;
+        filter: none;
     }
 
-    .project-slide.active {
-      opacity: 1; /* Rende visibile la slide attiva */
-      z-index: 1; /* La porta in primo piano */
+    /* Stato Laterale Sinistro (Previous) */
+    .slide-3d.left {
+        transform: translateX(-80%) scale(0.78) rotateY(10deg); 
+        opacity: 0.3;
+        z-index: 5;
+    }
+    .slide-3d.left img {
+        filter: grayscale(80%) brightness(0.4); 
     }
 
-    .project-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* L'immagine copre l'intera area */
+    /* Stato Laterale Destro (Next) */
+    .slide-3d.right {
+        transform: translateX(80%) scale(0.78) rotateY(-10deg); 
+        opacity: 0.3;
+        z-index: 5;
+    }
+    .slide-3d.right img {
+        filter: grayscale(80%) brightness(0.4); 
     }
 
-    .proj-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: rgba(0, 0, 0, 0.4);
-      transition: all 0.3s ease;
-      cursor: pointer;
+    /* Stato Nascosto */
+    .slide-3d:not(.center):not(.left):not(.right) {
+        opacity: 0;
+        transform: translateX(0) scale(0.5);
+        z-index: 1;
+        pointer-events: none; 
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .proj-dot.active {
-      background-color: #3FBFFF; /* Colore accent */
-      transform: scale(1.3);
+    /* Posizionamento Frecce: Usano un contenitore per la distanza (Centrato rispetto al max-width) */
+    .carousel-3d-nav {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        max-width: var(--container-max-width); 
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+        margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%); 
+        padding: 0 1rem; 
+        z-index: 20;
+    }
+
+    .carousel-3d-nav button {
+        pointer-events: all;
+    }
+
+    @media (max-width: 1024px) {
+        .slide-3d {
+            width: 70%;
+        }
+        /* Ricalcolo per schermi più piccoli, mantenendo l'effetto */
+        .slide-3d.left { transform: translateX(-40%) scale(0.8) rotateY(5deg); } 
+        .slide-3d.right { transform: translateX(40%) scale(0.8) rotateY(-5deg); }
+        #projects-carousel-3d {
+             height: 450px;
+        }
+    }
+    @media (max-width: 768px) {
+        .slide-3d:not(.center):not(.left):not(.right) {
+            display: none; 
+        }
+        .slide-3d {
+            width: 95%; /* 95% su mobile */
+            height: 300px; /* Altezza fissa su mobile */
+            max-width: none;
+            transform: translateX(0) scale(1) !important;
+        }
+        .slide-3d.left, .slide-3d.right {
+            transform: translateX(0) scale(0.9) !important;
+            opacity: 0;
+            pointer-events: none;
+            display: none; /* Nasconde le slide laterali per un focus sulla slide centrale */
+        }
+        #projects-carousel-3d {
+            height: 350px;
+            margin: 2rem 0;
+        }
+        .carousel-3d-nav {
+            max-width: 100%;
+            padding: 0 0.5rem;
+        }
+        .carousel-3d-nav .nav-button {
+            width: 3rem;
+            height: 3rem;
+            font-size: 1.2rem;
+        }
+    }
+    
+    /* Stile per i loghi dei clienti */
+  .client-logo {
+        aspect-ratio: 16/9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    }
+    .client-logo:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .client-logo img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        filter: grayscale(100%) brightness(1.2); 
+        transition: filter 0.3s ease;
+    }
+    .client-logo:hover img {
+        filter: grayscale(0%) brightness(1);
+    }
+    .btn-secondary {
+        background: none;
+        color: #3FBFFF;
+        border: 2px solid #3FBFFF;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+        background: #3FBFFF;
+        color: white;
+        box-shadow: 0 4px 12px rgba(63, 191, 255, 0.3);
     }
   </style>
 </head>
@@ -469,69 +677,57 @@
         <a href="contact.html" onclick="toggleMobileMenu()">Contatti</a>
       </div>
     </div>
-    <section class="fullscreen-carousel">
-      <div id="hero-carousel" class="relative w-full h-full">
-        <img src="./foto/officine tecnomec taranto (2024)1.jpg" alt="Hero 1" class="absolute inset-0 w-full h-full object-cover" />
-        <img src="./foto/officine tecnomec taranto (2024)2.jpg" alt="Hero 2" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/officine tecnomec taranto (2024)3.jpg" alt="Hero 3" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/officine tecnomec taranto (2024)4.jpg" alt="Hero 4" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/officine tecnomec taranto (2024)5.jpg" alt="Hero 5" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/officine tecnomec taranto (2024)6.jpg" alt="Hero 6" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/Warehouse Nippon Gases (1).jpg" alt="Hero 7" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/Warehouse Nippon Gases (2).jpg" alt="Hero 8" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/Warehouse Nippon Gases (3).jpg" alt="Hero 9" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/Warehouse Nippon Gases (4).jpg" alt="Hero 10" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/Warehouse Nippon Gases (5).jpg" alt="Hero 11" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/Warehouse Nippon Gases (6).jpg" alt="Hero 12" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/Foto Nuove/IMG-20251006-WA0016.jpg" alt="Hero 13" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/Foto Nuove/IMG-20251006-WA0017.jpg" alt="Hero 14" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        <img src="./foto/Foto Nuove/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.jpg" alt="Hero 15" class="absolute inset-0 w-full h-full object-cover" style="display: none;" />
-        
-        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80"></div>
-        <div class="hero-content-overlay">
-          <h1 class="hero-title">
-            Fabbricazione e <span class="text-[#3FBFFF]">Montaggio</span>
-            <br />di Piping
-          </h1>
-          <p class="hero-subtitle">
-            Presenti in Italia ed in Europa con standard di qualità elevati
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center px-4">
-            <a href="about.html" class="btn-primary w-full sm:w-auto">Scopri di più</a>
-          </div>
-          <div class="scroll-indicator">
-            <span>Scorri per continuare</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
+    <section class="fullscreen-hero">
+      <div class="hero-content-overlay">
+        <h1 class="hero-title">
+          Fabbricazione e <span class="text-[#3FBFFF]">Montaggio</span>
+          <br />di Piping
+        </h1>
+        <p class="hero-subtitle">
+          Presenti in Italia ed in Europa con standard di qualità elevati
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center px-4">
+          <a href="about.html" class="btn-primary w-full sm:w-auto">Scopri di più</a>
+        </div>
+        <div class="scroll-indicator">
+          <span>Scorri per continuare</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
       </div>
     </section>
-    
-    <section class="section-padding content-section">
-      <div class="max-w-7xl mx-auto px-6">
+    <section class="content-section section-projects">
+      <div class="max-w-7xl mx-auto px-6 w-full">
         <div class="text-center mb-16">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-900">I NOSTRI PROGETTI</h2>
         </div>
-
-        <div id="projects-carousel-container" class="relative">
-          <div id="projects-carousel" class="shadow-lg">
-            </div>
-
-          <button id="prev-btn-proj" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center text-gray-800 hover:bg-white transition z-20 shadow-md">
-            &#10094;
-          </button>
-          <button id="next-btn-proj" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center text-gray-800 hover:bg-white transition z-20 shadow-md">
-            &#10095;
-          </button>
-
-          <div id="projects-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 z-20 bg-white/50 backdrop-blur-sm p-2 rounded-full">
-            </div>
-        </div>
       </div>
-    </section>
 
+      <div id="projects-carousel-3d" class="relative w-full">
+          <div class="carousel-3d-nav">
+              <button 
+                  id="prev-btn-3d" 
+                  class="nav-button left" 
+                  aria-label="Progetto Precedente"
+                  onclick="prev3DSlide()"
+              >
+                  &#10094;
+              </button>
+              <button 
+                  id="next-btn-3d" 
+                  class="nav-button right" 
+                  aria-label="Progetto Successivo"
+                  onclick="next3DSlide()"
+              >
+                  &#10095;
+              </button>
+          </div>
+      </div>
+      
+      <div class="max-w-7xl mx-auto px-6 w-full mt-16"></div>
+      
+    </section>
     <section class="section-padding bg-gray-50">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
@@ -566,28 +762,49 @@
         </div>
       </div>
     </section>
+    
     <section class="section-padding bg-white">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-500 mb-6">Lavori in Corso</h2>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-900">I NOSTRI CLIENTI</h2>
+          <p class="text-xl text-gray-600">Alcuni dei nostri principali partner</p>
         </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div class="client-logo shadow-md">
+            <img src="./foto/foto clienti/mati group.jpg" alt="Logo Mati Group" loading="lazy">
+          </div>
+          <div class="client-logo shadow-md">
+            <img src="./foto/foto clienti/safasgroup.jpg" alt="Logo Safas Group" loading="lazy">
+          </div>
+          <div class="client-logo shadow-md">
+            <img src="./foto/foto clienti/mac group.jpg" alt="Logo MAC Impianti" loading="lazy">
+          </div>
+          <div class="client-logo shadow-md">
+            <img src="./foto/foto clienti/ioom.jpg" alt="Logo ICOM Advanced Mechanical Solutions" loading="lazy">
+          </div>
+          <div class="client-logo shadow-md">
+            <img src="./foto/foto clienti/fincimec.jpg" alt="Logo Fincimec Impianti Industriali" loading="lazy">
+          </div>
+          </div>
+      </div>
+    </section>
+    <section class="section-padding bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#3FBFFF] mb-6">Lavori in Corso</h2> </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
-          <div class="glass-effect rounded-2xl p-8 border border-emerald-500/30">
+          <div class="glass-effect rounded-2xl p-8 border border-[#3FBFFF]/30">
             <div class="flex items-start space-x-4">
-              <div class="w-3 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
-              <div>
-                <h3 class="text-xl sm:text-2xl font-bold text-emerald-500 mb-2">FINCIMEC (LONIGO)</h3>
-                <p class="text-gray-600 mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio e inossidabile, rivestite in PTFE, valvole manuali e strumentali presso lo stabilimento FIS di Lonigo (VI)</p>
+              <div class="w-3 h-3 bg-[#3FBFFF] rounded-full mt-2 animate-pulse"></div> <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-[#3FBFFF] mb-2">FINCIMEC (LONIGO)</h3> <p class="text-gray-600 mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio e inossidabile, rivestite in PTFE, valvole manuali e strumentali presso lo stabilimento FIS di Lonigo (VI)</p>
                 <p class="text-gray-500">Lonigo (VI)</p>
               </div>
             </div>
           </div>
-          <div class="glass-effect rounded-2xl p-8 border border-emerald-500/30">
+          <div class="glass-effect rounded-2xl p-8 border border-[#3FBFFF]/30">
             <div class="flex items-start space-x-4">
-              <div class="w-3 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
-              <div>
-                <h3 class="text-xl sm:text-2xl font-bold text-emerald-500 mb-2">SAFAS (VICENZA)</h3>
-                <p class="text-gray-600 mb-2">Molatura, Spianatura e Saldatura di apparecchiature meccaniche presso cantiere e Fonderia SAFAS di Altavilla Vicentina, Vicenza</p>
+              <div class="w-3 h-3 bg-[#3FBFFF] rounded-full mt-2 animate-pulse"></div> <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-[#3FBFFF] mb-2">SAFAS (VICENZA)</h3> <p class="text-gray-600 mb-2">Molatura, Spianatura e Saldatura di apparecchiature meccaniche presso cantiere e Fonderia SAFAS di Altavilla Vicentina, Vicenza</p>
                 <p class="text-gray-500">Altavilla Vicentina (VI)</p>
               </div>
             </div>
@@ -661,9 +878,6 @@
           <div class="flex space-x-6 mt-4 md:mt-0">
             <a href="privacy-policy.html" class="text-gray-600 hover:text-[#3FBFFF] text-sm transition-colors">Privacy Policy</a>
             <a href="cookie-policy.html" class="text-gray-600 hover:text-[#3FBFFF] text-sm transition-colors">Cookie Policy</a>
-            <a href="https://www.linkedin.com/company/fox-industrial-contracting-srl/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-[#3FBFFF] transition-colors">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.07-.93-1.5-1.5-1.5s-1.5.43-1.5 1.5v4.5h-3v-9h3v1.22c.41-.63 1.19-1.22 2.5-1.22 2.07 0 3.5 1.34 3.5 4.08v5.92z"/></svg>
-            </a>
           </div>
         </div>
       </div>
@@ -679,7 +893,7 @@
     </a>
 
     <script>
-      // Unico array con TUTTE le immagini
+      // Array con TUTTE le immagini, ESCLUSA l'immagine di sfondo statico (Warehouse Nippon Gases (4).jpg)
       const allImages = [
         // Officine Tecnomec Taranto
         "./foto/officine tecnomec taranto (2024)1.jpg",
@@ -688,15 +902,13 @@
         "./foto/officine tecnomec taranto (2024)4.jpg",
         "./foto/officine tecnomec taranto (2024)5.jpg",
         "./foto/officine tecnomec taranto (2024)6.jpg",
-        // Warehouse Nippon Gases
+        // Warehouse Nippon Gases (Immagine 4 RIMOSSA)
         "./foto/Warehouse Nippon Gases (1).jpg",
         "./foto/Warehouse Nippon Gases (2).jpg",
         "./foto/Warehouse Nippon Gases (3).jpg",
-        "./foto/Warehouse Nippon Gases (4).jpg",
         "./foto/Warehouse Nippon Gases (5).jpg",
         "./foto/Warehouse Nippon Gases (6).jpg",
         // Nuove foto
-        "./foto/Foto Nuove/IMG-20251006-WA0016.jpg",
         "./foto/Foto Nuove/IMG-20251006-WA0017.jpg",
         "./foto/Foto Nuove/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.jpg"
       ];
@@ -704,8 +916,6 @@
       // Variabili globali per lo stato dei caroselli
       let currentModalSlideIndex = 0;
       let swipeListeners = [];
-      let currentHeroSlide = 0;
-      let heroInterval;
       
       // === GESTIONE MODALE (quando si clicca su una foto) ===
       function openModal(startIndex) {
@@ -740,6 +950,7 @@
         });
 
         const modalContent = modal.querySelector('.modal-content');
+        // Rimuove le frecce del carosello 3D se sono state aggiunte per sbaglio
         const existingArrows = modalContent.querySelectorAll('.nav-button');
         existingArrows.forEach(el => el.remove());
 
@@ -823,18 +1034,6 @@
         }
       }
 
-      // === GESTIONE HERO CAROUSEL (in alto) ===
-      function initHeroCarousel() {
-        const images = document.querySelectorAll('#hero-carousel img');
-        if (images.length === 0) return;
-        heroInterval = setInterval(() => {
-          images[currentHeroSlide].style.display = 'none';
-          currentHeroSlide = (currentHeroSlide + 1) % images.length;
-          images[currentHeroSlide].style.display = 'block';
-        }, 5000);
-        images[0].style.display = 'block';
-      }
-
       // === GESTIONE MENU MOBILE ===
       function toggleMobileMenu() {
         const menu = document.getElementById('mobileMenu');
@@ -852,26 +1051,39 @@
         }
       }
 
-      // --- NUOVA GESTIONE CAROSELLO PROGETTI (con FADE e AUTOPLAY) ---
+      // === NUOVA GESTIONE CAROSELLO PROGETTI 3D ===
       let currentProjectSlide = 0;
       let projectAutoplayInterval;
+      
+      function getSlideIndex(offset) {
+          return (currentProjectSlide + offset + allImages.length) % allImages.length;
+      }
 
-      function renderProjectsCarousel() {
-        const carousel = document.getElementById('projects-carousel');
-        const dotsContainer = document.getElementById('projects-dots');
-        if (!carousel || !dotsContainer) return;
-
-        carousel.innerHTML = '';
-        dotsContainer.innerHTML = '';
+      function init3DCarousel() {
+        const carousel = document.getElementById('projects-carousel-3d');
+        if (!carousel) return;
+        
+        // Rimuove slide precedenti se ricaricato
+        carousel.querySelectorAll('.slide-3d').forEach(slide => slide.remove());
 
         allImages.forEach((src, index) => {
-          // Slide
           const slide = document.createElement('div');
-          slide.className = 'project-slide';
-          if (index === 0) slide.classList.add('active'); // Attiva solo la prima slide
-          slide.onclick = () => openModal(index);
+          slide.className = 'slide-3d';
+          slide.setAttribute('data-index', index);
+          slide.onclick = () => {
+              // Apre la modale solo se è la slide centrale
+              if (slide.classList.contains('center')) {
+                  openModal(index);
+              } else {
+                  // Se non è la slide centrale, la porta al centro
+                  if(slide.classList.contains('left')) {
+                      prev3DSlide();
+                  } else if (slide.classList.contains('right')) {
+                      next3DSlide();
+                  }
+              }
+          };
 
-          // Immagine
           const img = document.createElement('img');
           img.src = src;
           img.alt = `Progetto ${index + 1}`;
@@ -880,70 +1092,59 @@
           
           slide.appendChild(img);
           carousel.appendChild(slide);
-
-          // Pallino (Dot)
-          const dot = document.createElement('div');
-          dot.className = 'proj-dot';
-          if (index === 0) dot.classList.add('active');
-          dot.onclick = () => goToProjectSlide(index);
-          dotsContainer.appendChild(dot);
         });
+
+        update3DCarousel();
       }
       
-      function updateProjectCarousel() {
-        const slides = document.querySelectorAll('#projects-carousel .project-slide');
-        const dots = document.querySelectorAll('#projects-dots .proj-dot');
+      function update3DCarousel() {
+        const slides = document.querySelectorAll('#projects-carousel-3d .slide-3d');
+        if (slides.length === 0) return;
         
-        slides.forEach((slide, index) => {
-            slide.classList.toggle('active', index === currentProjectSlide);
-        });
+        const prevIndex = getSlideIndex(-1);
+        const centerIndex = getSlideIndex(0);
+        const nextIndex = getSlideIndex(1);
 
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentProjectSlide);
+        slides.forEach((slide, index) => {
+            slide.classList.remove('center', 'left', 'right');
+            if (index === centerIndex) {
+                slide.classList.add('center');
+            } else if (index === prevIndex) {
+                slide.classList.add('left');
+            } else if (index === nextIndex) {
+                slide.classList.add('right');
+            }
         });
+      }
+
+      function start3DAutoplay() {
+          if (allImages.length < 2) return;
+          clearInterval(projectAutoplayInterval);
+          projectAutoplayInterval = setInterval(next3DSlide, 5000); // 5 secondi
+      }
+
+      function next3DSlide() {
+          currentProjectSlide = getSlideIndex(1);
+          update3DCarousel();
+          start3DAutoplay();
+      }
+
+      function prev3DSlide() {
+          currentProjectSlide = getSlideIndex(-1);
+          update3DCarousel();
+          start3DAutoplay();
       }
       
-      function startProjectAutoplay() {
-          clearInterval(projectAutoplayInterval); // Ferma il timer precedente
-          projectAutoplayInterval = setInterval(() => {
-              currentProjectSlide = (currentProjectSlide + 1) % allImages.length;
-              updateProjectCarousel();
-          }, 5000); // Cambia foto ogni 5 secondi
-      }
-
-      function goToProjectSlide(index) {
-          currentProjectSlide = index;
-          updateProjectCarousel();
-          startProjectAutoplay(); // Resetta il timer quando si clicca un pallino
-      }
-
-      function setupProjectCarouselNav() {
-          const prevBtn = document.getElementById('prev-btn-proj');
-          const nextBtn = document.getElementById('next-btn-proj');
-          if (!prevBtn || !nextBtn) return;
-
-          nextBtn.addEventListener('click', () => {
-              currentProjectSlide = (currentProjectSlide + 1) % allImages.length;
-              updateProjectCarousel();
-              startProjectAutoplay(); // Resetta il timer
-          });
-
-          prevBtn.addEventListener('click', () => {
-              currentProjectSlide = (currentProjectSlide - 1 + allImages.length) % allImages.length;
-              updateProjectCarousel();
-              startProjectAutoplay(); // Resetta il timer
-          });
-      }
+      // Rende le funzioni globali con il nome corretto
+      window.next3DSlide = next3DSlide;
+      window.prev3DSlide = prev3DSlide;
       
       // === INIZIALIZZAZIONE DI TUTTO ===
       document.addEventListener('DOMContentLoaded', () => {
-        // Carosello Progetti
-        renderProjectsCarousel();
-        setupProjectCarouselNav();
-        startProjectAutoplay(); // Avvia l'autoplay
+        // Carosello Progetti 3D
+        init3DCarousel();
+        start3DAutoplay();
         
-        // Altre funzioni
-        initHeroCarousel();
         const mobileMenu = document.getElementById('mobileMenu');
         if (mobileMenu) mobileMenu.classList.remove('open');
       });
@@ -963,4 +1164,5 @@
       });
     </script>
 </body>
+</html></body>
 </html>

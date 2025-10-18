@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anteprima Carosello Progetti 3D Full-Width Corretto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+            overflow-x: hidden; /* IMPORTANTE: Previene la barra di scorrimento orizzontale */
+        }
+
+        /* Colore primario del sito */
+        :root {
+            --primary-color: #3FBFFF;
+            --container-max-width: 1200px;
+        }
+
+        .section-title {
+             max-width: var(--container-max-width);
+             width: 100%;
+             text-align: center;
+             margin-bottom: 2rem;
+             padding: 0 1rem;
+        }
+
+        /* Contenitore Principale Full-Width */
+        .section-projects {
+            width: 100vw; /* COPRE TUTTA LA PAGINA */
+            overflow: visible; 
+            position: relative;
+            min-height: 600px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Contenitore Carosello */
+        #projects-carousel-3d {
+            position: relative;
+            width: 100%; 
+            height: 550px; 
+            margin: 4rem 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Stile base delle slide */
+        .slide-3d {
+            position: absolute;
+            width: 60%; /* AUMENTATO per ridurre lo spazio tra le slide */
+            height: 90%;
+            max-width: 800px; /* Aumentato il limite massimo */
+            border-radius: 1.5rem; 
+            overflow: hidden;
+            cursor: pointer;
+            transition: 
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                z-index 0.7s step-end;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 10px 20px rgba(0, 0, 0, 0.3);
+            perspective: 1000px; 
+        }
+        
+        .slide-3d img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Stato Centrale (Active) */
+        .slide-3d.center {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+            z-index: 10;
+        }
+
+        /* Stato Laterale Sinistro (Previous) - Calcolo per Aderenza */
+        .slide-3d.left {
+            /* Spostamento ricalibrato per far aderire il bordo destro della slide laterale */
+            transform: translateX(-80%) scale(0.78) rotateY(10deg); 
+            opacity: 0.3;
+            z-index: 5;
+        }
+        .slide-3d.left img {
+            filter: grayscale(80%) brightness(0.4); 
+        }
+
+        /* Stato Laterale Destro (Next) - Calcolo per Aderenza */
+        .slide-3d.right {
+            /* Spostamento ricalibrato per far aderire il bordo sinistro della slide laterale */
+            transform: translateX(80%) scale(0.78) rotateY(-10deg); 
+            opacity: 0.3;
+            z-index: 5;
+        }
+        .slide-3d.right img {
+            filter: grayscale(80%) brightness(0.4); 
+        }
+
+        /* Stato Nascosto */
+        .slide-3d:not(.center):not(.left):not(.right) {
+            opacity: 0;
+            transform: translateX(0) scale(0.5); 
+            z-index: 1;
+            pointer-events: none; 
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Contenitore Frecce (Centrato rispetto al contenuto principale) */
+        .carousel-3d-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%; 
+            max-width: var(--container-max-width); 
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            left: 50%; 
+            transform: translateX(-50%) translateY(-50%); 
+            padding: 0 1rem; 
+            z-index: 20; 
+        }
+        
+        /* Stili frecce */
+        .carousel-3d-nav .nav-button {
+            width: 3.5rem;
+            height: 3.5rem;
+            font-size: 1.5rem;
+      background: rgba(224, 240, 255, 0.98); 
+            color: #1f2937; 
+            border: 2px solid #1f2937;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            pointer-events: all;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-3d-nav .nav-button:hover {
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--primary-color);
+            transform: translateY(-50%) scale(1.1);
+            border-color: var(--primary-color);
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+             .slide-3d {
+                width: 95%;
+                height: 300px;
+                max-width: none;
+                transform: translateX(0) scale(1) !important;
+            }
+            .slide-3d.left, .slide-3d.right {
+                display: none; 
+            }
+            #projects-carousel-3d {
+                height: 350px;
+                margin: 2rem 0;
+            }
+             .carousel-3d-nav {
+                max-width: 100%;
+                padding: 0 0.5rem;
+            }
+             .carousel-3d-nav .nav-button {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section-title">
+        <h2 class="text-4xl font-bold mb-2 text-gray-900">BOZZA CAROSELLO 3D</h2>
+        <p class="text-xl text-gray-600">Full-Width per la Pagina Originale</p>
+    </div>
+
+    <div class="section-projects">
+        <div id="projects-carousel-3d" class="relative">
+            </div>
+
+        <div class="carousel-3d-nav">
+            <button 
+                id="prev-btn-3d" 
+                class="nav-button left" 
+                aria-label="Progetto Precedente"
+                onclick="prev3DSlide()"
+            >
+                &#10094;
+            </button>
+            <button 
+                id="next-btn-3d" 
+                class="nav-button right" 
+                aria-label="Progetto Successivo"
+                onclick="next3DSlide()"
+            >
+                &#10095;
+            </button>
+        </div>
+    </div>
+    
+    <div class="section-title mt-16">
+        <p class="text-lg text-gray-700">Il contenuto sottostante scorrerebbe normalmente.</p>
+    </div>
+
+    <script>
+        // Array Immagini (si usano le stesse URL del progetto)
+        const allImages = [
+            "./foto/officine tecnomec taranto (2024)1.jpg",
+            "./foto/officine tecnomec taranto (2024)2.jpg",
+            "./foto/officine tecnomec taranto (2024)3.jpg",
+            "./foto/Warehouse Nippon Gases (1).jpg",
+            "./foto/Warehouse Nippon Gases (2).jpg",
+            "./foto/Warehouse Nippon Gases (3).jpg",
+            "./foto/Warehouse Nippon Gases (5).jpg",
+            "./foto/Warehouse Nippon Gases (6).jpg",
+            "./foto/Foto Nuove/IMG-20251006-WA0016.jpg",
+            "./foto/Foto Nuove/IMG-20251006-WA0017.jpg",
+            "./foto/Foto Nuove/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.jpg"
+        ];
+
+        let currentProjectSlide = 0;
+        let projectAutoplayInterval;
+        
+        function getSlideIndex(offset) {
+            return (currentProjectSlide + offset + allImages.length) % allImages.length;
+        }
+
+        function init3DCarousel() {
+            const carousel = document.getElementById('projects-carousel-3d');
+            if (!carousel || allImages.length === 0) return;
+            
+            // Creazione delle slide
+            allImages.forEach((src, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide-3d';
+                slide.setAttribute('data-index', index);
+                slide.onclick = () => console.log(`Cliccato su Progetto ${index + 1}.`); 
+
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Progetto ${index + 1}`;
+                img.loading = 'lazy';
+                img.onerror = () => img.src = 'https://via.placeholder.com/800x450/3FBFFF/FFF?text=IMG+TEST';
+                
+                slide.appendChild(img);
+                carousel.appendChild(slide);
+            });
+
+            update3DCarousel();
+            start3DAutoplay();
+        }
+        
+        function update3DCarousel() {
+            const slides = document.querySelectorAll('#projects-carousel-3d .slide-3d');
+            if (slides.length === 0) return;
+            
+            const prevIndex = getSlideIndex(-1);
+            const centerIndex = getSlideIndex(0);
+            const nextIndex = getSlideIndex(1);
+
+            slides.forEach((slide, index) => {
+                slide.classList.remove('center', 'left', 'right');
+                
+                if (index === centerIndex) {
+                    slide.classList.add('center');
+                } else if (index === prevIndex) {
+                    slide.classList.add('left');
+                } else if (index === nextIndex) {
+                    slide.classList.add('right');
+                }
+            });
+        }
+
+        function start3DAutoplay() {
+            if (allImages.length < 2) return;
+            clearInterval(projectAutoplayInterval);
+            projectAutoplayInterval = setInterval(next3DSlide, 5000); 
+        }
+
+        function next3DSlide() {
+            currentProjectSlide = getSlideIndex(1);
+            update3DCarousel();
+            start3DAutoplay();
+        }
+
+        function prev3DSlide() {
+            currentProjectSlide = getSlideIndex(-1);
+            update3DCarousel();
+            start3DAutoplay();
+        }
+        
+        window.next3DSlide = next3DSlide;
+        window.prev3DSlide = prev3DSlide;
+        
+        document.addEventListener('DOMContentLoaded', init3DCarousel);
+    </script>
+</body>
+</html>
