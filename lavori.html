@@ -8,70 +8,7 @@
   <link rel="icon" href="./foto/LOGO.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/style.css">
-  <style>
-    /* Sfondo leggermente meno bianco */
-    body {
-      background-color: #fafbff !important;
-    }
-    /* Mobile menu styles */
-    .mobileMenu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
-      z-index: 1000;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
-    }
-    .mobileMenu.open {
-      transform: translateY(0);
-    }
-    .menu-container {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      justify-content: center;
-      align-items: center;
-    }
-    .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: #1f2937;
-      cursor: pointer;
-    }
-    .menu-container a {
-      color: #1f2937;
-      text-decoration: none;
-      font-size: 1.5rem;
-      margin: 1rem 0;
-      transition: color 0.3s ease;
-    }
-    .menu-container a:hover {
-      color: #3FBFFF;
-    }
-    /* Section padding */
-    .section-padding {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-    }
-    /* Animazioni progressive */
-    .stagger-fade {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .stagger-fade.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+
 </head>
 <body class="min-h-screen text-gray-900 overflow-x-hidden">
   <!-- Navigation -->
@@ -83,7 +20,7 @@
           <a href="index.html">
             <img src="./foto/LOGO.png" alt="Logo" class="w-10 h-10 rounded-xl" />
           </a>
-          <a href="index.html" class="text-xl font-semibold text-gray-900 hover:text-[#3FBFFF] transition-colors">Fox Industrial Contracting S.r.l.</a>
+          <a href="index.html" class="text-xl font-semibold hover:text-accent-hover transition-colors">Fox Industrial Contracting S.r.l.</a>
         </div>
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center space-x-8">
@@ -140,48 +77,48 @@
       <p class="text-2xl text-gray-600">Progetti in corso e completati in Italia ed Europa</p>
     </div>
   </section>
-  <!-- Lavori in Corso (VERDE) -->
+  <!-- Lavori in Corso (AZZURRO) -->
   <section class="section-padding">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-emerald-500 mb-6">Lavori in Corso</h2>
+        <h2 class="text-4xl font-bold" style="color: #3FBFFF; margin-bottom: 1.5rem;">Lavori in Corso</h2>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
-        <div class="glass-effect rounded-2xl p-8 border border-emerald-500/30 stagger-fade">
+        <div class="glass-effect rounded-2xl p-8 border stagger-fade" style="border-color: #3FBFFF30;">
           <div class="flex items-start space-x-4">
-            <div class="w-3 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
+            <div class="w-3 h-3 rounded-full mt-2 animate-pulse" style="background-color: #3FBFFF;"></div>
             <div>
-              <h3 class="text-2xl font-bold text-emerald-500 mb-2">FINCIMEC (LONIGO)</h3>
+              <h3 class="text-2xl font-bold mb-2" style="color: #3FBFFF;">FINCIMEC (LONIGO)</h3>
               <p class="text-gray-600 mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio e inossidabile, rivestite in PTFE, valvole manuali e strumentali presso lo stabilimento "FIS" di Lonigo (VI)</p>
               <p class="text-gray-400">Lonigo (VI)</p>
             </div>
           </div>
         </div>
-        <div class="glass-effect rounded-2xl p-8 border border-emerald-500/30 stagger-fade">
+        <div class="glass-effect rounded-2xl p-8 border stagger-fade" style="border-color: #3FBFFF30;">
           <div class="flex items-start space-x-4">
-            <div class="w-3 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
+            <div class="w-3 h-3 rounded-full mt-2 animate-pulse" style="background-color: #3FBFFF;"></div>
             <div>
-              <h3 class="text-2xl font-bold text-emerald-500 mb-2">FINCIMEC (MONTECCHIO MAGGIORE)</h3>
+              <h3 class="text-2xl font-bold mb-2" style="color: #3FBFFF;">FINCIMEC (MONTECCHIO MAGGIORE)</h3>
               <p class="text-gray-600 mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio - linee servizi e inossidabile - linee processo; montaggio tubazioni rivestite internamente in PTFE, valvole e strumenti presso lo stabilimento "F.I.S." ALTE di Montecchio Maggiore (VI)</p>
               <p class="text-gray-400">Montecchio Maggiore (VI)</p>
             </div>
           </div>
         </div>
-        <div class="glass-effect rounded-2xl p-8 border border-emerald-500/30 stagger-fade">
+        <div class="glass-effect rounded-2xl p-8 border stagger-fade" style="border-color: #3FBFFF30;">
           <div class="flex items-start space-x-4">
-            <div class="w-3 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
+            <div class="w-3 h-3 rounded-full mt-2 animate-pulse" style="background-color: #3FBFFF;"></div>
             <div>
-              <h3 class="text-2xl font-bold text-emerald-500 mb-2">SAFAS (VICENZA)</h3>
+              <h3 class="text-2xl font-bold mb-2" style="color: #3FBFFF;">SAFAS (VICENZA)</h3>
               <p class="text-gray-600 mb-2">Molatura, Spianatura e Saldatura di apparecchiature meccaniche presso cantiere e Fonderia SAFAS di Altavilla Vicentina, Vicenza</p>
               <p class="text-gray-400">Altavilla Vicentina (VI)</p>
             </div>
           </div>
         </div>
-        <div class="glass-effect rounded-2xl p-8 border border-emerald-500/30 stagger-fade">
+        <div class="glass-effect rounded-2xl p-8 border stagger-fade" style="border-color: #3FBFFF30;">
           <div class="flex items-start space-x-4">
-            <div class="w-3 h-3 bg-emerald-500 rounded-full mt-2 animate-pulse"></div>
+            <div class="w-3 h-3 rounded-full mt-2 animate-pulse" style="background-color: #3FBFFF;"></div>
             <div>
-              <h3 class="text-2xl font-bold text-emerald-500 mb-2">MAC IMPIANTI (ROVIGO)</h3>
+              <h3 class="text-2xl font-bold mb-2" style="color: #3FBFFF;">MAC IMPIANTI (ROVIGO)</h3>
               <p class="text-gray-600 mb-2">Saldatura e installazione piping presso il Cantiere Cargill di Castelmassa (RO)</p>
               <p class="text-gray-400">Castelmassa (RO)</p>
             </div>

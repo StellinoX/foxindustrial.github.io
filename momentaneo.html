@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anteprima Carosello Progetti 3D Full-Width Corretto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <div class="section-title">
+        <h2 class="text-4xl font-bold mb-2 text-gray-900">BOZZA CAROSELLO 3D</h2>
+        <p class="text-xl text-gray-600">Full-Width per la Pagina Originale</p>
+    </div>
+
+    <div class="section-projects">
+        <div id="projects-carousel-3d" class="relative">
+            </div>
+
+        <div class="carousel-3d-nav">
+            <button 
+                id="prev-btn-3d" 
+                class="nav-button left" 
+                aria-label="Progetto Precedente"
+                onclick="prev3DSlide()"
+            >
+                &#10094;
+            </button>
+            <button 
+                id="next-btn-3d" 
+                class="nav-button right" 
+                aria-label="Progetto Successivo"
+                onclick="next3DSlide()"
+            >
+                &#10095;
+            </button>
+        </div>
+    </div>
+    
+    <div class="section-title mt-16">
+        <p class="text-lg text-gray-700">Il contenuto sottostante scorrerebbe normalmente.</p>
+    </div>
+
+    <script>
+        // Array Immagini (si usano le stesse URL del progetto)
+        const allImages = [
+            "./foto/officine tecnomec taranto (2024)1.jpg",
+            "./foto/officine tecnomec taranto (2024)2.jpg",
+            "./foto/officine tecnomec taranto (2024)3.jpg",
+            "./foto/warehouse nippon gases (1).jpg",
+            "./foto/warehouse nippon gases (2).jpg",
+            "./foto/warehouse nippon gases (3).jpg",
+            "./foto/warehouse nippon gases (5).jpg",
+            "./foto/warehouse nippon gases (6).jpg",
+            "./foto/Foto Nuove/IMG-20251006-WA0016.jpg",
+            "./foto/Foto Nuove/IMG-20251006-WA0017.jpg",
+            "./foto/Foto Nuove/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.jpg"
+        ];
+
+        let currentProjectSlide = 0;
+        let projectAutoplayInterval;
+        
+        function getSlideIndex(offset) {
+            return (currentProjectSlide + offset + allImages.length) % allImages.length;
+        }
+
+        function init3DCarousel() {
+            const carousel = document.getElementById('projects-carousel-3d');
+            if (!carousel || allImages.length === 0) return;
+            
+            // Creazione delle slide
+            allImages.forEach((src, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide-3d';
+                slide.setAttribute('data-index', index);
+                slide.onclick = () => console.log(`Cliccato su Progetto ${index + 1}.`); 
+
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Progetto ${index + 1}`;
+                img.loading = 'lazy';
+                img.onerror = () => img.src = 'https://via.placeholder.com/800x450/3FBFFF/FFF?text=IMG+TEST';
+                
+                slide.appendChild(img);
+                carousel.appendChild(slide);
+            });
+
+            update3DCarousel();
+            start3DAutoplay();
+        }
+        
+        function update3DCarousel() {
+            const slides = document.querySelectorAll('#projects-carousel-3d .slide-3d');
+            if (slides.length === 0) return;
+            
+            const prevIndex = getSlideIndex(-1);
+            const centerIndex = getSlideIndex(0);
+            const nextIndex = getSlideIndex(1);
+
+            slides.forEach((slide, index) => {
+                slide.classList.remove('center', 'left', 'right');
+                
+                if (index === centerIndex) {
+                    slide.classList.add('center');
+                } else if (index === prevIndex) {
+                    slide.classList.add('left');
+                } else if (index === nextIndex) {
+                    slide.classList.add('right');
+                }
+            });
+        }
+
+        function start3DAutoplay() {
+            if (allImages.length < 2) return;
+            clearInterval(projectAutoplayInterval);
+            projectAutoplayInterval = setInterval(next3DSlide, 5000); 
+        }
+
+        function next3DSlide() {
+            currentProjectSlide = getSlideIndex(1);
+            update3DCarousel();
+            start3DAutoplay();
+        }
+
+        function prev3DSlide() {
+            currentProjectSlide = getSlideIndex(-1);
+            update3DCarousel();
+            start3DAutoplay();
+        }
+        
+        window.next3DSlide = next3DSlide;
+        window.prev3DSlide = prev3DSlide;
+        
+        document.addEventListener('DOMContentLoaded', init3DCarousel);
+    </script>
+</body>
+</html>

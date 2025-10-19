@@ -14,12 +14,12 @@ const projects = [
   {
     title: "Warehouse Nippon Gases",
     images: [
-      "./foto/Warehouse Nippon Gases (1).jpg",
-      "./foto/Warehouse Nippon Gases (2).jpg",
-      "./foto/Warehouse Nippon Gases (3).jpg",
-      "./foto/Warehouse Nippon Gases (4).jpg",
-      "./foto/Warehouse Nippon Gases (5).jpg",
-      "./foto/Warehouse Nippon Gases (6).jpg"
+      "./foto/warehouse nippon gases (1).jpg",
+      "./foto/warehouse nippon gases (2).jpg",
+      "./foto/warehouse nippon gases (3).jpg",
+      "./foto/warehouse nippon gases (4).jpg",
+      "./foto/warehouse nippon gases (5).jpg",
+      "./foto/warehouse nippon gases (6).jpg"
     ]
   }
 ];
@@ -178,9 +178,13 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Chiudi cliccando fuori
-document.getElementById('imageModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
+const imageModal = document.getElementById('imageModal');
+if (imageModal) {
+    imageModal.addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+}
+
 
 // === GESTIONE SWIPE PER MOBILE ===
 let touchStartX = 0;
@@ -188,12 +192,16 @@ let touchEndX = 0;
 
 function addSwipeGestures(element) {
   const handleTouchStart = (e) => {
-    touchStartX = e.changedTouches[0].screenX;
+    if (e.changedTouches && e.changedTouches.length > 0) {
+        touchStartX = e.changedTouches[0].screenX;
+    }
   };
 
   const handleTouchEnd = (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleGesture();
+    if (e.changedTouches && e.changedTouches.length > 0) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleGesture();
+    }
   };
 
   const handleGesture = () => {
@@ -216,7 +224,7 @@ function addSwipeGestures(element) {
 }
 
 function removeSwipeGestures(element) {
-  if (swipeListeners.length > 0) {
+  if (swipeListeners.length > 0 && element) {
     element.removeEventListener('touchstart', swipeListeners[0]);
     element.removeEventListener('touchend', swipeListeners[1]);
     swipeListeners = [];
@@ -225,9 +233,17 @@ function removeSwipeGestures(element) {
 
 // Funzioni per il carosello fullscreen
 function initHeroCarousel() {
-  const images = document.querySelectorAll('#hero-carousel img');
+  const heroCarousel = document.getElementById('hero-carousel');
+  if (!heroCarousel) {
+    return;
+  }
+  const images = heroCarousel.querySelectorAll('img');
   const dots = document.querySelectorAll('#hero-dots .dot');
   
+  if (images.length === 0) {
+    return;
+  }
+
   heroInterval = setInterval(() => {
     nextSlideHero();
   }, 5000);
@@ -243,6 +259,7 @@ function initHeroCarousel() {
 
 function goToSlideHero(index) {
   const images = document.querySelectorAll('#hero-carousel img');
+  if (images.length === 0) return;
   const dots = document.querySelectorAll('#hero-dots .dot');
   
   clearInterval(heroInterval);
@@ -263,6 +280,7 @@ function goToSlideHero(index) {
 
 function nextSlideHero() {
   const images = document.querySelectorAll('#hero-carousel img');
+  if (images.length === 0) return;
   const totalSlides = images.length;
   
   clearInterval(heroInterval);
@@ -283,6 +301,7 @@ function nextSlideHero() {
 
 function prevSlideHero() {
   const images = document.querySelectorAll('#hero-carousel img');
+  if (images.length === 0) return;
   const totalSlides = images.length;
   
   clearInterval(heroInterval);
