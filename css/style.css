@@ -495,7 +495,7 @@ html, body {
   align-items: center;
   justify-content: center;
   perspective: 1500px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #projects-carousel-3d::after {
@@ -530,7 +530,6 @@ html, body {
   border-radius: 1.35rem;
   object-fit: cover;
   box-shadow: 0 18px 40px rgba(4, 27, 43, 0.2);
-  border: 1px solid rgba(63, 191, 255, 0.25);
   background: var(--c-bg-primary);
 }
 
