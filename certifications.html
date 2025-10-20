@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="min-h-screen text-primary overflow-x-hidden">
+<body class="min-h-screen text-primary overflow-x-hidden motion-safe">
   <!-- Navigation -->
   <nav class="fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-4">
@@ -74,19 +74,20 @@
   </div>
 
   <!-- Hero -->
-  <section class="pt-32 pb-20">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h1 class="text-5xl font-bold mb-6">Certificazioni</h1>
-      <p class="text-xl text-secondary">Le Nostre Certificazioni</p>
+  <section class="pt-32 pb-20" data-animate="fade-up">
+    <div class="max-w-7xl mx-auto px-6 text-center" data-animate="fade-up">
+      <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">Certificazioni</h1>
+      <div class="animated-divider mx-auto" aria-hidden="true"></div>
+      <p class="text-xl text-secondary" data-animate="fade-up" data-delay="0.1">Le Nostre Certificazioni</p>
     </div>
   </section>
 
   <!-- Certifications List -->
-  <section class="section-padding">
+  <section class="section-padding" data-animate="fade-up">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 stagger-children" data-stagger="0.12">
         <!-- Certificazione 1 -->
-        <div class="glass-effect rounded-2xl p-8 border-accent-light certification-card stagger-fade">
+        <div class="glass-effect rounded-2xl p-8 border-accent-light certification-card hover-tilt" data-animate="fade-up">
           <div class="flex items-start mb-6">
             <div class="service-icon mr-4">
               <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
@@ -108,7 +109,7 @@
         </div>
 
         <!-- Certificazione 2 -->
-        <div class="glass-effect rounded-2xl p-8 border-accent-light certification-card stagger-fade">
+        <div class="glass-effect rounded-2xl p-8 border-accent-light certification-card hover-tilt" data-animate="fade-up">
           <div class="flex items-start mb-6">
             <div class="service-icon mr-4">
               <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
@@ -131,7 +132,7 @@
         </div>
 
         <!-- Certificazione 3 -->
-        <div class="glass-effect rounded-2xl p-8 border-accent-light certification-card stagger-fade">
+        <div class="glass-effect rounded-2xl p-8 border-accent-light certification-card hover-tilt" data-animate="fade-up">
           <div class="flex items-start mb-6">
             <div class="service-icon mr-4">
               <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
@@ -154,7 +155,7 @@
         </div>
 
         <!-- Certificazione 4 -->
-        <div class="glass-effect rounded-2xl p-8 border-accent-light certification-card stagger-fade">
+        <div class="glass-effect rounded-2xl p-8 border-accent-light certification-card hover-tilt" data-animate="fade-up">
           <div class="flex items-start mb-6">
             <div class="service-icon mr-4">
               <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
@@ -177,7 +178,7 @@
         </div>
 
         <!-- Certificazione 5 -->
-        <div class="glass-effect rounded-2xl p-8 border-accent-light certification-card stagger-fade">
+        <div class="glass-effect rounded-2xl p-8 border-accent-light certification-card hover-tilt" data-animate="fade-up">
           <div class="flex items-start mb-6">
             <div class="service-icon mr-4">
               <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
@@ -208,7 +209,7 @@
   </div>
 
   <!-- Footer -->
-  <footer class="bg-primary border-t border-accent-light py-8">
+  <footer class="bg-primary border-t border-accent-light py-8" data-animate="fade-up">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <p class="text-muted text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
@@ -220,6 +221,7 @@
     </div>
   </footer>
 
+  <script src="./js/motion.js"></script>
   <script src="./js/app.js"></script>
   <script>
     // Funzioni per il modale zoom immagine
@@ -262,26 +264,12 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    // Funzione per rendere visibili gli elementi con classe stagger-fade
-    function initStaggerFade() {
-      const elements = document.querySelectorAll('.stagger-fade');
-      elements.forEach((el, index) => {
-        setTimeout(() => {
-          el.classList.add('visible');
-        }, index * 100); // Ritardo progressivo per ogni elemento
-      });
-    }
-
     // Assicura che il menu mobile funzioni
     document.addEventListener('DOMContentLoaded', () => {
-      // Inizializza il menu mobile
       const mobileMenu = document.getElementById('mobileMenu');
       if (mobileMenu) {
         mobileMenu.classList.remove('open');
       }
-      
-      // Inizializza le animazioni progressive
-      initStaggerFade();
     });
   </script>
 </body>

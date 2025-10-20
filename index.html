@@ -13,7 +13,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="min-h-screen text-primary overflow-x-hidden">
+<body class="min-h-screen text-primary overflow-x-hidden motion-safe">
     <nav class="fixed top-0 w-full z-50">
       <div class="max-w-7xl mx-auto px-6 py-4">
         <div class="flex justify-between items-center">
@@ -56,31 +56,32 @@
         <a href="contact.html" onclick="toggleMobileMenu()">Contatti</a>
       </div>
     </div>
-    <section class="fullscreen-hero">
+    <section class="fullscreen-hero" data-animate="fade-up">
       <div class="hero-shell">
-        <div class="hero-copy">
-          <span class="hero-tag">Affidabilità certificata in tutta Europa</span>
-          <h1 class="hero-title">
+        <div class="sparkles" aria-hidden="true"></div>
+        <div class="hero-copy stagger-children" data-stagger="0.1">
+          <span class="hero-tag" data-animate="fade-down">Affidabilità certificata in tutta Europa</span>
+          <h1 class="hero-title" data-animate="fade-right">
             Ingegneria, <span class="text-accent">Montaggio</span> e Manutenzione Industriale
           </h1>
-          <p class="hero-subtitle">
+          <p class="hero-subtitle" data-animate="fade-right" data-delay="0.1">
             Dalla prefabbricazione in officina al montaggio in campo, supportiamo impianti petrolchimici, siderurgici, cartari e navali con squadre qualificate e processi controllati.
           </p>
-          <div class="hero-actions">
-            <a href="services.html" class="btn-primary">Scopri i servizi</a>
-            <a href="lavori.html" class="btn-ghost">Guarda i lavori</a>
+          <div class="hero-actions" data-animate="fade-up" data-delay="0.18">
+            <a href="services.html" class="btn-primary" data-animate="scale-in" data-delay="0.22">Scopri i servizi</a>
+            <a href="lavori.html" class="btn-ghost" data-animate="scale-in" data-delay="0.28">Guarda i lavori</a>
           </div>
-          <div class="hero-highlights">
-            <span class="hero-highlight">ISO 9001:2015</span>
-            <span class="hero-highlight">Procedure WEL qualificate</span>
-            <span class="hero-highlight">Cantieri attivi in Italia ed Europa</span>
+          <div class="hero-highlights stagger-children" data-stagger="0.08">
+            <span class="hero-highlight" data-animate="scale-in">ISO 9001:2015</span>
+            <span class="hero-highlight" data-animate="scale-in">Procedure WEL qualificate</span>
+            <span class="hero-highlight" data-animate="scale-in">Cantieri attivi in Italia ed Europa</span>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="hero-visual-frame">
+        <div class="hero-visual" data-animate="fade-left" data-delay="0.12">
+          <div class="hero-visual-frame hover-tilt" data-animate="rotate-in" data-tilt-strength="10">
             <img src="./foto/warehouse nippon gases (4).jpg" alt="Tecnici Fox Industrial durante un montaggio piping">
           </div>
-          <div class="hero-visual-card">
+          <div class="hero-visual-card hover-tilt" data-animate="scale-in" data-delay="0.24" data-tilt-strength="6">
             <h3>Settori serviti</h3>
             <ul>
               <li>Offshore e side shore</li>
@@ -89,6 +90,7 @@
             </ul>
           </div>
         </div>
+        <div class="glow-orbit" aria-hidden="true"></div>
       </div>
       <div class="scroll-indicator">
         <span>Scorri per continuare</span>
@@ -97,10 +99,11 @@
         </svg>
       </div>
     </section>
-    <section class="content-section section-projects">
+    <section class="content-section section-projects" data-animate="fade-up" data-delay="0.2">
       <div class="max-w-7xl mx-auto px-6 w-full">
-        <div class="text-center mb-16">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-primary">I NOSTRI PROGETTI</h2>
+        <div class="text-center mb-16" data-animate="fade-up">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-primary">I NOSTRI PROGETTI</h2>
+          <div class="animated-divider" aria-hidden="true"></div>
         </div>
       </div>
 
@@ -109,6 +112,8 @@
               <button 
                   id="prev-btn-3d" 
                   class="nav-button left" 
+                  data-animate="fade-right"
+                  data-delay="0.25"
                   aria-label="Progetto Precedente"
                   onclick="prev3DSlide()"
               >
@@ -117,6 +122,8 @@
               <button 
                   id="next-btn-3d" 
                   class="nav-button right" 
+                  data-animate="fade-left"
+                  data-delay="0.25"
                   aria-label="Progetto Successivo"
                   onclick="next3DSlide()"
               >
@@ -128,14 +135,15 @@
       <div class="max-w-7xl mx-auto px-6 w-full mt-16"></div>
       
     </section>
-    <section class="section-padding bg-secondary">
+    <section class="section-padding bg-secondary" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-primary">I Nostri Servizi</h2>
-          <p class="text-xl text-secondary">Un Provetto Modello di Lavoro</p>
+        <div class="text-center mb-16" data-animate="fade-up">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-primary">I Nostri Servizi</h2>
+          <div class="animated-divider" aria-hidden="true"></div>
+          <p class="text-xl text-secondary" data-animate="fade-up" data-delay="0.1">Un Provetto Modello di Lavoro</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children" data-stagger="0.12">
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card hover-tilt" data-animate="fade-up">
             <div class="flex items-center mb-6">
               <div class="service-icon mr-4 text-accent">⚡</div>
               <h3 class="text-xl sm:text-2xl font-semibold text-primary">Pianificazione Rapida</h3>
@@ -143,7 +151,7 @@
             <p class="text-secondary leading-relaxed">Attivi in diversi campi di specializzazione, il nostro personale verrà incontro alle esigenze di ogni cliente in tempi brevi</p>
             <a href="services.html" class="mt-4 inline-block text-accent hover:text-accent-hover font-medium transition-colors">Scopri di più →</a>
           </div>
-          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card">
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card hover-tilt" data-animate="fade-up">
             <div class="flex items-center mb-6">
               <div class="service-icon mr-4 text-accent">👨‍💼</div>
               <h3 class="text-xl sm:text-2xl font-semibold text-primary">Figure altamente specializzate</h3>
@@ -151,7 +159,7 @@
             <p class="text-secondary leading-relaxed">Forniamo figure adatte ad ogni tipo di cantiere: responsabili di cantiere, saldatori qualificati, tubisti a sketch, carpentieri e montatori a disegno e meccanici provetti</p>
             <a href="services.html" class="mt-4 inline-block text-accent hover:text-accent-hover font-medium transition-colors">Scopri di più →</a>
           </div>
-          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card">
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card hover-tilt" data-animate="fade-up">
             <div class="flex items-center mb-6">
               <div class="service-icon mr-4 text-accent">🛡️</div>
               <h3 class="text-xl sm:text-2xl font-semibold text-primary">Elevati Standard di Sicurezza</h3>
@@ -163,37 +171,40 @@
       </div>
     </section>
     
-    <section class="section-padding bg-primary">
+    <section class="section-padding bg-primary" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-primary">I NOSTRI CLIENTI</h2>
-          <p class="text-xl text-secondary">Alcuni dei nostri principali partner</p>
+        <div class="text-center mb-16" data-animate="fade-up">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-primary">I NOSTRI CLIENTI</h2>
+          <div class="animated-divider" aria-hidden="true"></div>
+          <p class="text-xl text-secondary" data-animate="fade-up" data-delay="0.1">Alcuni dei nostri principali partner</p>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-          <div class="client-logo shadow-md">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 stagger-children" data-stagger="0.08">
+          <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
             <img src="./foto/foto clienti/mati group.jpg" alt="Logo Mati Group" loading="lazy">
           </div>
-          <div class="client-logo shadow-md">
+          <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
             <img src="./foto/foto clienti/safasgroup.jpg" alt="Logo Safas Group" loading="lazy">
           </div>
-          <div class="client-logo shadow-md">
+          <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
             <img src="./foto/foto clienti/mac group.jpg" alt="Logo MAC Impianti" loading="lazy">
           </div>
-          <div class="client-logo shadow-md">
+          <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
             <img src="./foto/foto clienti/ioom.jpg" alt="Logo ICOM Advanced Mechanical Solutions" loading="lazy">
           </div>
-          <div class="client-logo shadow-md">
+          <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
             <img src="./foto/foto clienti/fincimec.jpg" alt="Logo Fincimec Impianti Industriali" loading="lazy">
           </div>
           </div>
       </div>
     </section>
-    <section class="section-padding bg-primary">
+    <section class="section-padding bg-primary" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-6">Lavori in Corso</h2> </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
-          <div class="glass-effect rounded-2xl p-8 border-accent-light">
+        <div class="text-center mb-16" data-animate="fade-up">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-4">Lavori in Corso</h2> 
+          <div class="animated-divider" aria-hidden="true"></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16 stagger-children" data-stagger="0.14">
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start space-x-4">
               <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div> <div>
                 <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">FINCIMEC (LONIGO)</h3> <p class="text-secondary mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio e inossidabile, rivestite in PTFE, valvole manuali e strumentali presso lo stabilimento FIS di Lonigo (VI)</p>
@@ -201,7 +212,7 @@
               </div>
             </div>
           </div>
-          <div class="glass-effect rounded-2xl p-8 border-accent-light">
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start space-x-4">
               <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div> <div>
                 <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">SAFAS (VICENZA)</h3> <p class="text-secondary mb-2">Molatura, Spianatura e Saldatura di apparecchiature meccaniche presso cantiere e Fonderia SAFAS di Altavilla Vicentina, Vicenza</p>
@@ -210,18 +221,19 @@
             </div>
           </div>
         </div>
-        <div class="text-center">
-          <a href="lavori.html" class="btn-secondary">Vedi tutti i lavori</a>
+        <div class="text-center" data-animate="fade-up" data-delay="0.16">
+          <a href="lavori.html" class="btn-secondary" data-animate="scale-in" data-delay="0.2">Vedi tutti i lavori</a>
         </div>
       </div>
     </section>
-    <section class="section-padding bg-secondary">
+    <section class="section-padding bg-secondary" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-primary">Lavori Terminati</h2>
+        <div class="text-center mb-16" data-animate="fade-up">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-primary">Certificazioni</h2>
+          <div class="animated-divider" aria-hidden="true"></div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div class="glass-effect rounded-2xl p-8 border-accent-light">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 stagger-children" data-stagger="0.14">
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start mb-6">
               <div class="service-icon mr-4">
                 <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
@@ -236,7 +248,7 @@
             <p class="text-secondary leading-relaxed mb-6">Certificato Qualità ISO 9001:2015 per lavori di Meccanica Generale, Saldatura di Carpenteria Metallica e Realizzazione Piping presso terzi.</p>
             <a href="certifications.html" class="inline-block text-accent hover:text-accent-hover font-medium transition-colors">Vedi tutte le certificazioni →</a>
           </div>
-          <div class="glass-effect rounded-2xl p-8 border-accent-light">
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start mb-6">
               <div class="service-icon mr-4">
                 <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
@@ -254,12 +266,12 @@
         </div>
       </div>
     </section>
-    <section class="section-padding bg-secondary">
+    <section class="section-padding bg-secondary" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="glass-effect rounded-3xl p-12 border-accent-light text-center">
-          <h2 class="text-2xl sm:text-3xl font-bold mb-6">Vuoi entrare a far parte del nostro team?</h2>
-          <p class="text-lg text-secondary mb-8">Invia la tua candidatura o richiedi informazioni.</p>
-          <a href="unisciti.html" class="btn-primary inline-block">Scrivici</a>
+        <div class="glass-effect rounded-3xl p-12 border-accent-light text-center hover-tilt" data-animate="scale-in">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-6" data-animate="fade-up" data-delay="0.1">Vuoi entrare a far parte del nostro team?</h2>
+          <p class="text-lg text-secondary mb-8" data-animate="fade-up" data-delay="0.18">Invia la tua candidatura o richiedi informazioni.</p>
+          <a href="unisciti.html" class="btn-primary inline-block" data-animate="scale-in" data-delay="0.25">Scrivici</a>
         </div>
       </div>
     </section>
@@ -271,7 +283,7 @@
         <div class="carousel-dots" id="carouselDots"></div>
       </div>
     </div>
-    <footer class="bg-secondary border-t border-accent-light py-8">
+    <footer class="bg-secondary border-t border-accent-light py-8" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-muted text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
@@ -284,7 +296,8 @@
     </footer>
     <a 
       href="contact.html" 
-      class="fixed bottom-6 right-6 z-40 bg-accent backdrop-blur-md border border-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-accent-hover"
+      class="fixed bottom-6 right-6 z-40 bg-accent backdrop-blur-md border border-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-accent-hover hover-tilt"
+      data-tilt-strength="12"
       aria-label="Contattaci"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -292,6 +305,7 @@
       </svg>
     </a>
 
+    <script src="./js/motion.js"></script>
     <script>
       // Array con TUTTE le immagini, ESCLUSA l'immagine di sfondo statico (Warehouse Nippon Gases (4).jpg)
       const allImages = [
