@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="min-h-screen text-gray-900 overflow-x-hidden">
+<body class="min-h-screen text-gray-900 overflow-x-hidden motion-safe">
   <!-- Navigation -->
   <nav class="fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-4">
@@ -70,51 +70,52 @@
     </div>
   </div>
   <!-- Hero -->
-  <section class="pt-32 pb-20">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h1 class="text-5xl font-bold mb-6">Chi Siamo</h1>
-      <p class="text-2xl text-secondary">La nostra storia, la nostra missione e i nostri valori</p>
+  <section class="pt-32 pb-20" data-animate="fade-up">
+    <div class="max-w-7xl mx-auto px-6 text-center" data-animate="fade-up">
+      <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">Chi Siamo</h1>
+      <div class="animated-divider" aria-hidden="true"></div>
+      <p class="text-2xl text-secondary" data-animate="fade-up" data-delay="0.1">La nostra storia, la nostra missione e i nostri valori</p>
     </div>
   </section>
   <!-- About Content -->
-  <section class="section-padding">
+  <section class="section-padding" data-animate="fade-up">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="glass-effect rounded-3xl p-12 border-accent-light">
-        <p class="text-lg leading-relaxed text-secondary mb-6">
+      <div class="glass-effect rounded-3xl p-12 border-accent-light hover-tilt" data-animate="scale-in">
+        <p class="text-lg leading-relaxed text-secondary mb-6" data-animate="fade-up">
           La Fox Industrial Constructing è un’azienda giovane, la cui amministratrice ha maturato una certa esperienza in un azienda di simile settore, e ottenute le dovute conoscenze ha deciso di portare le sue mansioni ad uno step successivo. Il nostro obiettivo è fornire al cliente, in tempi rapidi, personale estremamente qualificato adatto per svolgere incarichi di natura semplice o complessa, per progetti brevi o di di ampia entità. Forniamo, pertanto, figure adatte ad ogni tipo di cantiere: responsabili di cantiere, saldatori qualificati, tubisti a sketch, carpentieri e montatori a disegno e meccanici provetti. Attraverso un provetto modello di lavoro, ci occupiamo anche in maniera molto minuziosa della logistica interna ed esterna, dispiegando così in pochi giorni risorse umane e materiali in tutta Europa. Puntiamo, attraverso soprattutto la fidelizzazione dei clienti, a trasmettere i valori aziendali di Affidabilità e Trasparenza, creando delle soddisfacenti e durature collaborazioni tra il nostro eclettico team di giovani talenti e i dirigenti delle imprese e delle realtà già presenti da anni sul territorio italiano ed europeo.
         </p>
-        <div class="mt-8 p-8 rounded-2xl bg-secondary border-accent-light">
-          <h3 class="text-2xl font-semibold text-accent mb-4">Presenti in Italia ed in Europa</h3>
-          <p class="text-secondary leading-relaxed">
+        <div class="mt-8 p-8 rounded-2xl bg-secondary border-accent-light hover-tilt" data-animate="fade-up">
+          <h3 class="text-2xl font-semibold text-accent mb-4" data-animate="fade-right">Presenti in Italia ed in Europa</h3>
+          <p class="text-secondary leading-relaxed" data-animate="fade-up" data-delay="0.1">
             Specializzata nella fabbricazione e montaggio di impianti di Piping, Carpenteria metallica e componenti meccanici per settori Pietrolchimici, siderurgici, cartari e navali, oltre che di Pipeline (metandotti, oleodotti, gasdotti) e piattaforme offshore/side shore.
           </p>
         </div>
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-2xl font-semibold mb-6">I Nostri Valori</h3>
-            <ul class="space-y-4">
-              <li class="flex items-start">
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8" data-animate="fade-up" data-delay="0.12">
+          <div data-animate="fade-up" data-delay="0.12">
+            <h3 class="text-2xl font-semibold mb-6" data-animate="fade-right">I Nostri Valori</h3>
+            <ul class="space-y-4 stagger-children" data-stagger="0.12">
+              <li class="flex items-start" data-animate="fade-up">
                 <div class="w-2 h-2 bg-accent rounded-full mt-3 mr-4"></div>
                 <div>
                   <h4 class="font-semibold text-lg">Affidabilità</h4>
                   <p class="text-secondary">Puntiamo sulla fidelizzazione dei clienti attraverso un servizio affidabile e di qualità.</p>
                 </div>
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start" data-animate="fade-up">
                 <div class="w-2 h-2 bg-accent rounded-full mt-3 mr-4"></div>
                 <div>
                   <h4 class="font-semibold text-lg">Trasparenza</h4>
                   <p class="text-secondary">Comunicazione chiara e trasparente con i nostri clienti e partner.</p>
                 </div>
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start" data-animate="fade-up">
                 <div class="w-2 h-2 bg-accent rounded-full mt-3 mr-4"></div>
                 <div>
                   <h4 class="font-semibold text-lg">Qualità</h4>
                   <p class="text-secondary">Standard elevati di qualità nei materiali e nei processi produttivi.</p>
                 </div>
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start" data-animate="fade-up">
                 <div class="w-2 h-2 bg-accent rounded-full mt-3 mr-4"></div>
                 <div>
                   <h4 class="font-semibold text-lg">Sicurezza</h4>
@@ -123,12 +124,12 @@
               </li>
             </ul>
           </div>
-          <div>
+          <div data-animate="fade-up" data-delay="0.18">
             <h3 class="text-2xl font-semibold mb-6">La Nostra Esperienza</h3>
-            <p class="text-secondary mb-6">
+            <p class="text-secondary mb-6" data-animate="fade-up">
               L'amministratrice della Fox Industrial Contracting ha maturato una solida esperienza in un'azienda del settore, acquisendo le conoscenze necessarie per portare le proprie competenze a un livello superiore.
             </p>
-            <p class="text-secondary">
+            <p class="text-secondary" data-animate="fade-up" data-delay="0.08">
               Il nostro obiettivo è fornire al cliente, in tempi rapidi, personale estremamente qualificato adatto per svolgere incarichi di natura semplice o complessa, per progetti brevi o di ampia entità.
             </p>
           </div>
@@ -137,16 +138,18 @@
     </div>
   </section>
   <!-- LAVORA CON NOI -->
-  <section class="section-padding bg-secondary">
+  <section class="section-padding bg-secondary" data-animate="fade-up">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="glass-effect rounded-3xl p-12 border-accent-light text-center">
-        <h2 class="text-3xl font-bold mb-6">Vuoi entrare a far parte del nostro team?</h2>
-        <p class="text-lg text-secondary mb-8">Invia la tua candidatura o richiedi informazioni.</p>
-        <a href="unisciti.html" class="btn-primary inline-block">Scrivici</a>      </div>
+      <div class="glass-effect rounded-3xl p-12 border-accent-light text-center hover-tilt" data-animate="scale-in">
+        <h2 class="text-3xl font-bold mb-4" data-animate="fade-up">Vuoi entrare a far parte del nostro team?</h2>
+        <div class="animated-divider" aria-hidden="true"></div>
+        <p class="text-lg text-secondary mb-8" data-animate="fade-up" data-delay="0.1">Invia la tua candidatura o richiedi informazioni.</p>
+        <a href="unisciti.html" class="btn-primary inline-block" data-animate="scale-in" data-delay="0.18">Scrivici</a>
+      </div>
     </div>
   </section>
   <!-- Footer -->
-  <footer class="bg-primary border-t border-accent-light py-8">
+  <footer class="bg-primary border-t border-accent-light py-8" data-animate="fade-up">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <p class="text-muted text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
@@ -157,6 +160,7 @@
       </div>
     </div>
   </footer>
+  <script src="./js/motion.js"></script>
   <script src="./js/app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {

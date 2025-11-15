@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="min-h-screen text-primary overflow-x-hidden">
+<body class="min-h-screen text-primary overflow-x-hidden motion-safe">
   <!-- Navigation -->
   <nav class="fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-4">
@@ -55,18 +55,19 @@
     </div>
   </div>
   <!-- Hero -->
-  <section class="pt-32 pb-20">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h1 class="text-5xl font-bold mb-6">Contatti</h1>
-      <p class="text-2xl text-secondary">Fox Industrial Contracting S.R.L.</p>
+  <section class="pt-32 pb-20" data-animate="fade-up">
+    <div class="max-w-7xl mx-auto px-6 text-center" data-animate="fade-up">
+      <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">Contatti</h1>
+      <div class="animated-divider mx-auto" aria-hidden="true"></div>
+      <p class="text-2xl text-secondary" data-animate="fade-up" data-delay="0.1">Fox Industrial Contracting S.R.L.</p>
     </div>
   </section>
   <!-- Contact Info -->
-  <section class="section-padding">
+  <section class="section-padding" data-animate="fade-up">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="glass-effect rounded-3xl p-8 border-accent-light stagger-fade">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
+      <div class="glass-effect rounded-3xl p-8 border-accent-light hover-tilt" data-animate="scale-in">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 stagger-children" data-stagger="0.12">
+          <div data-animate="fade-up">
             <h3 class="text-2xl font-semibold mb-8">Informazioni di Contatto</h3>
             <div class="space-y-6">
               <div class="flex items-start space-x-4">
@@ -105,7 +106,7 @@
               </div>
             </div>
           </div>
-          <div>
+          <div data-animate="fade-up" data-delay="0.12">
             <h3 class="text-2xl font-semibold mb-8">Indirizzi</h3>
             <div class="space-y-6">
                <div>
@@ -129,8 +130,8 @@
             </div>
           </div>
         </div>
-        <div class="mt-12">
-          <div class="rounded-2xl overflow-hidden border border-accent-light">
+        <div class="mt-12" data-animate="fade-up" data-delay="0.18">
+          <div class="rounded-2xl overflow-hidden border border-accent-light hover-tilt" data-tilt-strength="4">
             <iframe src="https://www.google.com/maps?q=40.901463,14.345181&hl=it&z=15&layer=c&output=embed" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa sede operativa"></iframe>
           </div>
         </div>
@@ -139,18 +140,19 @@
   </section>
 
   <!-- LAVORA CON NOI - con spazio aggiuntivo sopra -->
-  <section class="section-padding mt-16 bg-secondary">
+  <section class="section-padding mt-16 bg-secondary" data-animate="fade-up">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="glass-effect rounded-3xl p-12 border-accent-light text-center">
-        <h2 class="text-3xl font-bold mb-6">Vuoi entrare a far parte del nostro team?</h2>
-        <p class="text-lg text-secondary mb-8">Invia la tua candidatura o richiedi informazioni.</p>
-        <a href="unisciti.html" class="btn-primary inline-block">Scrivici</a>
+      <div class="glass-effect rounded-3xl p-12 border-accent-light text-center hover-tilt" data-animate="scale-in">
+        <h2 class="text-3xl font-bold mb-4" data-animate="fade-up">Vuoi entrare a far parte del nostro team?</h2>
+        <div class="animated-divider mx-auto" aria-hidden="true"></div>
+        <p class="text-lg text-secondary mb-8" data-animate="fade-up" data-delay="0.1">Invia la tua candidatura o richiedi informazioni.</p>
+        <a href="unisciti.html" class="btn-primary inline-block" data-animate="scale-in" data-delay="0.18">Scrivici</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-secondary border-t border-accent-light py-8">
+  <footer class="bg-secondary border-t border-accent-light py-8" data-animate="fade-up">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <p class="text-muted text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
@@ -162,39 +164,8 @@
     </div>
   </footer>
 
+  <script src="./js/motion.js"></script>
   <script src="./js/app.js"></script>
-  <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const icon = document.getElementById('menuIcon');
-      if (!menu || !icon) return;
-      const isOpen = menu.classList.contains('open');
-      if (isOpen) {
-        menu.classList.remove('open');
-        document.body.style.overflow = '';
-        icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-      } else {
-        menu.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
-      }
-    }
-
-    // Funzione per rendere visibili gli elementi con classe stagger-fade
-    function initStaggerFade() {
-      const elements = document.querySelectorAll('.stagger-fade');
-      elements.forEach((el, index) => {
-        setTimeout(() => {
-          el.classList.add('visible');
-        }, index * 100);
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const mobileMenu = document.getElementById('mobileMenu');
-      if (mobileMenu) mobileMenu.classList.remove('open');
-      initStaggerFade();
-    });
-  </script>
+  
 </body>
 </html>

@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="min-h-screen text-primary overflow-x-hidden">
+<body class="min-h-screen text-primary overflow-x-hidden motion-safe">
   <!-- Navigation -->
   <nav class="fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-4">
@@ -73,17 +73,18 @@
   </div>
 
   <!-- Hero -->
-  <section class="pt-32 pb-20">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h1 class="text-5xl font-bold mb-6">Cookie Policy</h1>
-      <p class="text-xl text-secondary">Uso dei cookie sul nostro sito</p>
+  <section class="pt-32 pb-20" data-animate="fade-up">
+    <div class="max-w-7xl mx-auto px-6 text-center" data-animate="fade-up">
+      <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">Cookie Policy</h1>
+      <div class="animated-divider mx-auto" aria-hidden="true"></div>
+      <p class="text-xl text-secondary" data-animate="fade-up" data-delay="0.1">Uso dei cookie sul nostro sito</p>
     </div>
   </section>
 
   <!-- Content -->
-  <section class="section-padding">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="glass-effect rounded-3xl p-12 border-accent-light">
+  <section class="section-padding" data-animate="fade-up">
+    <div class="max-w-7xl mx-auto px-6" data-animate="fade-up" data-delay="0.12">
+      <div class="glass-effect rounded-3xl p-12 border-accent-light hover-tilt" data-animate="scale-in">
         <h2 class="text-3xl font-bold mb-6">Cookie Policy</h2>
         <p class="text-secondary mb-6">
           Il nostro sito web non utilizza cookie di profilazione né sistemi di tracciamento come Google Analytics.
@@ -99,7 +100,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-primary border-t border-accent-light py-8">
+  <footer class="bg-primary border-t border-accent-light py-8" data-animate="fade-up">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <p class="text-muted text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
@@ -111,16 +112,8 @@
     </div>
   </footer>
 
+  <script src="./js/motion.js"></script>
   <script src="./js/app.js"></script>
-  <script>
-    // Assicura che il menu mobile funzioni
-    document.addEventListener('DOMContentLoaded', () => {
-      // Inizializza il menu mobile
-      const mobileMenu = document.getElementById('mobileMenu');
-      if (mobileMenu) {
-        mobileMenu.classList.remove('open');
-      }
-    });
-  </script>
+
 </body>
 </html>
