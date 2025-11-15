@@ -27,8 +27,6 @@ const projects = [
 let currentProjectIndex = 0;
 let currentSlideIndex = 0;
 let swipeListeners = [];
-let currentHeroSlide = 0;
-let heroInterval;
 
 // Apri il modale
 function openModal(projectIndex) {
@@ -69,6 +67,7 @@ function openModal(projectIndex) {
   // Crea i pallini (dots)
   images.forEach((_, idx) => {
     const dot = document.createElement('span');
+    dot.classList.add('dot');
     dot.classList.toggle('active', idx === 0);
     dot.addEventListener('click', () => goToSlide(idx));
     dotsContainer.appendChild(dot);
@@ -125,7 +124,7 @@ function closeModal() {
 // Vai a slide specifica
 function goToSlide(index) {
   const images = document.querySelectorAll('#carouselModal img');
-  const dots = document.querySelectorAll('#carouselDots span');
+  const dots = document.querySelectorAll('#carouselDots .dot');
   
   if (images.length === 0 || index >= images.length) return;
 
@@ -231,95 +230,6 @@ function removeSwipeGestures(element) {
   }
 }
 
-// Funzioni per il carosello fullscreen
-function initHeroCarousel() {
-  const heroCarousel = document.getElementById('hero-carousel');
-  if (!heroCarousel) {
-    return;
-  }
-  const images = heroCarousel.querySelectorAll('img');
-  const dots = document.querySelectorAll('#hero-dots .dot');
-  
-  if (images.length === 0) {
-    return;
-  }
-
-  heroInterval = setInterval(() => {
-    nextSlideHero();
-  }, 5000);
-
-  function updateDots() {
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentHeroSlide);
-    });
-  }
-  
-  updateDots();
-}
-
-function goToSlideHero(index) {
-  const images = document.querySelectorAll('#hero-carousel img');
-  if (images.length === 0) return;
-  const dots = document.querySelectorAll('#hero-dots .dot');
-  
-  clearInterval(heroInterval);
-  
-  images.forEach(img => img.style.display = 'none');
-  images[index].style.display = 'block';
-  
-  currentHeroSlide = index;
-  
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === index);
-  });
-  
-  heroInterval = setInterval(() => {
-    nextSlideHero();
-  }, 5000);
-}
-
-function nextSlideHero() {
-  const images = document.querySelectorAll('#hero-carousel img');
-  if (images.length === 0) return;
-  const totalSlides = images.length;
-  
-  clearInterval(heroInterval);
-  images[currentHeroSlide].style.display = 'none';
-  
-  currentHeroSlide = (currentHeroSlide + 1) % totalSlides;
-  images[currentHeroSlide].style.display = 'block';
-  
-  const dots = document.querySelectorAll('#hero-dots .dot');
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === currentHeroSlide);
-  });
-  
-  heroInterval = setInterval(() => {
-    nextSlideHero();
-  }, 5000);
-}
-
-function prevSlideHero() {
-  const images = document.querySelectorAll('#hero-carousel img');
-  if (images.length === 0) return;
-  const totalSlides = images.length;
-  
-  clearInterval(heroInterval);
-  images[currentHeroSlide].style.display = 'none';
-  
-  currentHeroSlide = (currentHeroSlide - 1 + totalSlides) % totalSlides;
-  images[currentHeroSlide].style.display = 'block';
-  
-  const dots = document.querySelectorAll('#hero-dots .dot');
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === currentHeroSlide);
-  });
-  
-  heroInterval = setInterval(() => {
-    nextSlideHero();
-  }, 5000);
-}
-
 // Mobile menu
 function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
@@ -343,13 +253,6 @@ function toggleMobileMenu() {
 
 // Inizializzazione
 document.addEventListener('DOMContentLoaded', () => {
-  initHeroCarousel();
-  
-  const firstImage = document.querySelector('#hero-carousel img');
-  if (firstImage) {
-    firstImage.style.display = 'block';
-  }
-  
   const mobileMenu = document.getElementById('mobileMenu');
   if (mobileMenu) {
     mobileMenu.classList.remove('open');

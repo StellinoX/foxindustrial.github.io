@@ -62,7 +62,7 @@
         <div class="hero-copy stagger-children" data-stagger="0.1">
           <span class="hero-tag" data-animate="fade-down">Affidabilità certificata in tutta Europa</span>
           <h1 class="hero-title" data-animate="fade-right">
-            Ingegneria, <span class="text-accent">Montaggio</span> e Manutenzione Industriale
+            <span class="text-accent">Montaggio</span> e Manutenzione Industriale
           </h1>
           <p class="hero-subtitle" data-animate="fade-right" data-delay="0.1">
             Dalla prefabbricazione in officina al montaggio in campo, supportiamo impianti petrolchimici, siderurgici, cartari e navali con squadre qualificate e processi controllati.
@@ -156,7 +156,7 @@
               <div class="service-icon mr-4 text-accent">👨‍💼</div>
               <h3 class="text-xl sm:text-2xl font-semibold text-primary">Figure altamente specializzate</h3>
             </div>
-            <p class="text-secondary leading-relaxed">Forniamo figure adatte ad ogni tipo di cantiere: responsabili di cantiere, saldatori qualificati, tubisti a sketch, carpentieri e montatori a disegno e meccanici provetti</p>
+            <p class="text-secondary leading-relaxed">Disponiamo di figure adatte ad ogni tipo di cantiere: RESPONSABILI DI CANTIERE, SALDATORI qualificati, TUBISTI a sketch, CARPENTIERI e MONTATORI a disegno e MECCANICI provetti</p>
             <a href="services.html" class="mt-4 inline-block text-accent hover:text-accent-hover font-medium transition-colors">Scopri di più →</a>
           </div>
           <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card hover-tilt" data-animate="fade-up">
@@ -171,7 +171,7 @@
       </div>
     </section>
     
-    <section class="section-padding bg-primary" data-animate="fade-up">
+  <section class="section-padding bg-primary" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16" data-animate="fade-up">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-primary">I NOSTRI CLIENTI</h2>
@@ -207,7 +207,7 @@
           <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start space-x-4">
               <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div> <div>
-                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">FINCIMEC (LONIGO)</h3> <p class="text-secondary mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio e inossidabile, rivestite in PTFE, valvole manuali e strumentali presso lo stabilimento FIS di Lonigo (VI)</p>
+                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">FINCIMEC SPA</h3> <p class="text-secondary mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio e inossidabile, rivestite in PTFE, valvole manuali e strumentali presso lo stabilimento FIS</p>
                 <p class="text-muted">Lonigo (VI)</p>
               </div>
             </div>
@@ -215,8 +215,24 @@
           <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start space-x-4">
               <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div> <div>
-                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">SAFAS (VICENZA)</h3> <p class="text-secondary mb-2">Molatura, Spianatura e Saldatura di apparecchiature meccaniche presso cantiere e Fonderia SAFAS di Altavilla Vicentina, Vicenza</p>
+                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">SAFAS S.p.A.</h3> <p class="text-secondary mb-2">Molatura, Spianatura e Saldatura di apparecchiature meccaniche presso cantiere e Fonderia SAFAS</p>
                 <p class="text-muted">Altavilla Vicentina (VI)</p>
+              </div>
+            </div>
+          </div>
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
+            <div class="flex items-start space-x-4">
+              <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div> <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">MAC IMPIANTI S.r.l.</h3> <p class="text-secondary mb-2">Saldatura e installazione piping presso il Cantiere Cargill</p>
+                <p class="text-muted">Castelmassa (RO)</p>
+              </div>
+            </div>
+          </div>
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
+            <div class="flex items-start space-x-4">
+              <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div> <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">CMS SRL</h3> <p class="text-secondary mb-2">Lavori di saldatura e carpenteria in opera presso il cantiere dello stabilimento ROMCIM</p>
+                <p class="text-muted">Medgidia, Costanza (RO)</p>
               </div>
             </div>
           </div>
@@ -278,6 +294,7 @@
     <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <h2 id="modal-title" class="sr-only">Galleria immagini del progetto</h2>
       <span class="modal-close" onclick="closeModal()">&times;</span>
+      <div class="image-counter" id="imageCounter">1 / 1</div>
       <div class="modal-content">
         <div class="carousel-modal" id="carouselModal"></div>
         <div class="carousel-dots" id="carouselDots"></div>
@@ -296,7 +313,7 @@
     </footer>
     <a 
       href="contact.html" 
-      class="fixed bottom-6 right-6 z-40 bg-accent backdrop-blur-md border border-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-accent-hover hover-tilt"
+      class="fixed bottom-6 right-6 z-40 bg-accent border border-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-accent-hover hover-tilt"
       data-tilt-strength="12"
       aria-label="Contattaci"
     >
@@ -351,13 +368,15 @@
           img.src = src;
           img.alt = `Foto ${idx + 1}`;
           img.style.display = idx === startIndex ? 'block' : 'none';
-          img.loading = 'eager';
+          img.loading = idx === startIndex ? 'eager' : 'lazy';
+          img.decoding = 'async';
           img.onerror = () => img.src = 'https://via.placeholder.com/800x600/000/FFF?text=Immagine+non+trovata';
           carousel.appendChild(img);
         });
 
         allImages.forEach((_, idx) => {
           const dot = document.createElement('span');
+          dot.classList.add('dot');
           dot.classList.toggle('active', idx === startIndex);
           dot.addEventListener('click', () => goToModalSlide(idx));
           dotsContainer.appendChild(dot);
@@ -382,6 +401,13 @@
 
         modal.classList.add('active');
         currentModalSlideIndex = startIndex;
+        
+        // Inizializza il contatore
+        const counter = document.getElementById('imageCounter');
+        if (counter) {
+          counter.textContent = `${startIndex + 1} / ${allImages.length}`;
+        }
+        
         addSwipeGestures(carousel);
       }
 
@@ -400,8 +426,11 @@
 
       function goToModalSlide(index) {
         const images = document.querySelectorAll('#carouselModal img');
-        const dots = document.querySelectorAll('#carouselDots span');
+        const dots = document.querySelectorAll('#carouselDots .dot');
+        const counter = document.getElementById('imageCounter');
+        
         if (images.length === 0 || index >= images.length) return;
+        
         images.forEach((img, i) => {
           if (i === index) {
             img.style.display = 'block';
@@ -414,6 +443,11 @@
         });
         dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
         currentModalSlideIndex = index;
+        
+        // Aggiorna il contatore
+        if (counter) {
+          counter.textContent = `${index + 1} / ${images.length}`;
+        }
       }
 
       function nextModalSlide() {
@@ -466,8 +500,9 @@
       }
 
       // === NUOVA GESTIONE CAROSELLO PROGETTI 3D ===
-      let currentProjectSlide = 0;
-      let projectAutoplayInterval;
+  let currentProjectSlide = 0;
+  let projectAutoplayInterval;
+  let carouselInitialized = false;
       
       function getSlideIndex(offset) {
           return (currentProjectSlide + offset + allImages.length) % allImages.length;
@@ -502,6 +537,7 @@
           img.src = src;
           img.alt = `Progetto ${index + 1}`;
           img.loading = 'lazy';
+          img.decoding = 'async';
           img.onerror = () => img.src = 'https://via.placeholder.com/800x450/000/FFF?text=Immagine+non+disponibile';
           
           slide.appendChild(img);
@@ -509,6 +545,11 @@
         });
 
         update3DCarousel();
+        carousel.dataset.initialized = 'true';
+        carouselInitialized = true;
+        
+        // Aggiungi gestione swipe per mobile
+        addCarouselSwipeGestures(carousel);
       }
       
       function update3DCarousel() {
@@ -537,16 +578,93 @@
           projectAutoplayInterval = setInterval(next3DSlide, 5000); // 5 secondi
       }
 
+    function ensureCarouselInitialized() {
+      if (carouselInitialized) return true;
+      const carousel = document.getElementById('projects-carousel-3d');
+      if (!carousel) return false;
+      init3DCarousel();
+      start3DAutoplay();
+      return carouselInitialized;
+    }
+
+    function scheduleCarouselInit() {
+      const carousel = document.getElementById('projects-carousel-3d');
+      if (!carousel) return;
+
+      const initIfNeeded = () => {
+        ensureCarouselInitialized();
+      };
+
+          if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              initIfNeeded();
+              observer.disconnect();
+            }
+          });
+        }, { rootMargin: '0px 0px -20% 0px' });
+        observer.observe(carousel);
+      } else if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(initIfNeeded);
+      } else {
+        setTimeout(initIfNeeded, 200);
+      }
+    }
+
       function next3DSlide() {
-          currentProjectSlide = getSlideIndex(1);
+      if (!ensureCarouselInitialized()) return;
+      currentProjectSlide = getSlideIndex(1);
           update3DCarousel();
           start3DAutoplay();
       }
 
       function prev3DSlide() {
-          currentProjectSlide = getSlideIndex(-1);
+      if (!ensureCarouselInitialized()) return;
+      currentProjectSlide = getSlideIndex(-1);
           update3DCarousel();
           start3DAutoplay();
+      }
+      
+      // === GESTIONE SWIPE PER CAROUSEL 3D ===
+      let carouselTouchStartX = 0;
+      let carouselTouchEndX = 0;
+      
+      function addCarouselSwipeGestures(carousel) {
+        const handleTouchStart = (e) => {
+          if (e.changedTouches && e.changedTouches.length > 0) {
+            carouselTouchStartX = e.changedTouches[0].screenX;
+          }
+        };
+
+        const handleTouchMove = (e) => {
+          if (e.changedTouches && e.changedTouches.length > 0) {
+            carouselTouchEndX = e.changedTouches[0].screenX;
+          }
+        };
+
+        const handleTouchEnd = (e) => {
+          handleCarouselGesture();
+        };
+
+        const handleCarouselGesture = () => {
+          const threshold = 50; // Minimo 50px di swipe
+          const diff = carouselTouchStartX - carouselTouchEndX;
+          
+          if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+              // Swipe verso sinistra = avanti
+              next3DSlide();
+            } else {
+              // Swipe verso destra = indietro
+              prev3DSlide();
+            }
+          }
+        };
+
+        carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
+        carousel.addEventListener('touchmove', handleTouchMove, { passive: true });
+        carousel.addEventListener('touchend', handleTouchEnd, { passive: true });
       }
       
       // Rende le funzioni globali con il nome corretto
@@ -555,10 +673,7 @@
       
       // === INIZIALIZZAZIONE DI TUTTO ===
       document.addEventListener('DOMContentLoaded', () => {
-        // Carosello Progetti 3D
-        init3DCarousel();
-        start3DAutoplay();
-        
+        scheduleCarouselInit();
         const mobileMenu = document.getElementById('mobileMenu');
         if (mobileMenu) mobileMenu.classList.remove('open');
       });

@@ -38,30 +38,10 @@
 
   const animateElements = () => {
     const revealables = document.querySelectorAll('[data-animate]');
-
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      revealables.forEach((el) => {
-        setTransitionDelay(el);
-        makeVisible(el);
-      });
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const target = entry.target;
-          setTransitionDelay(target);
-          makeVisible(target);
-          observer.unobserve(target);
-        }
-      });
-    }, {
-      threshold: 0.18,
-      rootMargin: '0px 0px -8% 0px'
+    // On DOMContentLoaded, add is-visible to all animated elements for CSS fade-in
+    revealables.forEach((el) => {
+      el.classList.add('is-visible');
     });
-
-    revealables.forEach((el) => observer.observe(el));
   };
 
   const nav = document.querySelector('nav');
@@ -81,14 +61,9 @@
     ticking = false;
   };
 
+  // Restore static scroll effects (no parallax)
   const initScrollEffects = () => {
     handleScrollEffects();
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(handleScrollEffects);
-        ticking = true;
-      }
-    }, { passive: true });
   };
 
   const initTilt = () => {
