@@ -38,10 +38,21 @@
 
   const animateElements = () => {
     const revealables = document.querySelectorAll('[data-animate]');
-    // On DOMContentLoaded, add is-visible to all animated elements for CSS fade-in
-    revealables.forEach((el) => {
-      el.classList.add('is-visible');
-    });
+
+    // Wait for browser translation to process visible content first
+    // The delay gives translation services time to scan the DOM
+    setTimeout(() => {
+      // Add class to body that enables the "hidden before animation" CSS
+      document.body.classList.add('animations-ready');
+
+      // Use requestAnimationFrame to batch the DOM updates
+      requestAnimationFrame(() => {
+        // Trigger the reveal animation for all elements
+        revealables.forEach((el) => {
+          el.classList.add('is-visible');
+        });
+      });
+    }, 100); // 100ms delay for translation services
   };
 
   const nav = document.querySelector('nav');

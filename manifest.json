@@ -1,0 +1,47 @@
+{
+  "name": "Fox Industrial Contracting S.r.l.",
+  "short_name": "Fox Industrial",
+  "description": "Fabbricazione e montaggio di impianti di piping, carpenteria metallica e componenti meccanici in Italia ed Europa.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#3FBFFF",
+  "background_color": "#f0f8ff",
+  "lang": "it",
+  "dir": "ltr",
+  "categories": ["business", "industrial"],
+  "icons": [
+    {
+      "src": "./foto/LOGO.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./foto/LOGO.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Contattaci",
+      "short_name": "Contatti",
+      "description": "Contatta Fox Industrial Contracting",
+      "url": "/contact.html",
+      "icons": [{"src": "./foto/LOGO.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "I Nostri Lavori",
+      "short_name": "Lavori",
+      "description": "Visualizza i nostri progetti",
+      "url": "/lavori.html",
+      "icons": [{"src": "./foto/LOGO.png", "sizes": "96x96"}]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

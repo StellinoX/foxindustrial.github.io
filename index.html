@@ -1,71 +1,94 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-07FJR14NJ5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-07FJR14NJ5');
   </script>
-  
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3FBFFF">
   <title>Fox Industrial Contracting S.r.l.</title>
-  <meta name="description" content="Fox Industrial Contracting S.r.l. - Fabbricazione e montaggio di impianti di piping, carpenteria metallica e componenti meccanici in Italia ed Europa.">
-  <meta name="keywords" content="piping, carpenteria, saldatura, industriale, Fox, Italia, Europa, impianti, metallica">
+  <meta name="description"
+    content="Fox Industrial Contracting S.r.l. - Fabbricazione e montaggio di impianti di piping, carpenteria metallica e componenti meccanici in Italia ed Europa.">
+  <link rel="canonical" href="https://foxindustrialcontracting.com/index.html">
   <meta property="og:title" content="Fox Industrial Contracting S.r.l." />
-  <meta property="og:description" content="Specializzata nella fabbricazione e montaggio di impianti di piping e carpenteria metallica." />
+  <meta property="og:description"
+    content="Specializzata nella fabbricazione e montaggio di impianti di piping e carpenteria metallica." />
   <meta property="og:image" content="./foto/LOGO.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://foxindustrialcontracting.com/index.html" />
+  <meta property="og:locale" content="it_IT" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="./foto/LOGO.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/structured-data.js"></script>
+  <script src="./js/i18n.js"></script>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./foto/LOGO.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
+
 <body class="min-h-screen text-primary overflow-x-hidden motion-safe">
-    <nav class="fixed top-0 w-full z-50">
-      <div class="max-w-7xl mx-auto px-6 py-4">
-        <div class="flex justify-between items-center">
-          <div class="flex items-center space-x-3">
-            <a href="index.html">
-              <img src="./foto/LOGO.png" alt="Logo" class="w-10 h-10 rounded-xl" />
-            </a>
-            <a href="index.html" class="text-xl font-semibold text-primary hover:text-accent-hover transition-colors">Fox Industrial Contracting S.r.l.</a>
-          </div>
-          <div class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="text-sm font-medium text-accent border-b-2 border-accent">Home</a>
-            <a href="about.html" class="text-sm font-medium text-secondary hover:text-accent-hover transition-colors">Chi Siamo</a>
-            <a href="services.html" class="text-sm font-medium text-secondary hover:text-accent-hover transition-colors">Servizi</a>
-            <a href="lavori.html" class="text-sm font-medium text-secondary hover:text-accent-hover transition-colors">Lavori</a>
-            <a href="certifications.html" class="text-sm font-medium text-secondary hover:text-accent-hover transition-colors">Certificazioni</a>
-            <a href="contact.html" class="text-sm font-medium text-secondary hover:text-accent-hover transition-colors">Contatti</a>
-          </div>
-          <div class="md:hidden flex items-center">
-            <button
-              onclick="toggleMobileMenu()"
-              class="text-primary focus:outline-none hover:text-accent-hover transition-colors"
-              aria-label="Apri menu"
-            >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path id="menuIcon" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
-          </div>
+  <a href="#main-content" class="skip-to-main">Salta al contenuto principale</a>
+  <nav class="fixed top-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <a href="index.html">
+            <img src="./foto/LOGO.png" alt="Logo Fox Industrial Contracting S.r.l." class="w-10 h-10 rounded-xl"
+              loading="eager" />
+          </a>
+          <a href="index.html" class="text-xl font-semibold text-primary hover:text-accent-hover transition-colors">Fox
+            Industrial Contracting S.r.l.</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-sm font-medium text-accent border-b-2 border-accent">Home</a>
+          <a href="about.html" class="text-sm font-medium text-secondary hover:text-accent-hover transition-colors">Chi
+            Siamo</a>
+          <a href="services.html"
+            class="text-sm font-medium text-secondary hover:text-accent-hover transition-colors">Servizi</a>
+          <a href="lavori.html"
+            class="text-sm font-medium text-secondary hover:text-accent-hover transition-colors">Lavori</a>
+          <a href="certifications.html"
+            class="text-sm font-medium text-secondary hover:text-accent-hover transition-colors">Certificazioni</a>
+          <a href="contact.html"
+            class="text-sm font-medium text-secondary hover:text-accent-hover transition-colors">Contatti</a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button onclick="toggleMobileMenu()"
+            class="text-primary focus:outline-none hover:text-accent-hover transition-colors" aria-label="Apri menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path id="menuIcon" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
       </div>
-    </nav>
-    <div id="mobileMenu" class="mobileMenu">
-      <div class="menu-container">
-        <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
-        <a href="index.html" onclick="toggleMobileMenu()">Home</a>
-        <a href="about.html" onclick="toggleMobileMenu()">Chi Siamo</a>
-        <a href="services.html" onclick="toggleMobileMenu()">Servizi</a>
-        <a href="lavori.html" onclick="toggleMobileMenu()">Lavori</a>
-        <a href="certifications.html" onclick="toggleMobileMenu()">Certificazioni</a>
-        <a href="contact.html" onclick="toggleMobileMenu()">Contatti</a>
-      </div>
     </div>
+  </nav>
+  <div id="mobileMenu" class="mobileMenu">
+    <div class="menu-container">
+      <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="about.html" onclick="toggleMobileMenu()">Chi Siamo</a>
+      <a href="services.html" onclick="toggleMobileMenu()">Servizi</a>
+      <a href="lavori.html" onclick="toggleMobileMenu()">Lavori</a>
+      <a href="certifications.html" onclick="toggleMobileMenu()">Certificazioni</a>
+      <a href="contact.html" onclick="toggleMobileMenu()">Contatti</a>
+    </div>
+  </div>
+  <main id="main-content">
     <section class="fullscreen-hero" data-animate="fade-up">
       <div class="hero-shell">
         <div class="sparkles" aria-hidden="true"></div>
@@ -75,7 +98,8 @@
             <span class="text-accent">Montaggio</span> e Manutenzione Industriale
           </h1>
           <p class="hero-subtitle" data-animate="fade-right" data-delay="0.1">
-            Dalla prefabbricazione in officina al montaggio in campo, supportiamo impianti petrolchimici, siderurgici, cartari e navali con squadre qualificate e processi controllati.
+            Dalla prefabbricazione in officina al montaggio in campo, supportiamo impianti petrolchimici, siderurgici,
+            cartari e navali con squadre qualificate e processi controllati.
           </p>
           <div class="hero-actions" data-animate="fade-up" data-delay="0.18">
             <a href="services.html" class="btn-primary" data-animate="scale-in" data-delay="0.22">Scopri i servizi</a>
@@ -89,7 +113,9 @@
         </div>
         <div class="hero-visual" data-animate="fade-left" data-delay="0.12">
           <div class="hero-visual-frame hover-tilt" data-animate="rotate-in" data-tilt-strength="10">
-            <img src="./foto/warehouse nippon gases (4).jpg" alt="Tecnici Fox Industrial durante un montaggio piping">
+            <img src="./foto/warehouse nippon gases (4).jpg"
+              alt="Tecnici Fox Industrial durante un montaggio piping presso warehouse Nippon Gases" loading="eager"
+              decoding="async">
           </div>
           <div class="hero-visual-card hover-tilt" data-animate="scale-in" data-delay="0.24" data-tilt-strength="6">
             <h3>Settori serviti</h3>
@@ -105,7 +131,8 @@
       <div class="scroll-indicator">
         <span>Scorri per continuare</span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
         </svg>
       </div>
     </section>
@@ -118,32 +145,20 @@
       </div>
 
       <div id="projects-carousel-3d" class="relative w-full">
-          <div class="carousel-3d-nav">
-              <button 
-                  id="prev-btn-3d" 
-                  class="nav-button left" 
-                  data-animate="fade-right"
-                  data-delay="0.25"
-                  aria-label="Progetto Precedente"
-                  onclick="prev3DSlide()"
-              >
-                  &#10094;
-              </button>
-              <button 
-                  id="next-btn-3d" 
-                  class="nav-button right" 
-                  data-animate="fade-left"
-                  data-delay="0.25"
-                  aria-label="Progetto Successivo"
-                  onclick="next3DSlide()"
-              >
-                  &#10095;
-              </button>
-          </div>
+        <div class="carousel-3d-nav">
+          <button id="prev-btn-3d" class="nav-button left" data-animate="fade-right" data-delay="0.25"
+            aria-label="Progetto Precedente" onclick="prev3DSlide()">
+            &#10094;
+          </button>
+          <button id="next-btn-3d" class="nav-button right" data-animate="fade-left" data-delay="0.25"
+            aria-label="Progetto Successivo" onclick="next3DSlide()">
+            &#10095;
+          </button>
+        </div>
       </div>
-      
+
       <div class="max-w-7xl mx-auto px-6 w-full mt-16"></div>
-      
+
     </section>
     <section class="section-padding bg-secondary" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
@@ -153,95 +168,128 @@
           <p class="text-xl text-secondary" data-animate="fade-up" data-delay="0.1">Un Provetto Modello di Lavoro</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children" data-stagger="0.12">
-          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card hover-tilt" data-animate="fade-up">
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card hover-tilt"
+            data-animate="fade-up">
             <div class="flex items-center mb-6">
               <div class="service-icon mr-4 text-accent">⚡</div>
               <h3 class="text-xl sm:text-2xl font-semibold text-primary">Pianificazione Rapida</h3>
             </div>
-            <p class="text-secondary leading-relaxed">Attivi in diversi campi di specializzazione, il nostro personale verrà incontro alle esigenze di ogni cliente in tempi brevi</p>
-            <a href="services.html" class="mt-4 inline-block text-accent hover:text-accent-hover font-medium transition-colors">Scopri di più →</a>
+            <p class="text-secondary leading-relaxed">Attivi in diversi campi di specializzazione, il nostro personale
+              verrà incontro alle esigenze di ogni cliente in tempi brevi</p>
+            <a href="services.html"
+              class="mt-4 inline-block text-accent hover:text-accent-hover font-medium transition-colors">Scopri di più
+              →</a>
           </div>
-          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card hover-tilt" data-animate="fade-up">
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card hover-tilt"
+            data-animate="fade-up">
             <div class="flex items-center mb-6">
               <div class="service-icon mr-4 text-accent">👨‍💼</div>
               <h3 class="text-xl sm:text-2xl font-semibold text-primary">Figure altamente specializzate</h3>
             </div>
-            <p class="text-secondary leading-relaxed">Disponiamo di figure adatte ad ogni tipo di cantiere: RESPONSABILI DI CANTIERE, SALDATORI qualificati, TUBISTI a sketch, CARPENTIERI e MONTATORI a disegno e MECCANICI provetti</p>
-            <a href="services.html" class="mt-4 inline-block text-accent hover:text-accent-hover font-medium transition-colors">Scopri di più →</a>
+            <p class="text-secondary leading-relaxed">Disponiamo di figure adatte ad ogni tipo di cantiere: RESPONSABILI
+              DI CANTIERE, SALDATORI qualificati, TUBISTI a sketch, CARPENTIERI e MONTATORI a disegno e MECCANICI
+              provetti</p>
+            <a href="services.html"
+              class="mt-4 inline-block text-accent hover:text-accent-hover font-medium transition-colors">Scopri di più
+              →</a>
           </div>
-          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card hover-tilt" data-animate="fade-up">
+          <div class="glass-effect rounded-2xl p-8 border-accent-light hover-scale project-card hover-tilt"
+            data-animate="fade-up">
             <div class="flex items-center mb-6">
               <div class="service-icon mr-4 text-accent">🛡️</div>
               <h3 class="text-xl sm:text-2xl font-semibold text-primary">Elevati Standard di Sicurezza</h3>
             </div>
-            <p class="text-secondary leading-relaxed">La Sicurezza e la Qualità sono capisaldi fondamentali della nostra identità aziendale: ci avvaliamo infatti dei più aggiornati sistemi di certificazione e dispositivi di sicurezza personale e di cantiere riconosciuti in Italia ed Europa</p>
-            <a href="services.html" class="mt-4 inline-block text-accent hover:text-accent-hover font-medium transition-colors">Scopri di più →</a>
+            <p class="text-secondary leading-relaxed">La Sicurezza e la Qualità sono capisaldi fondamentali della nostra
+              identità aziendale: ci avvaliamo infatti dei più aggiornati sistemi di certificazione e dispositivi di
+              sicurezza personale e di cantiere riconosciuti in Italia ed Europa</p>
+            <a href="services.html"
+              class="mt-4 inline-block text-accent hover:text-accent-hover font-medium transition-colors">Scopri di più
+              →</a>
           </div>
         </div>
       </div>
     </section>
-    
-  <section class="section-padding bg-primary" data-animate="fade-up">
+
+    <section class="section-padding bg-primary" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16" data-animate="fade-up">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-primary">I NOSTRI CLIENTI</h2>
           <div class="animated-divider" aria-hidden="true"></div>
-          <p class="text-xl text-secondary" data-animate="fade-up" data-delay="0.1">Alcuni dei nostri principali partner</p>
+          <p class="text-xl text-secondary" data-animate="fade-up" data-delay="0.1">Alcuni dei nostri principali partner
+          </p>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 stagger-children" data-stagger="0.08">
           <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
-            <img src="./foto/foto clienti/mati group.jpg" alt="Logo Mati Group" loading="lazy">
+            <img src="./foto/foto clienti/mati group.jpg" alt="Logo Mati Group - Cliente Fox Industrial Contracting"
+              loading="lazy" decoding="async">
           </div>
           <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
-            <img src="./foto/foto clienti/safasgroup.jpg" alt="Logo Safas Group" loading="lazy">
+            <img src="./foto/foto clienti/safasgroup.jpg" alt="Logo Safas Group - Cliente Fox Industrial Contracting"
+              loading="lazy" decoding="async">
           </div>
           <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
-            <img src="./foto/foto clienti/mac group.jpg" alt="Logo MAC Impianti" loading="lazy">
+            <img src="./foto/foto clienti/mac group.jpg" alt="Logo MAC Impianti - Cliente Fox Industrial Contracting"
+              loading="lazy" decoding="async">
           </div>
           <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
-            <img src="./foto/foto clienti/ioom.jpg" alt="Logo ICOM Advanced Mechanical Solutions" loading="lazy">
+            <img src="./foto/foto clienti/ioom.jpg"
+              alt="Logo ICOM Advanced Mechanical Solutions - Cliente Fox Industrial Contracting" loading="lazy"
+              decoding="async">
           </div>
           <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
-            <img src="./foto/foto clienti/fincimec.jpg" alt="Logo Fincimec Impianti Industriali" loading="lazy">
+            <img src="./foto/foto clienti/fincimec.jpg"
+              alt="Logo Fincimec Impianti Industriali - Cliente Fox Industrial Contracting" loading="lazy"
+              decoding="async">
           </div>
-          </div>
+        </div>
       </div>
     </section>
     <section class="section-padding bg-primary" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16" data-animate="fade-up">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-4">Lavori in Corso</h2> 
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-4">Lavori in Corso</h2>
           <div class="animated-divider" aria-hidden="true"></div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16 stagger-children" data-stagger="0.14">
           <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start space-x-4">
-              <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div> <div>
-                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">FINCIMEC SPA</h3> <p class="text-secondary mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio e inossidabile, rivestite in PTFE, valvole manuali e strumentali presso lo stabilimento FIS</p>
+              <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">FINCIMEC SPA</h3>
+                <p class="text-secondary mb-2">Costruzione e montaggio tubazioni in acciaio al carbonio e inossidabile,
+                  rivestite in PTFE, valvole manuali e strumentali presso lo stabilimento FIS</p>
                 <p class="text-muted">Lonigo (VI)</p>
               </div>
             </div>
           </div>
           <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start space-x-4">
-              <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div> <div>
-                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">SAFAS S.p.A.</h3> <p class="text-secondary mb-2">Molatura, Spianatura e Saldatura di apparecchiature meccaniche presso cantiere e Fonderia SAFAS</p>
+              <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">SAFAS S.p.A.</h3>
+                <p class="text-secondary mb-2">Molatura, Spianatura e Saldatura di apparecchiature meccaniche presso
+                  cantiere e Fonderia SAFAS</p>
                 <p class="text-muted">Altavilla Vicentina (VI)</p>
               </div>
             </div>
           </div>
           <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start space-x-4">
-              <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div> <div>
-                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">MAC IMPIANTI S.r.l.</h3> <p class="text-secondary mb-2">Saldatura e installazione piping presso il Cantiere Cargill</p>
+              <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">MAC IMPIANTI S.r.l.</h3>
+                <p class="text-secondary mb-2">Saldatura e installazione piping presso il Cantiere Cargill</p>
                 <p class="text-muted">Castelmassa (RO)</p>
               </div>
             </div>
           </div>
           <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start space-x-4">
-              <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div> <div>
-                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">CMS SRL</h3> <p class="text-secondary mb-2">Lavori di saldatura e carpenteria in opera presso il cantiere dello stabilimento ROMCIM</p>
+              <div class="w-3 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-accent mb-2">CMS SRL</h3>
+                <p class="text-secondary mb-2">Lavori di saldatura e carpenteria in opera presso il cantiere dello
+                  stabilimento ROMCIM</p>
                 <p class="text-muted">Medgidia, Costanza (RO)</p>
               </div>
             </div>
@@ -263,7 +311,8 @@
             <div class="flex items-start mb-6">
               <div class="service-icon mr-4">
                 <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z"/>
+                  <path
+                    d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z" />
                 </svg>
               </div>
               <div>
@@ -271,14 +320,18 @@
                 <p class="text-accent font-medium">30/01/2024 - 29/01/2027</p>
               </div>
             </div>
-            <p class="text-secondary leading-relaxed mb-6">Certificato Qualità ISO 9001:2015 per lavori di Meccanica Generale, Saldatura di Carpenteria Metallica e Realizzazione Piping presso terzi.</p>
-            <a href="certifications.html" class="inline-block text-accent hover:text-accent-hover font-medium transition-colors">Vedi tutte le certificazioni →</a>
+            <p class="text-secondary leading-relaxed mb-6">Certificato Qualità ISO 9001:2015 per lavori di Meccanica
+              Generale, Saldatura di Carpenteria Metallica e Realizzazione Piping presso terzi.</p>
+            <a href="certifications.html"
+              class="inline-block text-accent hover:text-accent-hover font-medium transition-colors">Vedi tutte le
+              certificazioni →</a>
           </div>
           <div class="glass-effect rounded-2xl p-8 border-accent-light hover-tilt" data-animate="fade-up">
             <div class="flex items-start mb-6">
               <div class="service-icon mr-4">
                 <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z"/>
+                  <path
+                    d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z" />
                 </svg>
               </div>
               <div>
@@ -286,8 +339,12 @@
                 <p class="text-accent font-medium">06/05/2024</p>
               </div>
             </div>
-            <p class="text-secondary leading-relaxed mb-6">Certificato Qualità di qualifica procedura specifica di Saldatura per lavori di Meccanica Generale, Carpenteria Metallica e Realizzazione Piping presso terzi. Procedura di Saldatura Carbon Steel Tig Elettrodo (141/111)</p>
-            <a href="certifications.html" class="inline-block text-accent hover:text-accent-hover font-medium transition-colors">Vedi tutte le certificazioni →</a>
+            <p class="text-secondary leading-relaxed mb-6">Certificato Qualità di qualifica procedura specifica di
+              Saldatura per lavori di Meccanica Generale, Carpenteria Metallica e Realizzazione Piping presso terzi.
+              Procedura di Saldatura Carbon Steel Tig Elettrodo (141/111)</p>
+            <a href="certifications.html"
+              class="inline-block text-accent hover:text-accent-hover font-medium transition-colors">Vedi tutte le
+              certificazioni →</a>
           </div>
         </div>
       </div>
@@ -295,412 +352,59 @@
     <section class="section-padding bg-secondary" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
         <div class="glass-effect rounded-3xl p-12 border-accent-light text-center hover-tilt" data-animate="scale-in">
-          <h2 class="text-2xl sm:text-3xl font-bold mb-6" data-animate="fade-up" data-delay="0.1">Vuoi entrare a far parte del nostro team?</h2>
-          <p class="text-lg text-secondary mb-8" data-animate="fade-up" data-delay="0.18">Invia la tua candidatura o richiedi informazioni.</p>
-          <a href="unisciti.html" class="btn-primary inline-block" data-animate="scale-in" data-delay="0.25">Scrivici</a>
+          <h2 class="text-2xl sm:text-3xl font-bold mb-6" data-animate="fade-up" data-delay="0.1">Vuoi entrare a far
+            parte del nostro team?</h2>
+          <p class="text-lg text-secondary mb-8" data-animate="fade-up" data-delay="0.18">Invia la tua candidatura o
+            richiedi informazioni.</p>
+          <a href="unisciti.html" class="btn-primary inline-block" data-animate="scale-in"
+            data-delay="0.25">Scrivici</a>
         </div>
       </div>
     </section>
-    <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <h2 id="modal-title" class="sr-only">Galleria immagini del progetto</h2>
-      <span class="modal-close" onclick="closeModal()">&times;</span>
-      <div class="image-counter" id="imageCounter">1 / 1</div>
-      <div class="modal-content">
-        <div class="carousel-modal" id="carouselModal"></div>
-        <div class="carousel-dots" id="carouselDots"></div>
-      </div>
+  </main>
+  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <h2 id="modal-title" class="sr-only">Galleria immagini del progetto</h2>
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div class="image-counter" id="imageCounter">1 / 1</div>
+    <div class="modal-content">
+      <div class="carousel-modal" id="carouselModal"></div>
+      <div class="carousel-dots" id="carouselDots"></div>
     </div>
-    <footer class="bg-secondary border-t border-accent-light py-8" data-animate="fade-up">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-          <p class="text-muted text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
-          <div class="flex space-x-6 mt-4 md:mt-0">
-            <a href="privacy-policy.html" class="text-muted hover:text-accent-hover text-sm transition-colors">Privacy Policy</a>
-            <a href="cookie-policy.html" class="text-muted hover:text-accent-hover text-sm transition-colors">Cookie Policy</a>
-          </div>
+  </div>
+  <footer class="bg-secondary border-t border-accent-light py-8" data-animate="fade-up">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-muted text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="privacy-policy.html" class="text-muted hover:text-accent-hover text-sm transition-colors">Privacy
+            Policy</a>
+          <a href="cookie-policy.html" class="text-muted hover:text-accent-hover text-sm transition-colors">Cookie
+            Policy</a>
         </div>
       </div>
-    </footer>
-    <a 
-      href="contact.html" 
-      class="fixed bottom-6 right-6 z-40 bg-accent border border-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-accent-hover hover-tilt"
-      data-tilt-strength="12"
-      aria-label="Contattaci"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    </a>
+    </div>
+  </footer>
+  <a href="contact.html"
+    class="fixed bottom-6 right-6 z-40 bg-accent border border-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-accent-hover hover-tilt"
+    data-tilt-strength="12" aria-label="Contattaci">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+  </a>
 
-    <script src="./js/motion.js"></script>
-    <script>
-      // Array con TUTTE le immagini, ESCLUSA l'immagine di sfondo statico (Warehouse Nippon Gases (4).jpg)
-      const allImages = [
-        // Officine Tecnomec Taranto
-        "./foto/officine tecnomec taranto (2024)1.jpg",
-        "./foto/officine tecnomec taranto (2024)2.jpg",
-        "./foto/officine tecnomec taranto (2024)3.jpg",
-        "./foto/officine tecnomec taranto (2024)4.jpg",
-        "./foto/officine tecnomec taranto (2024)5.jpg",
-        "./foto/officine tecnomec taranto (2024)6.jpg",
-        // Warehouse Nippon Gases (Immagine 4 RIMOSSA)
-        "./foto/warehouse nippon gases (1).jpg",
-        "./foto/warehouse nippon gases (2).jpg",
-        "./foto/warehouse nippon gases (3).jpg",
-        "./foto/warehouse nippon gases (5).jpg",
-        "./foto/warehouse nippon gases (6).jpg",
-        // Nuove foto
-        "./foto/Foto Nuove/IMG-20251006-WA0017.jpg",
-        "./foto/Foto Nuove/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.jpg"
-      ];
-
-      // Variabili globali per lo stato dei caroselli
-      let currentModalSlideIndex = 0;
-      let swipeListeners = [];
-      
-      // === GESTIONE MODALE (quando si clicca su una foto) ===
-      function openModal(startIndex) {
-        const carousel = document.getElementById('carouselModal');
-        const dotsContainer = document.getElementById('carouselDots');
-        const modal = document.getElementById('imageModal');
-
-        const scrollY = window.scrollY;
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollY}px`;
-        document.body.style.overflow = 'hidden';
-        document.body.setAttribute('data-scroll-y', scrollY.toString());
-
-        carousel.innerHTML = '';
-        dotsContainer.innerHTML = '';
-
-        allImages.forEach((src, idx) => {
-          const img = document.createElement('img');
-          img.src = src;
-          img.alt = `Foto ${idx + 1}`;
-          img.style.display = idx === startIndex ? 'block' : 'none';
-          img.loading = idx === startIndex ? 'eager' : 'lazy';
-          img.decoding = 'async';
-          img.onerror = () => img.src = 'https://via.placeholder.com/800x600/000/FFF?text=Immagine+non+trovata';
-          carousel.appendChild(img);
-        });
-
-        allImages.forEach((_, idx) => {
-          const dot = document.createElement('span');
-          dot.classList.add('dot');
-          dot.classList.toggle('active', idx === startIndex);
-          dot.addEventListener('click', () => goToModalSlide(idx));
-          dotsContainer.appendChild(dot);
-        });
-
-        const modalContent = modal.querySelector('.modal-content');
-        // Rimuove le frecce del carosello 3D se sono state aggiunte per sbaglio
-        const existingArrows = modalContent.querySelectorAll('.nav-button');
-        existingArrows.forEach(el => el.remove());
-
-        const leftArrow = document.createElement('button');
-        leftArrow.className = 'nav-button left';
-        leftArrow.innerHTML = '&#10094;';
-        leftArrow.onclick = () => prevModalSlide();
-        modalContent.appendChild(leftArrow);
-
-        const rightArrow = document.createElement('button');
-        rightArrow.className = 'nav-button right';
-        rightArrow.innerHTML = '&#10095;';
-        rightArrow.onclick = () => nextModalSlide();
-        modalContent.appendChild(rightArrow);
-
-        modal.classList.add('active');
-        currentModalSlideIndex = startIndex;
-        
-        // Inizializza il contatore
-        const counter = document.getElementById('imageCounter');
-        if (counter) {
-          counter.textContent = `${startIndex + 1} / ${allImages.length}`;
-        }
-        
-        addSwipeGestures(carousel);
-      }
-
-      function closeModal() {
-        const modal = document.getElementById('imageModal');
-        const carousel = document.getElementById('carouselModal');
-        modal.classList.remove('active');
-        const scrollY = document.body.getAttribute('data-scroll-y');
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.overflow = '';
-        document.body.removeAttribute('data-scroll-y');
-        if (scrollY) window.scrollTo(0, parseInt(scrollY));
-        removeSwipeGestures(carousel);
-      }
-
-      function goToModalSlide(index) {
-        const images = document.querySelectorAll('#carouselModal img');
-        const dots = document.querySelectorAll('#carouselDots .dot');
-        const counter = document.getElementById('imageCounter');
-        
-        if (images.length === 0 || index >= images.length) return;
-        
-        images.forEach((img, i) => {
-          if (i === index) {
-            img.style.display = 'block';
-            img.classList.add('fade-in');
-            setTimeout(() => img.classList.remove('fade-in'), 600);
-          } else {
-            img.style.display = 'none';
-            img.classList.remove('fade-in');
-          }
-        });
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-        currentModalSlideIndex = index;
-        
-        // Aggiorna il contatore
-        if (counter) {
-          counter.textContent = `${index + 1} / ${images.length}`;
-        }
-      }
-
-      function nextModalSlide() {
-        currentModalSlideIndex = (currentModalSlideIndex + 1) % allImages.length;
-        goToModalSlide(currentModalSlideIndex);
-      }
-
-      function prevModalSlide() {
-        currentModalSlideIndex = (currentModalSlideIndex - 1 + allImages.length) % allImages.length;
-        goToModalSlide(currentModalSlideIndex);
-      }
-
-      // === GESTIONE SWIPE (solo per il modale) ===
-      let touchStartX = 0;
-      let touchEndX = 0;
-      function addSwipeGestures(element) {
-        const handleTouchStart = (e) => touchStartX = e.changedTouches[0].screenX;
-        const handleTouchEnd = (e) => {
-          touchEndX = e.changedTouches[0].screenX;
-          const diff = touchStartX - touchEndX;
-          if (Math.abs(diff) > 50) diff > 0 ? nextModalSlide() : prevModalSlide();
-        };
-        element.addEventListener('touchstart', handleTouchStart, { passive: true });
-        element.addEventListener('touchend', handleTouchEnd, { passive: true });
-        swipeListeners = [handleTouchStart, handleTouchEnd];
-      }
-      function removeSwipeGestures(element) {
-        if (swipeListeners.length > 0) {
-          element.removeEventListener('touchstart', swipeListeners[0]);
-          element.removeEventListener('touchend', swipeListeners[1]);
-          swipeListeners = [];
-        }
-      }
-
-      // === GESTIONE MENU MOBILE ===
-      function toggleMobileMenu() {
-        const menu = document.getElementById('mobileMenu');
-        const icon = document.getElementById('menuIcon');
-        if (!menu || !icon) return;
-        const isOpen = menu.classList.contains('open');
-        if (isOpen) {
-          menu.classList.remove('open');
-          document.body.style.overflow = '';
-          icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-        } else {
-          menu.classList.add('open');
-          document.body.style.overflow = 'hidden';
-          icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
-        }
-      }
-
-      // === NUOVA GESTIONE CAROSELLO PROGETTI 3D ===
-  let currentProjectSlide = 0;
-  let projectAutoplayInterval;
-  let carouselInitialized = false;
-      
-      function getSlideIndex(offset) {
-          return (currentProjectSlide + offset + allImages.length) % allImages.length;
-      }
-
-      function init3DCarousel() {
-        const carousel = document.getElementById('projects-carousel-3d');
-        if (!carousel) return;
-        
-        // Rimuove slide precedenti se ricaricato
-        carousel.querySelectorAll('.slide-3d').forEach(slide => slide.remove());
-
-        allImages.forEach((src, index) => {
-          const slide = document.createElement('div');
-          slide.className = 'slide-3d';
-          slide.setAttribute('data-index', index);
-          slide.onclick = () => {
-              // Apre la modale solo se è la slide centrale
-              if (slide.classList.contains('center')) {
-                  openModal(index);
-              } else {
-                  // Se non è la slide centrale, la porta al centro
-                  if(slide.classList.contains('left')) {
-                      prev3DSlide();
-                  } else if (slide.classList.contains('right')) {
-                      next3DSlide();
-                  }
-              }
-          };
-
-          const img = document.createElement('img');
-          img.src = src;
-          img.alt = `Progetto ${index + 1}`;
-          img.loading = 'lazy';
-          img.decoding = 'async';
-          img.onerror = () => img.src = 'https://via.placeholder.com/800x450/000/FFF?text=Immagine+non+disponibile';
-          
-          slide.appendChild(img);
-          carousel.appendChild(slide);
-        });
-
-        update3DCarousel();
-        carousel.dataset.initialized = 'true';
-        carouselInitialized = true;
-        
-        // Aggiungi gestione swipe per mobile
-        addCarouselSwipeGestures(carousel);
-      }
-      
-      function update3DCarousel() {
-        const slides = document.querySelectorAll('#projects-carousel-3d .slide-3d');
-        if (slides.length === 0) return;
-        
-        const prevIndex = getSlideIndex(-1);
-        const centerIndex = getSlideIndex(0);
-        const nextIndex = getSlideIndex(1);
-
-        slides.forEach((slide, index) => {
-            slide.classList.remove('center', 'left', 'right');
-            if (index === centerIndex) {
-                slide.classList.add('center');
-            } else if (index === prevIndex) {
-                slide.classList.add('left');
-            } else if (index === nextIndex) {
-                slide.classList.add('right');
-            }
-        });
-      }
-
-      function start3DAutoplay() {
-          if (allImages.length < 2) return;
-          clearInterval(projectAutoplayInterval);
-          projectAutoplayInterval = setInterval(next3DSlide, 5000); // 5 secondi
-      }
-
-    function ensureCarouselInitialized() {
-      if (carouselInitialized) return true;
-      const carousel = document.getElementById('projects-carousel-3d');
-      if (!carousel) return false;
-      init3DCarousel();
-      start3DAutoplay();
-      return carouselInitialized;
+  <script src="./js/motion.js"></script>
+  <script src="./js/carousel.js"></script>
+  <script>
+    // Add structured data for homepage
+    if (window.StructuredData) {
+      StructuredData.addStructuredData(StructuredData.getOrganizationSchema());
+      StructuredData.addStructuredData(StructuredData.getWebSiteSchema());
+      StructuredData.addStructuredData(StructuredData.getBreadcrumbSchema([
+        { name: "Home", url: "/index.html" }
+      ]));
     }
-
-    function scheduleCarouselInit() {
-      const carousel = document.getElementById('projects-carousel-3d');
-      if (!carousel) return;
-
-      const initIfNeeded = () => {
-        ensureCarouselInitialized();
-      };
-
-          if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              initIfNeeded();
-              observer.disconnect();
-            }
-          });
-        }, { rootMargin: '0px 0px -20% 0px' });
-        observer.observe(carousel);
-      } else if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(initIfNeeded);
-      } else {
-        setTimeout(initIfNeeded, 200);
-      }
-    }
-
-      function next3DSlide() {
-      if (!ensureCarouselInitialized()) return;
-      currentProjectSlide = getSlideIndex(1);
-          update3DCarousel();
-          start3DAutoplay();
-      }
-
-      function prev3DSlide() {
-      if (!ensureCarouselInitialized()) return;
-      currentProjectSlide = getSlideIndex(-1);
-          update3DCarousel();
-          start3DAutoplay();
-      }
-      
-      // === GESTIONE SWIPE PER CAROUSEL 3D ===
-      let carouselTouchStartX = 0;
-      let carouselTouchEndX = 0;
-      
-      function addCarouselSwipeGestures(carousel) {
-        const handleTouchStart = (e) => {
-          if (e.changedTouches && e.changedTouches.length > 0) {
-            carouselTouchStartX = e.changedTouches[0].screenX;
-          }
-        };
-
-        const handleTouchMove = (e) => {
-          if (e.changedTouches && e.changedTouches.length > 0) {
-            carouselTouchEndX = e.changedTouches[0].screenX;
-          }
-        };
-
-        const handleTouchEnd = (e) => {
-          handleCarouselGesture();
-        };
-
-        const handleCarouselGesture = () => {
-          const threshold = 50; // Minimo 50px di swipe
-          const diff = carouselTouchStartX - carouselTouchEndX;
-          
-          if (Math.abs(diff) > threshold) {
-            if (diff > 0) {
-              // Swipe verso sinistra = avanti
-              next3DSlide();
-            } else {
-              // Swipe verso destra = indietro
-              prev3DSlide();
-            }
-          }
-        };
-
-        carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
-        carousel.addEventListener('touchmove', handleTouchMove, { passive: true });
-        carousel.addEventListener('touchend', handleTouchEnd, { passive: true });
-      }
-      
-      // Rende le funzioni globali con il nome corretto
-      window.next3DSlide = next3DSlide;
-      window.prev3DSlide = prev3DSlide;
-      
-      // === INIZIALIZZAZIONE DI TUTTO ===
-      document.addEventListener('DOMContentLoaded', () => {
-        scheduleCarouselInit();
-        const mobileMenu = document.getElementById('mobileMenu');
-        if (mobileMenu) mobileMenu.classList.remove('open');
-      });
-
-      // === GESTIONE TASTI (per il modale) ===
-      document.addEventListener('keydown', (e) => {
-        const modal = document.getElementById('imageModal');
-        if (modal && modal.classList.contains('active')) {
-          if (e.key === 'Escape') closeModal();
-          if (e.key === 'ArrowRight') nextModalSlide();
-          if (e.key === 'ArrowLeft') prevModalSlide();
-        }
-      });
-
-      document.getElementById('imageModal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
-      });
-    </script>
+  </script>
 </body>
+
 </html>

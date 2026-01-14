@@ -35,7 +35,7 @@ function openModal(projectIndex) {
   const carousel = document.getElementById('carouselModal');
   const dotsContainer = document.getElementById('carouselDots');
   const modal = document.getElementById('imageModal');
-  
+
   // Blocca completamente lo scroll della pagina
   const scrollY = window.scrollY;
   document.body.style.position = 'fixed';
@@ -46,7 +46,7 @@ function openModal(projectIndex) {
   document.body.style.width = '100%';
   // Salva la posizione di scroll
   document.body.setAttribute('data-scroll-y', scrollY.toString());
-  
+
   // 🔥 PULISCI SEMPRE prima di ricreare
   carousel.innerHTML = '';
   dotsContainer.innerHTML = '';
@@ -55,11 +55,11 @@ function openModal(projectIndex) {
   images.forEach((src, idx) => {
     const img = document.createElement('img');
     img.src = src;
-    img.alt = `Foto ${idx + 1} di ${projects[projectIndex].title}`;
+    img.alt = i18n.t('carousel.photoAlt', { index: idx + 1, title: projects[projectIndex].title });
     img.style.display = idx === 0 ? 'block' : 'none';
     img.loading = 'eager';
     img.onerror = () => {
-      img.src = 'https://via.placeholder.com/800x600/000/FFF?text=Immagine+non+trovata';
+      img.src = `https://via.placeholder.com/800x600/000/FFF?text=${encodeURIComponent(i18n.t('carousel.imageNotFound'))}`;
     };
     carousel.appendChild(img);
   });
@@ -75,7 +75,7 @@ function openModal(projectIndex) {
 
   // Crea le frecce di navigazione nel modal-content invece che nel carousel
   const modalContent = modal.querySelector('.modal-content');
-  
+
   const leftArrow = document.createElement('button');
   leftArrow.className = 'nav-button left';
   leftArrow.innerHTML = '&#10094;';
@@ -90,7 +90,7 @@ function openModal(projectIndex) {
 
   modal.classList.add('active');
   currentSlideIndex = 0;
-  
+
   // Aggiungi gestione swipe
   addSwipeGestures(carousel);
 }
@@ -99,9 +99,9 @@ function openModal(projectIndex) {
 function closeModal() {
   const modal = document.getElementById('imageModal');
   const carousel = document.getElementById('carouselModal');
-  
+
   modal.classList.remove('active');
-  
+
   // Ripristina completamente lo scroll della pagina
   const scrollY = document.body.getAttribute('data-scroll-y');
   document.body.style.position = '';
@@ -111,12 +111,12 @@ function closeModal() {
   document.body.style.overflow = '';
   document.body.style.width = '';
   document.body.removeAttribute('data-scroll-y');
-  
+
   // Ripristina la posizione di scroll
   if (scrollY) {
     window.scrollTo(0, parseInt(scrollY));
   }
-  
+
   // Rimuovi swipe
   removeSwipeGestures(carousel);
 }
@@ -125,7 +125,7 @@ function closeModal() {
 function goToSlide(index) {
   const images = document.querySelectorAll('#carouselModal img');
   const dots = document.querySelectorAll('#carouselDots .dot');
-  
+
   if (images.length === 0 || index >= images.length) return;
 
   // Nascondi tutte le immagini con fade out
@@ -142,7 +142,7 @@ function goToSlide(index) {
       img.classList.remove('fade-in');
     }
   });
-  
+
   dots.forEach((dot, i) => {
     dot.classList.toggle('active', i === index);
   });
@@ -179,9 +179,9 @@ document.addEventListener('keydown', (e) => {
 // Chiudi cliccando fuori
 const imageModal = document.getElementById('imageModal');
 if (imageModal) {
-    imageModal.addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
-    });
+  imageModal.addEventListener('click', function (e) {
+    if (e.target === this) closeModal();
+  });
 }
 
 
@@ -192,21 +192,21 @@ let touchEndX = 0;
 function addSwipeGestures(element) {
   const handleTouchStart = (e) => {
     if (e.changedTouches && e.changedTouches.length > 0) {
-        touchStartX = e.changedTouches[0].screenX;
+      touchStartX = e.changedTouches[0].screenX;
     }
   };
 
   const handleTouchEnd = (e) => {
     if (e.changedTouches && e.changedTouches.length > 0) {
-        touchEndX = e.changedTouches[0].screenX;
-        handleGesture();
+      touchEndX = e.changedTouches[0].screenX;
+      handleGesture();
     }
   };
 
   const handleGesture = () => {
     const threshold = 50;
     const diff = touchStartX - touchEndX;
-    
+
     if (Math.abs(diff) > threshold) {
       if (diff > 0) {
         nextSlide();
@@ -218,7 +218,7 @@ function addSwipeGestures(element) {
 
   element.addEventListener('touchstart', handleTouchStart, { passive: true });
   element.addEventListener('touchend', handleTouchEnd, { passive: true });
-  
+
   swipeListeners = [handleTouchStart, handleTouchEnd];
 }
 
@@ -235,11 +235,11 @@ function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
   const icon = document.getElementById('menuIcon');
   const body = document.body;
-  
+
   if (!menu || !icon) return;
-  
+
   const isOpen = menu.classList.contains('open');
-  
+
   if (isOpen) {
     menu.classList.remove('open');
     body.style.overflow = '';

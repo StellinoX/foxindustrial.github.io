@@ -1,57 +1,79 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-07FJR14NJ5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-07FJR14NJ5');
   </script>
-  
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3FBFFF">
   <title>Servizi - Fox Industrial Contracting S.r.l.</title>
-  <meta name="description" content="Scopri i nostri servizi: piping, carpenteria metallica, saldatura, logistica e figure specializzate in tutta Europa.">
+  <meta name="description"
+    content="Scopri i nostri servizi: piping, carpenteria metallica, saldatura, logistica e figure specializzate in tutta Europa.">
+  <link rel="canonical" href="https://foxindustrialcontracting.com/services.html">
+  <meta property="og:title" content="Servizi - Fox Industrial Contracting S.r.l." />
+  <meta property="og:description"
+    content="Scopri i nostri servizi: piping, carpenteria metallica, saldatura, logistica e figure specializzate in tutta Europa." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://foxindustrialcontracting.com/services.html" />
+  <meta property="og:locale" content="it_IT" />
   <link rel="icon" href="./foto/LOGO.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/style.css">
-
+  <script src="./js/structured-data.js"></script>
+  <script src="./js/i18n.js"></script>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./foto/LOGO.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
+
 <body class="min-h-screen text-gray-900 overflow-x-hidden motion-safe">
+  <a href="#main-content" class="skip-to-main">Salta al contenuto principale</a>
   <!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-white/30">      <div class="max-w-7xl mx-auto px-6 py-4">
-        <div class="flex justify-between items-center">
-          <div class="flex items-center space-x-3">
-            <a href="index.html">
-              <img src="./foto/LOGO.png" alt="Logo" class="w-10 h-10 rounded-xl" />
-            </a>
-            <a href="index.html" class="text-xl font-semibold text-gray-900 hover:text-[#3FBFFF] transition-colors">Fox Industrial Contracting S.r.l.</a>
-          </div>
-          <div class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Home</a>
-            <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Chi Siamo</a>
-            <a href="services.html" class="text-sm font-medium text-[#3FBFFF] border-b-2 border-[#3FBFFF]">Servizi</a>
-            <a href="lavori.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Lavori</a>
-            <a href="certifications.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Certificazioni</a>
-            <a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Contatti</a>
-          </div>
-          <div class="md:hidden flex items-center">
-            <button
-              onclick="toggleMobileMenu()"
-              class="text-gray-900 focus:outline-none hover:text-[#3FBFFF] transition-colors"
-              aria-label="Apri menu"
-            >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path id="menuIcon" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
-          </div>
+  <nav class="fixed top-0 w-full z-50 bg-white/30">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <a href="index.html">
+            <img src="./foto/LOGO.png" alt="Logo" class="w-10 h-10 rounded-xl" />
+          </a>
+          <a href="index.html" class="text-xl font-semibold text-gray-900 hover:text-[#3FBFFF] transition-colors">Fox
+            Industrial Contracting S.r.l.</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Home</a>
+          <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Chi
+            Siamo</a>
+          <a href="services.html" class="text-sm font-medium text-[#3FBFFF] border-b-2 border-[#3FBFFF]">Servizi</a>
+          <a href="lavori.html"
+            class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Lavori</a>
+          <a href="certifications.html"
+            class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Certificazioni</a>
+          <a href="contact.html"
+            class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Contatti</a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button onclick="toggleMobileMenu()"
+            class="text-gray-900 focus:outline-none hover:text-[#3FBFFF] transition-colors" aria-label="Apri menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path id="menuIcon" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="mobileMenu">
@@ -66,86 +88,159 @@
     </div>
   </div>
 
-  <!-- Hero -->
-  <section class="pt-32 pb-20" data-animate="fade-up">
-    <div class="max-w-7xl mx-auto px-6 text-center" data-animate="fade-up">
-      <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">I Nostri Servizi</h1>
-      <div class="animated-divider" aria-hidden="true"></div>
-      <p class="text-2xl text-gray-600" data-animate="fade-up" data-delay="0.1">Un provetto modello di lavoro per soddisfare ogni esigenza</p>
-    </div>
-  </section>
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="pt-32 pb-20" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-6 text-center" data-animate="fade-up">
+        <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">I Nostri Servizi</h1>
+        <div class="animated-divider" aria-hidden="true"></div>
+        <p class="text-2xl text-gray-600" data-animate="fade-up" data-delay="0.1">Un provetto modello di lavoro per
+          soddisfare ogni esigenza</p>
+      </div>
+    </section>
 
-  <!-- Services Grid -->
-  <section class="section-padding" data-animate="fade-up">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children" data-stagger="0.12">
-        <div class="glass-effect rounded-2xl p-8 border border-gray-200 hover-scale project-card hover-tilt" data-animate="fade-up">
-          <div class="flex items-center mb-6">
-            <div class="service-icon mr-4">⚡</div>
-            <h3 class="text-2xl font-semibold">Pianificazione Rapida</h3>
+    <!-- Services Grid -->
+    <section class="section-padding" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children" data-stagger="0.12">
+          <div class="glass-effect rounded-2xl p-8 border border-gray-200 hover-scale project-card hover-tilt"
+            data-animate="fade-up">
+            <div class="flex items-center mb-6">
+              <div class="service-icon mr-4">⚡</div>
+              <h3 class="text-2xl font-semibold">Pianificazione Rapida</h3>
+            </div>
+            <p class="text-gray-600 leading-relaxed">Attivi in diversi campi di specializzazione, il nostro personale
+              verrà incontro alle esigenze di ogni cliente in tempi brevi.</p>
           </div>
-          <p class="text-gray-600 leading-relaxed">Attivi in diversi campi di specializzazione, il nostro personale verrà incontro alle esigenze di ogni cliente in tempi brevi.</p>
-        </div>
-        <div class="glass-effect rounded-2xl p-8 border border-gray-200 hover-scale project-card hover-tilt" data-animate="fade-up">
-          <div class="flex items-center mb-6">
-            <div class="service-icon mr-4">👨‍💼</div>
-            <h3 class="text-2xl font-semibold">Figure altamente specializzate</h3>
+          <div class="glass-effect rounded-2xl p-8 border border-gray-200 hover-scale project-card hover-tilt"
+            data-animate="fade-up">
+            <div class="flex items-center mb-6">
+              <div class="service-icon mr-4">👨‍💼</div>
+              <h3 class="text-2xl font-semibold">Figure altamente specializzate</h3>
+            </div>
+            <p class="text-gray-600 leading-relaxed">Disponiamo di figure adatte ad ogni tipo di cantiere: responsabili
+              di cantiere, saldatori qualificati, tubisti a sketch, carpentieri e montatori a disegno e meccanici
+              provetti.</p>
           </div>
-          <p class="text-gray-600 leading-relaxed">Disponiamo di figure adatte ad ogni tipo di cantiere: responsabili di cantiere, saldatori qualificati, tubisti a sketch, carpentieri e montatori a disegno e meccanici provetti.</p>
-        </div>
-        <div class="glass-effect rounded-2xl p-8 border border-gray-200 hover-scale project-card hover-tilt" data-animate="fade-up">
-          <div class="flex items-center mb-6">
-            <div class="service-icon mr-4">🛡️</div>
-            <h3 class="text-2xl font-semibold">Elevati Standard di Sicurezza</h3>
+          <div class="glass-effect rounded-2xl p-8 border border-gray-200 hover-scale project-card hover-tilt"
+            data-animate="fade-up">
+            <div class="flex items-center mb-6">
+              <div class="service-icon mr-4">🛡️</div>
+              <h3 class="text-2xl font-semibold">Elevati Standard di Sicurezza</h3>
+            </div>
+            <p class="text-gray-600 leading-relaxed">La Sicurezza e la Qualità sono capisaldi fondamentali della nostra
+              identità aziendale: ci avvaliamo infatti dei più aggiornati sistemi di certificazione e dispositivi di
+              sicurezza personale e di cantiere riconosciuti in Italia ed Europa.</p>
           </div>
-          <p class="text-gray-600 leading-relaxed">La Sicurezza e la Qualità sono capisaldi fondamentali della nostra identità aziendale: ci avvaliamo infatti dei più aggiornati sistemi di certificazione e dispositivi di sicurezza personale e di cantiere riconosciuti in Italia ed Europa.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Modello di Lavoro -->
-  <section class="section-padding bg-white/50" data-animate="fade-up">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="glass-effect rounded-3xl p-12 border border-gray-200 hover-tilt" data-animate="scale-in">
-        <h2 class="text-3xl font-bold text-center mb-4" data-animate="fade-up">Il Nostro Modello di Lavoro</h2>
-        <div class="animated-divider mx-auto" aria-hidden="true"></div>
-        <p class="text-lg text-gray-600 leading-relaxed mb-8 text-center" data-animate="fade-up" data-delay="0.1">
-          Attraverso un provetto modello di lavoro, ci occupiamo con cura meticolosa della logistica interna ed esterna, dispiegando così in pochi giorni risorse umane e materiali in tutta Europa.
-        </p>
-        <p class="text-lg text-gray-600 leading-relaxed text-center" data-animate="fade-up" data-delay="0.18">
-          Disponiamo di figure adatte ad ogni tipo di cantiere: RESPONSABILI DI CANTIERE, SALDATORI qualificati, TUBISTI a sketch, CARPENTIERI e MONTATORI a disegno e MECCANICI provetti.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- LAVORA CON NOI -->
-  <section class="section-padding bg-[#f8fafc]" data-animate="fade-up">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="glass-effect rounded-3xl p-12 border border-[#3FBFFF]/20 text-center hover-tilt" data-animate="scale-in">
-        <h2 class="text-3xl font-bold mb-4" data-animate="fade-up">Vuoi entrare a far parte del nostro team?</h2>
-        <div class="animated-divider mx-auto" aria-hidden="true"></div>
-        <p class="text-lg text-gray-600 mb-8" data-animate="fade-up" data-delay="0.1">Invia la tua candidatura o richiedi informazioni.</p>
-        <a href="unisciti.html" class="btn-primary inline-block" data-animate="scale-in" data-delay="0.18">Scrivici</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-100 border-t border-gray-200 py-8" data-animate="fade-up">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-600 text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
-        <div class="flex space-x-6 mt-4 md:mt-0">
-          <a href="privacy-policy.html" class="text-gray-600 hover:text-[#3FBFFF] text-sm transition-colors">Privacy Policy</a>
-          <a href="cookie-policy.html" class="text-gray-600 hover:text-[#3FBFFF] text-sm transition-colors">Cookie Policy</a>
+    <!-- Modello di Lavoro -->
+    <section class="section-padding bg-white/50" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="glass-effect rounded-3xl p-12 border border-gray-200 hover-tilt" data-animate="scale-in">
+          <h2 class="text-3xl font-bold text-center mb-4" data-animate="fade-up">Il Nostro Modello di Lavoro</h2>
+          <div class="animated-divider mx-auto" aria-hidden="true"></div>
+          <p class="text-lg text-gray-600 leading-relaxed mb-8 text-center" data-animate="fade-up" data-delay="0.1">
+            Attraverso un provetto modello di lavoro, ci occupiamo con cura meticolosa della logistica interna ed
+            esterna, dispiegando così in pochi giorni risorse umane e materiali in tutta Europa.
+          </p>
+          <p class="text-lg text-gray-600 leading-relaxed text-center" data-animate="fade-up" data-delay="0.18">
+            Disponiamo di figure adatte ad ogni tipo di cantiere: RESPONSABILI DI CANTIERE, SALDATORI qualificati,
+            TUBISTI a sketch, CARPENTIERI e MONTATORI a disegno e MECCANICI provetti.
+          </p>
         </div>
       </div>
-    </div>
-  </footer>
+    </section>
+
+    <!-- LAVORA CON NOI -->
+    <section class="section-padding bg-[#f8fafc]" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="glass-effect rounded-3xl p-12 border border-[#3FBFFF]/20 text-center hover-tilt"
+          data-animate="scale-in">
+          <h2 class="text-3xl font-bold mb-4" data-animate="fade-up">Vuoi entrare a far parte del nostro team?</h2>
+          <div class="animated-divider mx-auto" aria-hidden="true"></div>
+          <p class="text-lg text-gray-600 mb-8" data-animate="fade-up" data-delay="0.1">Invia la tua candidatura o
+            richiedi informazioni.</p>
+          <a href="unisciti.html" class="btn-primary inline-block" data-animate="scale-in"
+            data-delay="0.18">Scrivici</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t border-gray-200 py-8" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-600 text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="privacy-policy.html" class="text-gray-600 hover:text-[#3FBFFF] text-sm transition-colors">Privacy
+              Policy</a>
+            <a href="cookie-policy.html" class="text-gray-600 hover:text-[#3FBFFF] text-sm transition-colors">Cookie
+              Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
 
   <script src="./js/motion.js"></script>
   <script src="./js/app.js"></script>
+  <script>
+    // Add structured data for services page
+    if (window.StructuredData) {
+      StructuredData.addStructuredData(StructuredData.getOrganizationSchema());
+      StructuredData.addStructuredData(StructuredData.getBreadcrumbSchema([
+        { name: "Home", url: "/index.html" },
+        { name: "Servizi", url: "/services.html" }
+      ]));
+
+      // Add Service schema
+      const serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Industrial Contracting",
+        "provider": {
+          "@type": "Organization",
+          "name": "Fox Industrial Contracting S.r.l."
+        },
+        "areaServed": ["IT", "EU"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servizi Industriali",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Pianificazione Rapida",
+                "description": "Attivi in diversi campi di specializzazione, il nostro personale verrà incontro alle esigenze di ogni cliente in tempi brevi."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Figure Altamente Specializzate",
+                "description": "Responsabili di cantiere, saldatori qualificati, tubisti a sketch, carpentieri e montatori a disegno e meccanici provetti."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Standard di Sicurezza",
+                "description": "Sistemi di certificazione e dispositivi di sicurezza personale e di cantiere riconosciuti in Italia ed Europa."
+              }
+            }
+          ]
+        }
+      };
+      StructuredData.addStructuredData(serviceSchema);
+    }
+  </script>
 </body>
+
 </html>
