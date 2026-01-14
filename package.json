@@ -1,0 +1,27 @@
+{
+  "name": "fox-industrial-website",
+  "version": "1.0.0",
+  "description": "Fox Industrial Contracting S.r.l. website",
+  "scripts": {
+    "build:js": "mkdir -p js/min && terser js/motion.js -c -m -o js/min/motion.min.js && terser js/carousel.js -c -m -o js/min/carousel.min.js && terser js/app.js -c -m -o js/min/app.min.js && terser js/form-handler.js -c -m -o js/min/form-handler.min.js && terser js/i18n.js -c -m -o js/min/i18n.min.js && terser js/structured-data.js -c -m -o js/min/structured-data.min.js",
+    "build:css": "postcss css/tailwind-input.css -o css/style.min.css",
+    "build:images": "mkdir -p foto/webp && for img in foto/*.jpg; do cwebp -q 80 \"$img\" -o \"foto/webp/$(basename \"${img%.jpg}.webp\")\" 2>/dev/null; done",
+    "build": "npm run build:css && npm run build:js",
+    "serve": "npx http-server . -p 8080 -c-1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.23",
+    "cssnano": "^6.0.0",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^10.0.0",
+    "postcss-import": "^16.1.0",
+    "tailwindcss": "^3.4.0",
+    "terser": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StellinoX/foxindustrial.github.io.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

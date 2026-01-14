@@ -3,23 +3,23 @@ const projects = [
   {
     title: "Officine Tecnomec Taranto",
     images: [
-      "./foto/officine tecnomec taranto (2024)1.jpg",
-      "./foto/officine tecnomec taranto (2024)2.jpg",
-      "./foto/officine tecnomec taranto (2024)3.jpg",
-      "./foto/officine tecnomec taranto (2024)4.jpg",
-      "./foto/officine tecnomec taranto (2024)5.jpg",
-      "./foto/officine tecnomec taranto (2024)6.jpg"
+      "./foto/webp/officine tecnomec taranto (2024)1.webp",
+      "./foto/webp/officine tecnomec taranto (2024)2.webp",
+      "./foto/webp/officine tecnomec taranto (2024)3.webp",
+      "./foto/webp/officine tecnomec taranto (2024)4.webp",
+      "./foto/webp/officine tecnomec taranto (2024)5.webp",
+      "./foto/webp/officine tecnomec taranto (2024)6.webp"
     ]
   },
   {
     title: "Warehouse Nippon Gases",
     images: [
-      "./foto/warehouse nippon gases (1).jpg",
-      "./foto/warehouse nippon gases (2).jpg",
-      "./foto/warehouse nippon gases (3).jpg",
-      "./foto/warehouse nippon gases (4).jpg",
-      "./foto/warehouse nippon gases (5).jpg",
-      "./foto/warehouse nippon gases (6).jpg"
+      "./foto/webp/warehouse nippon gases (1).webp",
+      "./foto/webp/warehouse nippon gases (2).webp",
+      "./foto/webp/warehouse nippon gases (3).webp",
+      "./foto/webp/warehouse nippon gases (4).webp",
+      "./foto/webp/warehouse nippon gases (5).webp",
+      "./foto/webp/warehouse nippon gases (6).webp"
     ]
   }
 ];
