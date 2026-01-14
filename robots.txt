@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://foxindustrialcontracting.com/sitemap.xml
+Sitemap: https://foxindustrialcontractingsrl.com/sitemap.xml
 
 # Disallow specific paths if needed
 # Disallow: /admin/
