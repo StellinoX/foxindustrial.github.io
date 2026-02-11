@@ -5,21 +5,21 @@
   // Array con TUTTE le immagini, ESCLUSA l'immagine di sfondo statico (Warehouse Nippon Gases (4).jpg)
   const allImages = [
     // Officine Tecnomec Taranto
-    "./foto/officine tecnomec taranto (2024)1.jpg",
-    "./foto/officine tecnomec taranto (2024)2.jpg",
-    "./foto/officine tecnomec taranto (2024)3.jpg",
-    "./foto/officine tecnomec taranto (2024)4.jpg",
-    "./foto/officine tecnomec taranto (2024)5.jpg",
-    "./foto/officine tecnomec taranto (2024)6.jpg",
+    "./foto/webp/officine tecnomec taranto (2024)1.webp",
+    "./foto/webp/officine tecnomec taranto (2024)2.webp",
+    "./foto/webp/officine tecnomec taranto (2024)3.webp",
+    "./foto/webp/officine tecnomec taranto (2024)4.webp",
+    "./foto/webp/officine tecnomec taranto (2024)5.webp",
+    "./foto/webp/officine tecnomec taranto (2024)6.webp",
     // Warehouse Nippon Gases (Immagine 4 RIMOSSA)
-    "./foto/warehouse nippon gases (1).jpg",
-    "./foto/warehouse nippon gases (2).jpg",
-    "./foto/warehouse nippon gases (3).jpg",
-    "./foto/warehouse nippon gases (5).jpg",
-    "./foto/warehouse nippon gases (6).jpg",
+    "./foto/webp/warehouse nippon gases (1).webp",
+    "./foto/webp/warehouse nippon gases (2).webp",
+    "./foto/webp/warehouse nippon gases (3).webp",
+    "./foto/webp/warehouse nippon gases (5).webp",
+    "./foto/webp/warehouse nippon gases (6).webp",
     // Nuove foto
-    "./foto/Foto Nuove/IMG-20251006-WA0017.jpg",
-    "./foto/Foto Nuove/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.jpg",
+    "./foto/webp/IMG-20251006-WA0017.webp",
+    "./foto/webp/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.webp",
     // Nuove foto 11 febbraio 2026
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.11 (1).webp",
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.11.webp",
