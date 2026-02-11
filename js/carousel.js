@@ -19,7 +19,21 @@
     "./foto/warehouse nippon gases (6).jpg",
     // Nuove foto
     "./foto/Foto Nuove/IMG-20251006-WA0017.jpg",
-    "./foto/Foto Nuove/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.jpg"
+    "./foto/Foto Nuove/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.jpg",
+    // Nuove foto 11 febbraio 2026
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.11 (1).webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.11.webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (1).webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (2).webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (3).webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (4).webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (5).webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12.webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.43.03 (1).webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.43.03.webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.45.18 (1).webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.45.18 (2).webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.45.18.webp"
   ];
 
   // Variabili globali per lo stato dei caroselli
