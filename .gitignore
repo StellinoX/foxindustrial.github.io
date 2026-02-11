@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+# package-lock.json NON va ignorato per Netlify!
+
+# Build files
+.cache/
+dist/
+.netlify/
+
+# Development files
+*.log
+npm-debug.log*
+.DS_Store
+.vscode/
+.idea/
+
+# Backup files - NON CARICARE MAI SU GIT/NETLIFY
+backup_*/
+backup*/
+*backup*/
+*.bak
+*.backup
+
+# System files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+
+# Development scripts and reports
+cleanup.sh
+optimize_images.sh
+optimize_images_macos.sh
+CLEANUP_REPORT.md
+OPTIMIZATION_GUIDE.md
+READY_TO_DEPLOY.md
+FINAL_REPORT.md
+
+# Lock files (opzionale, dipende dalla strategia)
+# deno.lock
