@@ -36,6 +36,13 @@
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.45.18.webp"
   ];
 
+  // Encode URLs to handle spaces and special characters
+  for (let i = 0; i < allImages.length; i++) {
+    allImages[i] = encodeURI(allImages[i]).replace(/\(/g, '%28').replace(/\)/g, '%29');
+  }
+
+  console.log('Carousel initialized with images:', allImages);
+
   // Variabili globali per lo stato dei caroselli
   let currentModalSlideIndex = 0;
   let swipeListeners = [];
