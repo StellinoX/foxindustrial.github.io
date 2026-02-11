@@ -19,6 +19,9 @@
     errorDiv.className = 'form-error';
     errorDiv.textContent = message;
     errorDiv.setAttribute('role', 'alert');
+    errorDiv.style.color = '#ef4444';
+    errorDiv.style.fontSize = '0.875rem';
+    errorDiv.style.marginTop = '0.5rem';
 
     // Remove existing error
     const existingError = input.parentElement.querySelector('.form-error');
@@ -44,7 +47,7 @@
     successDiv.className = 'form-success';
     successDiv.setAttribute('role', 'alert');
     successDiv.innerHTML = `
-      <div style="background: #10b981; color: white; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+      <div style="background: #10b981; color: white; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; display: flex; align-items: center; gap: 0.5rem; animation: slideDown 0.5s ease-out;">
         <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
         </svg>
@@ -54,153 +57,85 @@
     return successDiv;
   }
 
-  // Contact form handler
-  function handleContactForm(form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const nome = form.querySelector('[name="nome"]')?.value.trim();
-      const email = form.querySelector('[name="email"]')?.value.trim();
-      const telefono = form.querySelector('[name="telefono"]')?.value.trim();
-      const messaggio = form.querySelector('[name="messaggio"]')?.value.trim();
-
-      let isValid = true;
-
-      // Validate name
-      if (!nome || nome.length < 2) {
-        showError(form.querySelector('[name="nome"]'), i18n.t('form.nameMinLength'));
-        isValid = false;
-      } else {
-        removeError(form.querySelector('[name="nome"]'));
-      }
-
-      // Validate email
-      if (!email || !validateEmail(email)) {
-        showError(form.querySelector('[name="email"]'), i18n.t('form.emailInvalid'));
-        isValid = false;
-      } else {
-        removeError(form.querySelector('[name="email"]'));
-      }
-
-      // Validate phone (if present)
-      if (telefono && !validatePhone(telefono)) {
-        showError(form.querySelector('[name="telefono"]'), i18n.t('form.phoneInvalid'));
-        isValid = false;
-      } else if (telefono) {
-        removeError(form.querySelector('[name="telefono"]'));
-      }
-
-      // Validate message
-      if (!messaggio || messaggio.length < 10) {
-        showError(form.querySelector('[name="messaggio"]'), i18n.t('form.messageMinLength'));
-        isValid = false;
-      } else {
-        removeError(form.querySelector('[name="messaggio"]'));
-      }
-
-      if (!isValid) {
-        return;
-      }
-
-      // Show loading state
-      const submitButton = form.querySelector('button[type="submit"]');
-      const originalText = submitButton.textContent;
-      submitButton.disabled = true;
-      submitButton.textContent = i18n.t('form.sending');
-
-      // Create mailto link with better formatting
-      const subject = encodeURIComponent(i18n.t('form.contactSubject', { name: nome }));
-      const body = encodeURIComponent(
-        `Nome: ${nome}\n` +
-        `Email: ${email}\n` +
-        (telefono ? `Telefono: ${telefono}\n` : '') +
-        `\nMessaggio:\n${messaggio}`
-      );
-
-      const mailtoLink = `mailto:info@foxindustrialcontractingsrl.com?subject=${subject}&body=${body}`;
-
-      // Try to open email client
-      window.location.href = mailtoLink;
-
-      // Show success message
-      setTimeout(() => {
-        const success = showSuccess(i18n.t('form.successContact'));
-        form.insertBefore(success, form.firstChild);
-
-        // Reset form after 5 seconds
-        setTimeout(() => {
-          form.reset();
-          submitButton.disabled = false;
-          submitButton.textContent = originalText;
-          success.remove();
-        }, 5000);
-      }, 500);
-    });
+  function showFailure(message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-failure';
+    errorDiv.setAttribute('role', 'alert');
+    errorDiv.innerHTML = `
+      <div style="background: #ef4444; color: white; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; display: flex; align-items: center; gap: 0.5rem; animation: slideDown 0.5s ease-out;">
+        <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>${message}</span>
+      </div>
+    `;
+    return errorDiv;
   }
 
-  // Candidature form handler
-  function handleCandidatureForm(form) {
+  // Generic Netlify Form Handler
+  function handleNetlifyForm(form, successMessageKey) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const nome = form.querySelector('[name="nome"]')?.value.trim();
-      const email = form.querySelector('[name="email"]')?.value.trim();
-      const messaggio = form.querySelector('[name="messaggio"]')?.value.trim();
-
+      // Basic Validation
+      const inputs = form.querySelectorAll('input[required], textarea[required]');
       let isValid = true;
 
-      if (!nome || nome.length < 2) {
-        showError(form.querySelector('[name="nome"]'), i18n.t('form.nameMinLength'));
-        isValid = false;
-      } else {
-        removeError(form.querySelector('[name="nome"]'));
-      }
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          showError(input, i18n.t('form.requiredField') || 'Campo obbligatorio');
+          isValid = false;
+        } else {
+          if (input.type === 'email' && !validateEmail(input.value)) {
+            showError(input, i18n.t('form.emailInvalid'));
+            isValid = false;
+          } else {
+            removeError(input);
+          }
+        }
+      });
 
-      if (!email || !validateEmail(email)) {
-        showError(form.querySelector('[name="email"]'), i18n.t('form.emailInvalid'));
-        isValid = false;
-      } else {
-        removeError(form.querySelector('[name="email"]'));
-      }
-
-      if (!messaggio || messaggio.length < 10) {
-        showError(form.querySelector('[name="messaggio"]'), i18n.t('form.messageMinLength'));
-        isValid = false;
-      } else {
-        removeError(form.querySelector('[name="messaggio"]'));
-      }
-
-      if (!isValid) {
-        return;
-      }
+      if (!isValid) return;
 
       const submitButton = form.querySelector('button[type="submit"]');
       const originalText = submitButton.textContent;
       submitButton.disabled = true;
-      submitButton.textContent = i18n.t('form.sending');
+      submitButton.textContent = i18n.t('form.sending') || 'Invio in corso...';
 
-      const subject = encodeURIComponent(i18n.t('form.candidatureSubject', { name: nome }));
-      const body = encodeURIComponent(
-        i18n.t('form.candidatureFrom', { name: nome }) + `\n` +
-        `Email: ${email}\n\n` +
-        `Messaggio:\n${messaggio}`
-      );
+      // Prepare form data for Netlify
+      const formData = new FormData(form);
 
-      const mailtoLink = `mailto:info@foxindustrialcontractingsrl.com?subject=${subject}&body=${body}`;
-
-      window.location.href = mailtoLink;
-
-      setTimeout(() => {
-        const success = showSuccess(i18n.t('form.successCandidature'));
-        form.insertBefore(success, form.firstChild);
-
-        setTimeout(() => {
+      fetch('/', {
+        method: 'POST',
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+      })
+        .then(() => {
+          // Success
+          const successmsg = i18n.t(successMessageKey) || 'Messaggio inviato con successo!';
+          const successEl = showSuccess(successmsg);
+          form.insertBefore(successEl, form.firstChild);
           form.reset();
-          submitButton.disabled = false;
-          submitButton.textContent = originalText;
-          success.remove();
-        }, 5000);
-      }, 500);
+
+          // Remove success message after 5 seconds
+          setTimeout(() => {
+            if (successEl && successEl.parentNode) successEl.remove();
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          }, 5000);
+        })
+        .catch((error) => {
+          // Error
+          console.error('Form submission error:', error);
+          const errorEl = showFailure(i18n.t('form.errorGeneric') || 'Si è verificato un errore. Riprova più tardi.');
+          form.insertBefore(errorEl, form.firstChild);
+
+          setTimeout(() => {
+            if (errorEl && errorEl.parentNode) errorEl.remove();
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          }, 5000);
+        });
     });
   }
 
@@ -208,12 +143,12 @@
   document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-      handleContactForm(contactForm);
+      handleNetlifyForm(contactForm, 'form.successContact');
     }
 
     const candidaturaForm = document.getElementById('candidaturaForm');
     if (candidaturaForm) {
-      handleCandidatureForm(candidaturaForm);
+      handleNetlifyForm(candidaturaForm, 'form.successCandidature');
     }
 
     // Remove errors on input

@@ -26,10 +26,17 @@
   <meta property="og:url" content="https://foxindustrialcontractingsrl.com/about.html" />
   <meta property="og:locale" content="it_IT" />
   <link rel="icon" href="./foto/LOGO.png" type="image/png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/structured-data.js"></script>
-  <script src="./js/i18n.js"></script>
+
+  <link rel="stylesheet" href="./css/style.min.css">
+
+  <!-- Preload Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap">
+  </noscript>
+  <script src="./js/min/structured-data.min.js"></script>
+  <script src="./js/min/i18n.min.js"></script>
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./foto/LOGO.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -116,7 +123,7 @@
             creando delle soddisfacenti e durature collaborazioni tra il nostro eclettico team di giovani talenti e i
             dirigenti delle imprese e delle realtà già presenti da anni sul territorio italiano ed europeo.
           </p>
-          <div class="mt-8 p-8 rounded-2xl bg-secondary border-accent-light hover-tilt" data-animate="fade-up">
+          <div class="mt-8 p-8 rounded-2xl bg-surface-alt border-accent-light hover-tilt" data-animate="fade-up">
             <h3 class="text-2xl font-semibold text-accent mb-4" data-animate="fade-right">Presenti in Italia ed in
               Europa</h3>
             <p class="text-secondary leading-relaxed" data-animate="fade-up" data-delay="0.1">
@@ -177,7 +184,7 @@
       </div>
     </section>
     <!-- LAVORA CON NOI -->
-    <section class="section-padding bg-secondary" data-animate="fade-up">
+    <section class="section-padding bg-surface-alt" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
         <div class="glass-effect rounded-3xl p-12 border-accent-light text-center hover-tilt" data-animate="scale-in">
           <h2 class="text-3xl font-bold mb-4" data-animate="fade-up">Vuoi entrare a far parte del nostro team?</h2>
@@ -191,20 +198,120 @@
     </section>
   </main>
   <!-- Footer -->
-  <footer class="bg-primary border-t border-accent-light py-8" data-animate="fade-up">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <p class="text-muted text-sm">&copy; 2025 Fox Industrial Contracting S.r.l. Tutti i diritti riservati.</p>
-        <div class="flex space-x-6 mt-4 md:mt-0">
-          <a href="privacy-policy.html" class="text-muted hover:text-primary text-sm transition-colors">Privacy
+  <footer class="relative pt-20 pb-10 overflow-hidden" data-animate="fade-up">
+    <!-- Background with gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white to-surface-alt z-0"></div>
+    <!-- Decorative top border -->
+    <div
+      class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-70">
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <!-- Brand Column -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="flex items-center space-x-3">
+            <div class="p-2 bg-white rounded-xl shadow-sm border border-accent/10">
+              <img src="./foto/LOGO.png" alt="Logo Fox Industrial Contracting" class="w-12 h-12 rounded-lg">
+            </div>
+            <div>
+              <span
+                class="block text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Fox
+                Industrial</span>
+              <span class="block text-sm font-semibold text-secondary tracking-wider">CONTRACTING S.R.L.</span>
+            </div>
+          </div>
+          <p class="text-secondary leading-relaxed max-w-sm">
+            Eccellenza nella fabbricazione e montaggio di impianti industriali.
+            Operiamo in tutta Europa garantendo qualità certificata ISO 9001:2015 e sicurezza senza compromessi.
+          </p>
+          <div class="flex space-x-4 pt-2">
+            <!-- Social placeholders or certifications icons could go here -->
+            <div class="px-3 py-1 bg-white rounded-full border border-accent/20 text-xs font-medium text-accent">ISO
+              9001:2015</div>
+            <div class="px-3 py-1 bg-white rounded-full border border-accent/20 text-xs font-medium text-accent">WEL
+              Certified</div>
+          </div>
+        </div>
+
+        <!-- Links Column -->
+        <div>
+          <h4
+            class="text-sm font-bold text-primary uppercase tracking-widest mb-6 border-b-2 border-accent/20 pb-2 inline-block">
+            Esplora</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html"
+                class="flex items-center text-secondary hover:text-accent font-medium transition-colors group"><span
+                  class="w-1.5 h-1.5 rounded-full bg-accent/50 mr-2 group-hover:scale-150 transition-transform"></span>Home</a>
+            </li>
+            <li><a href="about.html"
+                class="flex items-center text-secondary hover:text-accent font-medium transition-colors group"><span
+                  class="w-1.5 h-1.5 rounded-full bg-accent/50 mr-2 group-hover:scale-150 transition-transform"></span>Chi
+                Siamo</a></li>
+            <li><a href="services.html"
+                class="flex items-center text-secondary hover:text-accent font-medium transition-colors group"><span
+                  class="w-1.5 h-1.5 rounded-full bg-accent/50 mr-2 group-hover:scale-150 transition-transform"></span>Servizi</a>
+            </li>
+            <li><a href="lavori.html"
+                class="flex items-center text-secondary hover:text-accent font-medium transition-colors group"><span
+                  class="w-1.5 h-1.5 rounded-full bg-accent/50 mr-2 group-hover:scale-150 transition-transform"></span>Lavori</a>
+            </li>
+            <li><a href="unisciti.html"
+                class="flex items-center text-secondary hover:text-accent font-medium transition-colors group"><span
+                  class="w-1.5 h-1.5 rounded-full bg-accent/50 mr-2 group-hover:scale-150 transition-transform"></span>Lavora
+                con noi</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Column -->
+        <div>
+          <h4
+            class="text-sm font-bold text-primary uppercase tracking-widest mb-6 border-b-2 border-accent/20 pb-2 inline-block">
+            Contatti</h4>
+          <ul class="space-y-4">
+            <li
+              class="flex items-start bg-white/50 p-3 rounded-lg border border-accent/5 hover:border-accent/20 transition-colors">
+              <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0 mr-3" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span class="text-secondary text-sm">Via Nazionale delle Puglie, 7<br>80013 Casalnuovo di Napoli NA</span>
+            </li>
+            <li
+              class="flex items-center bg-white/50 p-3 rounded-lg border border-accent/5 hover:border-accent/20 transition-colors">
+              <svg class="w-5 h-5 text-accent flex-shrink-0 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <a href="mailto:info@foxindustrialcontractingsrl.com"
+                class="text-secondary hover:text-accent transition-colors text-sm break-all">info@foxindustrialcontractingsrl.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-accent/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-muted text-sm mb-4 md:mb-0 text-center md:text-left">
+          &copy; 2025 Fox Industrial Contracting S.r.l.<br>
+          <span class="text-xs opacity-75">P.IVA 09601321210 - Cap. Soc. € 15.000,00 i.v.</span>
+        </p>
+        <div class="flex space-x-8">
+          <a href="privacy-policy.html"
+            class="text-muted hover:text-accent text-sm transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-accent after:transition-all hover:after:w-full">Privacy
             Policy</a>
-          <a href="cookie-policy.html" class="text-muted hover:text-primary text-sm transition-colors">Cookie Policy</a>
+          <a href="cookie-policy.html"
+            class="text-muted hover:text-accent text-sm transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-accent after:transition-all hover:after:w-full">Cookie
+            Policy</a>
         </div>
       </div>
     </div>
   </footer>
-  <script src="./js/motion.js"></script>
-  <script src="./js/app.js"></script>
+  <script src="./js/min/motion.min.js"></script>
+  <script src="./js/min/app.min.js"></script>
+  <script src="./js/min/ui-enhancements.min.js"></script>
   <script>
     // Add structured data
     if (window.StructuredData) {

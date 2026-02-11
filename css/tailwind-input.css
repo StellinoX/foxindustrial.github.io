@@ -1,0 +1,12 @@
+/* Tailwind CSS - Input file for build process */
+
+/* Google Fonts - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+/* Import custom styles BEFORE Tailwind so they come first */
+@import './custom.css';
+
+/* Tailwind layers - these will be appended */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
