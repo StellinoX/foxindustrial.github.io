@@ -9,6 +9,9 @@
     "build": "npm run build:css && npm run build:js",
     "serve": "npx http-server . -p 8080 -c-1"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.23",
     "cssnano": "^6.0.0",
