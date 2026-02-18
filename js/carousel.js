@@ -4,22 +4,20 @@
 
   // Array con TUTTE le immagini, ESCLUSA l'immagine di sfondo statico (Warehouse Nippon Gases (4).jpg)
   const allImages = [
+    // Prime foto in primo piano
+    "./foto/webp/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.webp",
+    "./foto/webp/warehouse nippon gases (6).webp",
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12.webp",
     // Officine Tecnomec Taranto
     "./foto/webp/officine tecnomec taranto (2024)1.webp",
     "./foto/webp/officine tecnomec taranto (2024)2.webp",
     "./foto/webp/officine tecnomec taranto (2024)3.webp",
-    "./foto/webp/officine tecnomec taranto (2024)4.webp",
-    "./foto/webp/officine tecnomec taranto (2024)5.webp",
-    "./foto/webp/officine tecnomec taranto (2024)6.webp",
     // Warehouse Nippon Gases (Immagine 4 RIMOSSA)
-    "./foto/webp/warehouse nippon gases (1).webp",
     "./foto/webp/warehouse nippon gases (2).webp",
     "./foto/webp/warehouse nippon gases (3).webp",
     "./foto/webp/warehouse nippon gases (5).webp",
-    "./foto/webp/warehouse nippon gases (6).webp",
     // Nuove foto
     "./foto/webp/IMG-20251006-WA0017.webp",
-    "./foto/webp/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.webp",
     // Nuove foto 11 febbraio 2026
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.11 (1).webp",
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.11.webp",
@@ -329,38 +327,50 @@
 
   // === GESTIONE SWIPE PER CAROUSEL 3D ===
   let carouselTouchStartX = 0;
+  let carouselTouchStartY = 0;
   let carouselTouchEndX = 0;
+  let carouselIsHorizontal = null; // null = not yet determined
 
   function addCarouselSwipeGestures(carousel) {
     const handleTouchStart = (e) => {
       if (e.changedTouches && e.changedTouches.length > 0) {
         carouselTouchStartX = e.changedTouches[0].screenX;
+        carouselTouchStartY = e.changedTouches[0].screenY;
+        carouselTouchEndX = carouselTouchStartX;
+        carouselIsHorizontal = null; // reset
       }
     };
 
     const handleTouchMove = (e) => {
-      if (e.changedTouches && e.changedTouches.length > 0) {
+      if (!e.changedTouches || e.changedTouches.length === 0) return;
+      const dx = e.changedTouches[0].screenX - carouselTouchStartX;
+      const dy = e.changedTouches[0].screenY - carouselTouchStartY;
+
+      // Determine direction on first significant movement
+      if (carouselIsHorizontal === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+        carouselIsHorizontal = Math.abs(dx) > Math.abs(dy);
+      }
+
+      if (carouselIsHorizontal) {
+        // Horizontal swipe: update end position (don't block scroll here, passive)
         carouselTouchEndX = e.changedTouches[0].screenX;
       }
+      // If vertical, do nothing — let the browser scroll naturally
     };
 
-    const handleTouchEnd = (e) => {
-      handleCarouselGesture();
-    };
-
-    const handleCarouselGesture = () => {
-      const threshold = 50; // Minimo 50px di swipe
-      const diff = carouselTouchStartX - carouselTouchEndX;
-
-      if (Math.abs(diff) > threshold) {
-        if (diff > 0) {
-          // Swipe verso sinistra = avanti
-          next3DSlide();
-        } else {
-          // Swipe verso destra = indietro
-          prev3DSlide();
+    const handleTouchEnd = () => {
+      if (carouselIsHorizontal) {
+        const threshold = 50;
+        const diff = carouselTouchStartX - carouselTouchEndX;
+        if (Math.abs(diff) > threshold) {
+          if (diff > 0) {
+            next3DSlide();
+          } else {
+            prev3DSlide();
+          }
         }
       }
+      carouselIsHorizontal = null;
     };
 
     carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
