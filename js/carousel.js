@@ -302,7 +302,7 @@
             observer.disconnect();
           }
         });
-      }, { rootMargin: '0px 0px -20% 0px' });
+      }, { rootMargin: '400px 0px 0px 0px' });
       observer.observe(carousel);
     } else if ('requestIdleCallback' in window) {
       window.requestIdleCallback(initIfNeeded);
