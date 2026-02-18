@@ -20,8 +20,6 @@
     "./foto/webp/IMG-20251006-WA0017.webp",
     // Nuove foto 11 febbraio 2026
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.11 (1).webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.11.webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (1).webp",
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (2).webp",
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (3).webp",
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (4).webp",
