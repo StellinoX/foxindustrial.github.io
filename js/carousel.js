@@ -8,10 +8,6 @@
     "./foto/webp/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.webp",
     "./foto/webp/warehouse nippon gases (6).webp",
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12.webp",
-    // Officine Tecnomec Taranto
-    "./foto/webp/officine tecnomec taranto (2024)1.webp",
-    "./foto/webp/officine tecnomec taranto (2024)2.webp",
-    "./foto/webp/officine tecnomec taranto (2024)3.webp",
     // Warehouse Nippon Gases (Immagine 4 RIMOSSA)
     "./foto/webp/warehouse nippon gases (2).webp",
     "./foto/webp/warehouse nippon gases (3).webp",
@@ -27,9 +23,7 @@
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12.webp",
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.43.03 (1).webp",
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.43.03.webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.45.18 (1).webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.45.18 (2).webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.45.18.webp"
+    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.45.18 (2).webp"
   ];
 
   // Encode URLs to handle spaces and special characters
