@@ -60,13 +60,10 @@ const sdTemplate = Handlebars.compile(fs.readFileSync('./js/structured-data.js',
 fs.writeFileSync('./js/structured-data.js', sdTemplate(context));
 console.log('Built js/structured-data.js');
 let carouselJs = fs.readFileSync('./js/carousel.js', 'utf-8');
-const carouselRegex = /let allImages = \[\];[\s\S]*?fetch\('\.\/data\/carousel\.json'\)[\s\S]*?\.catch\(err => console\.error\('Error loading carousel images:', err\)\);/;
+const carouselRegex = /let allImages = \[[\s\S]*?\];/;
 if (carouselRegex.test(carouselJs)) {
-  const newJs = `let allImages = ${JSON.stringify(carouselData.images)};
-  console.log('Carousel initialized with ' + allImages.length + ' images');
-  if (typeof init3DCarousel === 'function') {
-    init3DCarousel();
-  }`;
+  const encodedImages = carouselData.images.map(img => encodeURI(img).replace(/\(/g, '%28').replace(/\)/g, '%29'));
+  const newJs = `let allImages = ${JSON.stringify(encodedImages)};`;
   carouselJs = carouselJs.replace(carouselRegex, newJs);
   fs.writeFileSync('./js/carousel.js', carouselJs);
   console.log('Updated js/carousel.js with static images array.');
