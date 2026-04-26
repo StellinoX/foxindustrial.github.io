@@ -98,9 +98,9 @@
     <!-- Hero -->
     <section class="pt-32 pb-20" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6 text-center" data-animate="fade-up">
-        <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">Contatti</h1>
+        <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">{{pages.contact.title}}</h1>
         <div class="animated-divider mx-auto" aria-hidden="true"></div>
-        <p class="text-2xl text-secondary" data-animate="fade-up" data-delay="0.1">Fox Industrial Contracting S.R.L.</p>
+        <p class="text-2xl text-secondary" data-animate="fade-up" data-delay="0.1">{{pages.contact.subtitle}}</p>
       </div>
     </section>
     <!-- Contact Info -->
@@ -120,7 +120,7 @@
                   </div>
                   <div>
                     <p class="font-semibold text-primary">Email</p>
-                    <p class="text-secondary">foxindustrialcontractingsrl@outlook.it</p>
+                    <p class="text-secondary">{{global.email}}</p>
                   </div>
                 </div>
                 <div class="flex items-start space-x-4">
@@ -132,7 +132,7 @@
                   </div>
                   <div>
                     <p class="font-semibold text-primary">Telefono</p>
-                    <p class="text-secondary">+39 081 123 4567</p>
+                    <p class="text-secondary">{{global.phone}}</p>
                   </div>
                 </div>
                 <!-- ORARI AGGIUNTI -->
@@ -155,16 +155,16 @@
               <div class="space-y-6">
                 <div>
                   <p class="font-semibold text-primary mb-2">Sede Legale</p>
-                  <p class="text-secondary">Via Roma 1, 80100 Napoli (NA), Italia</p>
+                  <p class="text-secondary">{{global.address}}</p>
                 </div>
                 <div>
                   <p class="font-semibold text-primary mb-2">Sede Operativa</p>
-                  <p class="text-secondary">Via Nazionale delle Puglie, 7, 80013 Casalnuovo di Napoli NA</p>
+                  <p class="text-secondary">{{pages.contact.sede_operativa}}</p>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                   <div>
                     <p class="font-semibold text-primary mb-2">C.F. e P.IVA</p>
-                    <p class="text-secondary">09601321210</p>
+                    <p class="text-secondary">{{pages.contact.cf_piva}}</p>
                   </div>
                   <div>
                     <p class="font-semibold text-primary mb-2">Cap Sociale</p>
@@ -326,7 +326,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <a href="mailto:foxindustrialcontractingsrl@outlook.it" class="text-secondary hover:text-accent transition-colors text-sm break-all">foxindustrialcontractingsrl@outlook.it</a>
+              <a href="mailto:{{global.email}}" class="text-secondary hover:text-accent transition-colors text-sm break-all">{{global.email}}</a>
             </li>
           </ul>
         </div>

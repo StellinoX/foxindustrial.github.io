@@ -15,16 +15,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#3FBFFF">
-  <title>Privacy Policy - Fox Industrial Contracting S.r.l.</title>
+  <title>Lavori - Fox Industrial Contracting S.r.l.</title>
   <meta name="description"
-    content="Privacy Policy di Fox Industrial Contracting S.r.l. - Informazioni sulla gestione dei dati personali.">
-  <link rel="canonical" href="https://foxindustrialcontractingsrl.com/privacy-policy">
-  <meta property="og:title" content="Privacy Policy - Fox Industrial Contracting S.r.l." />
+    content="Scopri i nostri lavori in corso e completati in Italia ed Europa: piping, carpenteria, saldatura, manutenzioni e molto altro.">
+  <link rel="canonical" href="https://foxindustrialcontractingsrl.com/lavori">
+  <meta property="og:title" content="Lavori - Fox Industrial Contracting S.r.l." />
+  <meta property="og:description"
+    content="Scopri i nostri lavori in corso e completati in Italia ed Europa: piping, carpenteria, saldatura, manutenzioni e molto altro." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://foxindustrialcontractingsrl.com/privacy-policy" />
+  <meta property="og:url" content="https://foxindustrialcontractingsrl.com/lavori" />
+  <meta property="og:locale" content="it_IT" />
   <link rel="icon" href="./foto/LOGO.png" type="image/png">
 
-  <link rel="stylesheet" href="./css/style.min.css">
+  <link rel="stylesheet" href="./css/style.min.css?v=10">
+
+  <!-- Preload Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap">
+  </noscript>
+  <script src="./js/min/structured-data.min.js"></script>
   <script src="./js/min/i18n.min.js"></script>
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./foto/LOGO.png">
@@ -33,9 +44,10 @@
 
 </head>
 
-<body class="min-h-screen bg-white text-gray-900 overflow-x-hidden motion-safe">
+<body class="min-h-screen text-gray-900 overflow-x-hidden motion-safe">
+  <a href="#main-content" class="skip-to-main">Salta al contenuto principale</a>
   <!-- Navigation -->
-  <nav class="fixed top-0 w-full z-50 bg-white/95 border-b">
+  <nav class="fixed top-0 w-full z-50 bg-white/95">
     <div class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
         <!-- Logo -->
@@ -43,10 +55,9 @@
           <a href="/">
             <img src="./foto/LOGO.png" alt="Logo" class="w-10 h-10 rounded-xl" />
           </a>
-          <a href="/" class="text-xl font-semibold text-gray-900 hover:text-[#3FBFFF] transition-colors">Fox
-            Industrial Contracting S.r.l.</a>
+          <a href="/" class="text-xl font-semibold hover:text-accent-hover transition-colors">Fox Industrial
+            Contracting S.r.l.</a>
         </div>
-
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center space-x-8">
           <a href="/" class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Home</a>
@@ -54,20 +65,19 @@
             Siamo</a>
           <a href="/services"
             class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Servizi</a>
-          <a href="/lavori"
-            class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Lavori</a>
+          <a href="/lavori" class="text-sm font-medium text-[#3FBFFF] border-b-2 border-[#3FBFFF]">Lavori</a>
           <a href="/certifications"
             class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Certificazioni</a>
           <a href="/contact"
             class="text-sm font-medium text-gray-600 hover:text-[#3FBFFF] transition-colors">Contatti</a>
         </div>
-
         <!-- Mobile Menu Button -->
         <div class="md:hidden flex items-center">
-          <button onclick="toggleMobileMenu()" class="text-gray-900 focus:outline-none" aria-label="Apri menu">
+          <button onclick="toggleMobileMenu()" class="mobile-menu-btn text-gray-900 focus:outline-none"
+            aria-label="Apri menu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg">
-              <path id="menuIcon" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+              <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
@@ -75,7 +85,6 @@
       </div>
     </div>
   </nav>
-
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="mobileMenu">
     <div class="menu-container">
@@ -88,39 +97,153 @@
       <a href="/contact" onclick="toggleMobileMenu()">Contatti</a>
     </div>
   </div>
-
-  <!-- Hero -->
-  <section class="pt-32 pb-20" data-animate="fade-up">
-    <div class="max-w-7xl mx-auto px-6 text-center" data-animate="fade-up">
-      <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">Privacy Policy</h1>
-      <div class="animated-divider mx-auto" aria-hidden="true"></div>
-      <p class="text-xl text-gray-600" data-animate="fade-up" data-delay="0.1">Informativa sulla privacy</p>
-    </div>
-  </section>
-
-  <!-- Content -->
-  <section class="section-padding" data-animate="fade-up">
-    <div class="max-w-7xl mx-auto px-6" data-animate="fade-up" data-delay="0.12">
-      <div class="glass-effect rounded-3xl p-12 border border-gray-200 hover-tilt" data-animate="scale-in">
-        <h2 class="text-3xl font-bold mb-6">Informativa sulla Privacy</h2>
-        <p class="text-gray-600 mb-6">
-          Questa Privacy Policy ha lo scopo di informare gli utenti sulle modalità di raccolta, utilizzo e protezione
-          dei dati personali durante la navigazione sul sito web di Fox Industrial Contracting S.r.l.
-        </p>
-        <p class="text-gray-600 mb-6">
-          Non raccogliamo dati personali tramite cookie o tracciamento automatico. Eventuali dati forniti tramite email
-          o form di contatto sono trattati esclusivamente per finalità di contatto e non condivisi con terzi.
-        </p>
-        <p class="text-gray-600">
-          Il sito non utilizza cookie di profilazione. Per ulteriori informazioni, contattaci all'indirizzo email: <a
-            href="mailto:foxindustrialcontractingsrl@outlook.it"
-            class="text-[#3FBFFF] hover:text-[#0ea5e9]">foxindustrialcontractingsrl@outlook.it</a>
-        </p>
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="pt-32 pb-20" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-6 text-center" data-animate="fade-up">
+        <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">I Nostri Lavori</h1>
+        <div class="animated-divider" aria-hidden="true"></div>
+        <p class="text-2xl text-gray-600" data-animate="fade-up" data-delay="0.1">Progetti in corso e completati in
+          Italia ed Europa</p>
       </div>
-    </div>
-  </section>
+    </section>
+    <div id="lavori-container">
+      {{#each (filterByStatus @root.lavori 'In Corso')}}
+        {{#if @first}}
+        <section class="section-padding bg-surface is-visible">
+          <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 is-visible">
+              <h2 class="text-4xl font-bold" style="color: #3FBFFF; margin-bottom: 1.5rem;">Lavori In Corso</h2>
+              <div class="animated-divider mx-auto" aria-hidden="true"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        {{/if}}
+              <div class="glass-effect rounded-2xl p-8 border hover-tilt is-visible" style="border-color: #3FBFFF30;">
+                <div class="flex items-start space-x-4">
+                  <div class="w-3 h-3 rounded-full mt-2 animate-pulse" style="background-color: #3FBFFF;"></div>
+                  <div>
+                    <h3 class="text-2xl font-bold mb-2" style="color: #3FBFFF;">{{this.title}}</h3>
+                    <p class="text-gray-600 mb-2">{{this.description}}</p>
+                    <p class="text-gray-400">{{this.location}}</p>
+                  </div>
+                </div>
+              </div>
+        {{#if @last}}
+            </div>
+          </div>
+        </section>
+        {{/if}}
+      {{/each}}
 
-  <!-- Footer -->
+      {{#each (filterByStatus @root.lavori 'Terminati 2026')}}
+        {{#if @first}}
+        <section class="section-padding bg-white/50 is-visible">
+          <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 is-visible">
+              <h2 class="text-3xl font-bold text-gray-900 mb-4">Lavori Terminati 2026</h2>
+              <div class="animated-divider mx-auto" aria-hidden="true"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        {{/if}}
+              <div class="glass-effect rounded-2xl p-8 border hover-tilt is-visible" style="border-color: #3FBFFF30;">
+                <div class="flex items-start space-x-4">
+                  <div class="w-3 h-3 rounded-full mt-2 animate-pulse" style="background-color: #3FBFFF;"></div>
+                  <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">{{this.title}}</h3>
+                    <p class="text-gray-600 mb-2">{{this.description}}</p>
+                    <p class="text-gray-400">{{this.location}}</p>
+                  </div>
+                </div>
+              </div>
+        {{#if @last}}
+            </div>
+          </div>
+        </section>
+        {{/if}}
+      {{/each}}
+
+      {{#each (filterByStatus @root.lavori 'Terminati 2025')}}
+        {{#if @first}}
+        <section class="section-padding bg-white/50 is-visible">
+          <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 is-visible">
+              <h2 class="text-3xl font-bold text-gray-900 mb-4">Lavori Terminati 2025</h2>
+              <div class="animated-divider mx-auto" aria-hidden="true"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        {{/if}}
+              <div class="glass-effect rounded-2xl p-8 border hover-tilt is-visible" style="border-color: #3FBFFF30;">
+                <div class="flex items-start space-x-4">
+                  <div class="w-3 h-3 rounded-full mt-2 animate-pulse" style="background-color: #3FBFFF;"></div>
+                  <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">{{this.title}}</h3>
+                    <p class="text-gray-600 mb-2">{{this.description}}</p>
+                    <p class="text-gray-400">{{this.location}}</p>
+                  </div>
+                </div>
+              </div>
+        {{#if @last}}
+            </div>
+          </div>
+        </section>
+        {{/if}}
+      {{/each}}
+
+      {{#each (filterByStatus @root.lavori 'Terminati 2024')}}
+        {{#if @first}}
+        <section class="section-padding bg-white/50 is-visible">
+          <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 is-visible">
+              <h2 class="text-3xl font-bold text-gray-900 mb-4">Lavori Terminati 2024</h2>
+              <div class="animated-divider mx-auto" aria-hidden="true"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        {{/if}}
+              <div class="glass-effect rounded-2xl p-8 border hover-tilt is-visible" style="border-color: #3FBFFF30;">
+                <div class="flex items-start space-x-4">
+                  <div class="w-3 h-3 rounded-full mt-2 animate-pulse" style="background-color: #3FBFFF;"></div>
+                  <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">{{this.title}}</h3>
+                    <p class="text-gray-600 mb-2">{{this.description}}</p>
+                    <p class="text-gray-400">{{this.location}}</p>
+                  </div>
+                </div>
+              </div>
+        {{#if @last}}
+            </div>
+          </div>
+        </section>
+        {{/if}}
+      {{/each}}
+
+      {{#each (filterByStatus @root.lavori 'Terminati 2023')}}
+        {{#if @first}}
+        <section class="section-padding bg-white/50 is-visible">
+          <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 is-visible">
+              <h2 class="text-3xl font-bold text-gray-900 mb-4">Lavori Terminati 2023</h2>
+              <div class="animated-divider mx-auto" aria-hidden="true"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        {{/if}}
+              <div class="glass-effect rounded-2xl p-8 border hover-tilt is-visible" style="border-color: #3FBFFF30;">
+                <div class="flex items-start space-x-4">
+                  <div class="w-3 h-3 rounded-full mt-2 animate-pulse" style="background-color: #3FBFFF;"></div>
+                  <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">{{this.title}}</h3>
+                    <p class="text-gray-600 mb-2">{{this.description}}</p>
+                    <p class="text-gray-400">{{this.location}}</p>
+                  </div>
+                </div>
+              </div>
+        {{#if @last}}
+            </div>
+          </div>
+        </section>
+        {{/if}}
+      {{/each}}
+    </div>
+  </main>
   <footer class="relative pt-20 pb-10 overflow-hidden" data-animate="fade-up">
     <!-- Background with gradient -->
     <div class="absolute inset-0 bg-gradient-to-b from-white to-surface-alt z-0"></div>
@@ -209,8 +332,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <a href="mailto:foxindustrialcontractingsrl@outlook.it"
-                class="text-secondary hover:text-accent transition-colors text-sm break-all">foxindustrialcontractingsrl@outlook.it</a>
+              <a href="mailto:{{global.email}}"
+                class="text-secondary hover:text-accent transition-colors text-sm break-all">{{global.email}}</a>
             </li>
           </ul>
         </div>
@@ -232,9 +355,19 @@
       </div>
     </div>
   </footer>
-
   <script src="./js/min/motion.min.js"></script>
   <script src="./js/min/app.min.js"></script>
+  <script src="./js/min/ui-enhancements.min.js"></script>
+  <script>
+    // Add structured data
+    if (window.StructuredData) {
+      StructuredData.addStructuredData(StructuredData.getOrganizationSchema());
+      StructuredData.addStructuredData(StructuredData.getBreadcrumbSchema([
+        { name: "Home", url: "/index.html" },
+        { name: "Lavori", url: "/lavori.html" }
+      ]));
+    }
+  </script>
 
 </body>
 

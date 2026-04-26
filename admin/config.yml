@@ -6,6 +6,56 @@ media_folder: "foto"
 public_folder: "./foto"
 
 collections:
+  - name: "global"
+    label: "Impostazioni Globali"
+    files:
+      - name: "settings"
+        label: "Dati Contatto & Social"
+        file: "data/global/settings.json"
+        fields:
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Telefono", name: "phone", widget: "string"}
+          - {label: "Indirizzo", name: "address", widget: "string"}
+
+  - name: "pages"
+    label: "Pagine"
+    files:
+      - name: "about"
+        label: "Pagina Chi Siamo"
+        file: "data/pages/about.json"
+        fields:
+          - {label: "Titolo", name: "title", widget: "string"}
+          - {label: "Descrizione principale", name: "main_description", widget: "text"}
+          - {label: "Testo esperienza", name: "experience_text", widget: "text"}
+          
+      - name: "contact"
+        label: "Pagina Contatti"
+        file: "data/pages/contact.json"
+        fields:
+          - {label: "Titolo", name: "title", widget: "string"}
+          - {label: "Sottotitolo", name: "subtitle", widget: "string"}
+          
+      - name: "services"
+        label: "Pagina Servizi"
+        file: "data/pages/services.json"
+        fields:
+          - label: "Elenco Servizi"
+            name: "services_list"
+            widget: "list"
+            fields:
+              - {label: "Titolo Servizio", name: "title", widget: "string"}
+              - {label: "Descrizione", name: "description", widget: "text"}
+              
+      - name: "certifications"
+        label: "Pagina Certificazioni"
+        file: "data/pages/certifications.json"
+        fields:
+          - label: "Elenco Certificazioni"
+            name: "cert_list"
+            widget: "list"
+            fields:
+              - {label: "Titolo Certificazione", name: "title", widget: "string"}
+              - {label: "Immagine (WebP preferito)", name: "image", widget: "image"}
   - name: "lavori"
     label: "Lavori"
     files:

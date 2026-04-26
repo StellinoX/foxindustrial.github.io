@@ -2,19 +2,11 @@
 (function () {
   'use strict';
 
-  let allImages = [];
-
-  // Fetch images from JSON
-  fetch('/data/carousel.json')
-    .then(res => res.json())
-    .then(data => {
-      allImages = data.images.map(img => encodeURI(img).replace(/\(/g, '%28').replace(/\)/g, '%29'));
-      console.log('Carousel initialized dynamically with ' + allImages.length + ' images');
-      if (typeof init3DCarousel === 'function') {
-        init3DCarousel();
-      }
-    })
-    .catch(err => console.error('Error loading carousel images:', err));
+  let allImages = ["./foto/webp/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.webp","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.24 (1).jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.24.jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.25 (1).jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.25 (2).jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.26 (1).jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.27 (1).jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.27 (2).jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.29.jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.42 (1).jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.42.jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.44 (1).jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.46 (1).jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.46.jpeg","./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.47 (1).jpeg","./foto/webp/warehouse nippon gases (6).webp","./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12.webp","./foto/webp/warehouse nippon gases (2).webp","./foto/webp/warehouse nippon gases (3).webp","./foto/webp/warehouse nippon gases (5).webp","./foto/webp/IMG-20251006-WA0017.webp","./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.11 (1).webp","./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (2).webp","./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (3).webp","./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (4).webp","./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (5).webp","./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12.webp","./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.43.03 (1).webp","./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.43.03.webp","./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.45.18 (2).webp"];
+  console.log('Carousel initialized with ' + allImages.length + ' images');
+  if (typeof init3DCarousel === 'function') {
+    init3DCarousel();
+  }
 
   // Variabili globali per lo stato dei caroselli
   let currentModalSlideIndex = 0;

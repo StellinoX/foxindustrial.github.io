@@ -1,0 +1,26 @@
+{
+  "title": "Certificazioni",
+  "subtitle": "Le Nostre Certificazioni",
+  "cert_list": [
+    {
+      "title": "ISO 9001:2015",
+      "image": "./foto/webp/ISO9001.webp"
+    },
+    {
+      "title": "WEL 24-0703-C015-4099",
+      "image": "./foto/webp/WEL 24-0703-C015-4099.webp"
+    },
+    {
+      "title": "WEL-24-0703-C015-4100",
+      "image": "./foto/webp/WEL-24-0703-C015-4100.webp"
+    },
+    {
+      "title": "WEL-24-0703-C015-4101",
+      "image": "./foto/webp/WEL-24-0703-C015-4101.webp"
+    },
+    {
+      "title": "WEL-24-0703-C015-4102",
+      "image": "./foto/webp/WEL-24-0703-C015-4102.webp"
+    }
+  ]
+}

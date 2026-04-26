@@ -99,7 +99,7 @@
     <!-- Hero -->
     <section class="pt-32 pb-20" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6 text-center" data-animate="fade-up">
-        <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">I Nostri Servizi</h1>
+        <h1 class="text-5xl font-bold mb-4" data-animate="fade-down">{{pages.services.title}}</h1>
         <div class="animated-divider" aria-hidden="true"></div>
         <p class="text-2xl text-gray-600" data-animate="fade-up" data-delay="0.1">Un provetto modello di lavoro per
           soddisfare ogni esigenza</p>
@@ -110,30 +110,16 @@
     <section class="section-padding" data-animate="fade-up">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children" data-stagger="0.12">
+          {{#each pages.services.services_list}}
           <div class="glass-effect rounded-3xl p-8 border-accent-light hover-scale project-card hover-tilt"
             data-animate="fade-up">
             <div class="flex items-center mb-6">
-              <div class="service-icon mr-4 text-accent text-3xl">⚡</div>
-              <h3 class="text-2xl font-semibold">Pianificazione Rapida</h3>
+              <div class="service-icon mr-4 text-accent text-3xl">{{this.icon}}</div>
+              <h3 class="text-2xl font-semibold">{{this.title}}</h3>
             </div>
-            <p class="text-secondary leading-relaxed">Attivi in diversi campi di specializzazione, il nostro personale verrà incontro alle esigenze di ogni cliente in tempi brevi</p>
+            <p class="text-secondary leading-relaxed">{{this.description}}</p>
           </div>
-          <div class="glass-effect rounded-3xl p-8 border-accent-light hover-scale project-card hover-tilt"
-            data-animate="fade-up">
-            <div class="flex items-center mb-6">
-              <div class="service-icon mr-4 text-accent text-3xl">👨‍💼</div>
-              <h3 class="text-2xl font-semibold">Figure altamente specializzate</h3>
-            </div>
-            <p class="text-secondary leading-relaxed">Disponiamo di figure adatte ad ogni tipo di cantiere: Responsabili di cantiere, Saldatori qualificati, Tubisti a sketch, Carpentieri e Montatori a disegno e Meccanici provetti</p>
-          </div>
-          <div class="glass-effect rounded-3xl p-8 border-accent-light hover-scale project-card hover-tilt"
-            data-animate="fade-up">
-            <div class="flex items-center mb-6">
-              <div class="service-icon mr-4 text-accent text-3xl">🛡️</div>
-              <h3 class="text-2xl font-semibold">Elevati Standard di Sicurezza</h3>
-            </div>
-            <p class="text-secondary leading-relaxed">La Sicurezza e la Qualità sono capisaldi fondamentali della nostra identità aziendale: ci avvaliamo infatti dei più aggiornati sistemi di certificazione e dispositivi di sicurezza personale e di cantiere riconosciuti in Italia ed Europa</p>
-          </div>
+          {{/each}}
         </div>
       </div>
     </section>
@@ -261,8 +247,8 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:foxindustrialcontractingsrl@outlook.it"
-                  class="text-secondary hover:text-accent transition-colors text-sm break-all">foxindustrialcontractingsrl@outlook.it</a>
+                <a href="mailto:{{global.email}}"
+                  class="text-secondary hover:text-accent transition-colors text-sm break-all">{{global.email}}</a>
               </li>
             </ul>
           </div>
