@@ -8,22 +8,28 @@ public_folder: "./foto"
 collections:
   - name: "lavori"
     label: "Lavori"
-    file: "data/lavori.json"
-    fields:
-      - label: "Progetti"
-        name: "projects"
-        widget: "list"
+    files:
+      - name: "lavori_file"
+        label: "Dati Progetti"
+        file: "data/lavori.json"
         fields:
-          - {label: "Titolo Cliente", name: "title", widget: "string"}
-          - {label: "Descrizione Lavoro", name: "description", widget: "text"}
-          - {label: "Luogo (Città, Provincia)", name: "location", widget: "string"}
-          - {label: "Stato", name: "status", widget: "select", options: ["In Corso", "Terminati 2026", "Terminati 2025", "Terminati 2024", "Terminati 2023"]}
+          - label: "Progetti"
+            name: "projects"
+            widget: "list"
+            fields:
+              - {label: "Titolo Cliente", name: "title", widget: "string"}
+              - {label: "Descrizione Lavoro", name: "description", widget: "text"}
+              - {label: "Luogo (Città, Provincia)", name: "location", widget: "string"}
+              - {label: "Stato", name: "status", widget: "select", options: ["In Corso", "Terminati 2026", "Terminati 2025", "Terminati 2024", "Terminati 2023"]}
 
   - name: "carousel"
     label: "Foto Carosello"
-    file: "data/carousel.json"
-    fields:
-      - label: "Immagini Carosello"
-        name: "images"
-        widget: "list"
-        field: {label: "Immagine", name: "image", widget: "image"}
+    files:
+      - name: "carousel_file"
+        label: "Dati Carosello"
+        file: "data/carousel.json"
+        fields:
+          - label: "Immagini Carosello"
+            name: "images"
+            widget: "list"
+            field: {label: "Immagine", name: "image", widget: "image"}
