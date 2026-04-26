@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: "foto"
+public_folder: "./foto"
+
+collections:
+  - name: "lavori"
+    label: "Lavori"
+    file: "data/lavori.json"
+    fields:
+      - label: "Progetti"
+        name: "projects"
+        widget: "list"
+        fields:
+          - {label: "Titolo Cliente", name: "title", widget: "string"}
+          - {label: "Descrizione Lavoro", name: "description", widget: "text"}
+          - {label: "Luogo (Città, Provincia)", name: "location", widget: "string"}
+          - {label: "Stato", name: "status", widget: "select", options: ["In Corso", "Terminati 2026", "Terminati 2025", "Terminati 2024", "Terminati 2023"]}
+
+  - name: "carousel"
+    label: "Foto Carosello"
+    file: "data/carousel.json"
+    fields:
+      - label: "Immagini Carosello"
+        name: "images"
+        widget: "list"
+        field: {label: "Immagine", name: "image", widget: "image"}

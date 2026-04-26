@@ -2,51 +2,19 @@
 (function () {
   'use strict';
 
-  // Array con TUTTE le immagini, ESCLUSA l'immagine di sfondo statico (Warehouse Nippon Gases (4).jpg)
-  const allImages = [
-    // Prime foto in primo piano
-    "./foto/webp/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.webp",
-    // Nuove foto aprile 2026
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.24 (1).jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.24.jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.25 (1).jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.25 (2).jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.26 (1).jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.27 (1).jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.27 (2).jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.29.jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.42 (1).jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.42.jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.44 (1).jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.46 (1).jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.46.jpeg",
-    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.47 (1).jpeg",
-    "./foto/webp/warehouse nippon gases (6).webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12.webp",
-    // Warehouse Nippon Gases (Immagine 4 RIMOSSA)
-    "./foto/webp/warehouse nippon gases (2).webp",
-    "./foto/webp/warehouse nippon gases (3).webp",
-    "./foto/webp/warehouse nippon gases (5).webp",
-    // Nuove foto
-    "./foto/webp/IMG-20251006-WA0017.webp",
-    // Nuove foto 11 febbraio 2026
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.11 (1).webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (2).webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (3).webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (4).webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12 (5).webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12.webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.43.03 (1).webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.43.03.webp",
-    "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.45.18 (2).webp"
-  ];
+  let allImages = [];
 
-  // Encode URLs to handle spaces and special characters
-  for (let i = 0; i < allImages.length; i++) {
-    allImages[i] = encodeURI(allImages[i]).replace(/\(/g, '%28').replace(/\)/g, '%29');
-  }
-
-  console.log('Carousel initialized with images:', allImages);
+  // Fetch images from JSON
+  fetch('/data/carousel.json')
+    .then(res => res.json())
+    .then(data => {
+      allImages = data.images.map(img => encodeURI(img).replace(/\(/g, '%28').replace(/\)/g, '%29'));
+      console.log('Carousel initialized dynamically with ' + allImages.length + ' images');
+      if (typeof init3DCarousel === 'function') {
+        init3DCarousel();
+      }
+    })
+    .catch(err => console.error('Error loading carousel images:', err));
 
   // Variabili globali per lo stato dei caroselli
   let currentModalSlideIndex = 0;

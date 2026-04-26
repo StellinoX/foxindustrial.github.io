@@ -55,6 +55,7 @@
   <link rel="apple-touch-icon" href="./foto/LOGO.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body class="min-h-screen text-primary overflow-x-hidden motion-safe">
@@ -554,6 +555,17 @@
       StructuredData.addStructuredData(StructuredData.getBreadcrumbSchema([
         { name: "Home", url: "/index.html" }
       ]));
+    }
+  </script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
     }
   </script>
 </body>
