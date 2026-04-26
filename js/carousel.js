@@ -6,6 +6,21 @@
   const allImages = [
     // Prime foto in primo piano
     "./foto/webp/Immagine WhatsApp 2025-09-23 ore 08.29.26_fdef9781.webp",
+    // Nuove foto aprile 2026
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.24 (1).jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.24.jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.25 (1).jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.25 (2).jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.26 (1).jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.27 (1).jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.27 (2).jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.10.29.jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.42 (1).jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.42.jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.44 (1).jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.46 (1).jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.46.jpeg",
+    "./foto/foto_aprile_2026/WhatsApp Image 2026-04-22 at 18.13.47 (1).jpeg",
     "./foto/webp/warehouse nippon gases (6).webp",
     "./foto/newfoto11022026/WhatsApp Image 2026-02-02 at 16.41.12.webp",
     // Warehouse Nippon Gases (Immagine 4 RIMOSSA)
