@@ -37,7 +37,7 @@
   <!-- Self-hosted Tailwind CSS + Custom Styles -->
   <link rel="preload" href="./css/style.min.css" as="style">
   <link rel="stylesheet" href="./css/style.min.css">
-  <link rel="stylesheet" href="./css/custom.css?v=13">
+  <link rel="stylesheet" href="./css/custom.css?v=15">
 
   <!-- Preload Fonts -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
@@ -55,7 +55,6 @@
   <link rel="apple-touch-icon" href="./foto/LOGO.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body class="min-h-screen text-primary overflow-x-hidden motion-safe">
@@ -242,39 +241,39 @@
           </p>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 stagger-children" data-stagger="0.08">
-          <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
+          <div id="logo-mati" class="client-logo shadow-md hover-tilt" data-animate="scale-in">
             <picture>
-              <source srcset="./foto/webp/mati group.webp" type="image/webp">
-              <img src="./foto/webp/mati group.webp" alt="Logo Mati Group - Cliente Fox Industrial Contracting"
+              <source srcset="./foto/webp/mati group.webp?v=2" type="image/webp">
+              <img src="./foto/webp/mati group.webp?v=2" alt="Logo Mati Group - Cliente Fox Industrial Contracting"
                 loading="lazy" decoding="async">
             </picture>
           </div>
-          <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
+          <div id="logo-safas" class="client-logo shadow-md hover-tilt" data-animate="scale-in">
             <picture>
-              <source srcset="./foto/webp/safasgroup.webp" type="image/webp">
-              <img src="./foto/webp/safasgroup.webp" alt="Logo Safas Group - Cliente Fox Industrial Contracting"
+              <source srcset="./foto/webp/safasgroup.webp?v=2" type="image/webp">
+              <img src="./foto/webp/safasgroup.webp?v=2" alt="Logo Safas Group - Cliente Fox Industrial Contracting"
                 loading="lazy" decoding="async">
             </picture>
           </div>
-          <div class="client-logo shadow-md hover-tilt" data-animate="scale-in">
+          <div id="logo-mac" class="client-logo shadow-md hover-tilt" data-animate="scale-in">
             <picture>
-              <source srcset="./foto/webp/mac group.webp" type="image/webp">
-              <img src="./foto/webp/mac group.webp" alt="Logo MAC Impianti - Cliente Fox Industrial Contracting"
+              <source srcset="./foto/webp/mac group.webp?v=2" type="image/webp">
+              <img src="./foto/webp/mac group.webp?v=2" alt="Logo MAC Impianti - Cliente Fox Industrial Contracting"
                 loading="lazy" decoding="async">
             </picture>
           </div>
           <div id="logo-ioom" class="client-logo shadow-md hover-tilt" data-animate="scale-in">
             <picture>
-              <source srcset="./foto/webp/ioom.webp" type="image/webp">
-              <img src="./foto/webp/ioom.webp"
+              <source srcset="./foto/webp/ioom.webp?v=2" type="image/webp">
+              <img src="./foto/webp/ioom.webp?v=2"
                 alt="Logo ICOM Advanced Mechanical Solutions - Cliente Fox Industrial Contracting" loading="lazy"
                 decoding="async">
             </picture>
           </div>
           <div id="logo-fincimec" class="client-logo shadow-md hover-tilt" data-animate="scale-in">
             <picture>
-              <source srcset="./foto/webp/fincimec.webp" type="image/webp">
-              <img src="./foto/webp/fincimec.webp"
+              <source srcset="./foto/webp/fincimec.webp?v=2" type="image/webp">
+              <img src="./foto/webp/fincimec.webp?v=2"
                 alt="Logo Fincimec Impianti Industriali - Cliente Fox Industrial Contracting" loading="lazy"
                 decoding="async">
             </picture>
@@ -512,7 +511,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <a href="mailto:foxindustrialcontractingsrl@outlook.it" class="text-secondary hover:text-accent transition-colors text-sm break-all">foxindustrialcontractingsrl@outlook.it</a>
+              <a href="mailto:info@foxindustrialcontractingsrl.com"
+                class="text-secondary hover:text-accent transition-colors text-sm break-all">info@foxindustrialcontractingsrl.com</a>
             </li>
           </ul>
         </div>
@@ -535,7 +535,7 @@
     </div>
   </footer>
   <a href="/contact"
-    class="fixed bottom-6 right-6 z-40 bg-accent border border-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-accent-hover hover-tilt"
+    class="fixed bottom-20 right-6 z-40 bg-accent border border-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-accent-hover hover-tilt"
     data-tilt-strength="12" aria-label="Contattaci">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -554,17 +554,6 @@
       StructuredData.addStructuredData(StructuredData.getBreadcrumbSchema([
         { name: "Home", url: "/index.html" }
       ]));
-    }
-  </script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
     }
   </script>
 </body>

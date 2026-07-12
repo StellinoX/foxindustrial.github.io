@@ -18,7 +18,7 @@
       "description": "Azienda specializzata nella fabbricazione e montaggio di impianti di piping, carpenteria metallica e componenti meccanici in Italia ed Europa.",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Via Roma 1, 80100 Napoli (NA), Italia",
+        "streetAddress": "Via Duomo, 348",
         "addressLocality": "Napoli",
         "addressRegion": "NA",
         "postalCode": "80133",
@@ -26,9 +26,9 @@
       },
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+39 081 123 4567",
+        "telephone": "+39-081-18939249",
         "contactType": "customer service",
-        "email": "foxindustrialcontractingsrl@outlook.it",
+        "email": "info@foxindustrialcontractingsrl.com",
         "areaServed": ["IT", "EU"],
         "availableLanguage": "Italian"
       },

@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Admin CMS — Fox Industrial</title>
+  <link rel="icon" href="./foto/LOGO.png" type="image/png">
+  <link rel="stylesheet" href="./css/style.min.css">
+  <link rel="stylesheet" href="./css/custom.css?v=14">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #f0f8ff; color: #1f2937; }
+
+    /* ── Login Screen ── */
+    #login-screen {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #e6f2ff 0%, #f0f8ff 60%, #d0edff 100%);
+    }
+    .login-card {
+      background: rgba(255,255,255,0.95); border-radius: 1.5rem;
+      padding: 2.5rem 2rem; width: 100%; max-width: 380px;
+      box-shadow: 0 24px 60px rgba(63,191,255,0.15); border: 1px solid rgba(63,191,255,0.2);
+    }
+    .login-card img { width: 56px; height: 56px; border-radius: 12px; margin: 0 auto 1rem; display: block; }
+    .login-card h1 { text-align: center; font-size: 1.4rem; font-weight: 800; margin: 0 0 0.25rem; }
+    .login-card p { text-align: center; color: #6b7280; font-size: 0.875rem; margin: 0 0 1.5rem; }
+    .login-card input {
+      width: 100%; padding: 0.75rem 1rem; border-radius: 0.75rem;
+      border: 1px solid rgba(148,163,184,0.3); background: #f9fafb;
+      font-size: 0.95rem; margin-bottom: 0.75rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .login-card input:focus { border-color: #3FBFFF; box-shadow: 0 0 0 3px rgba(63,191,255,0.2); }
+    .btn-login {
+      width: 100%; padding: 0.85rem; background: #3FBFFF; color: white;
+      border: none; border-radius: 0.75rem; font-weight: 700; font-size: 1rem;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-login:hover { background: #1CAFFF; transform: translateY(-1px); }
+    #login-error { color: #ef4444; font-size: 0.82rem; text-align: center; margin-top: 0.5rem; min-height: 1.2em; }
+
+    /* ── App Layout ── */
+    #app { display: none; min-height: 100vh; }
+    #app.visible { display: flex; flex-direction: column; }
+
+    /* ── Topbar ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 50; height: 60px;
+      background: rgba(255,255,255,0.9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(63,191,255,0.18);
+      display: flex; align-items: center; padding: 0 1.5rem; gap: 1rem;
+    }
+    .topbar img { width: 36px; height: 36px; border-radius: 8px; }
+    .topbar-title { font-weight: 800; font-size: 1rem; color: #1f2937; flex: 1; }
+    .topbar-badge { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      background: rgba(63,191,255,0.12); color: #0369a1; padding: 0.25rem 0.6rem; border-radius: 999px; border: 1px solid rgba(63,191,255,0.3); }
+    .btn-topbar {
+      padding: 0.4rem 1rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.82rem;
+      cursor: pointer; transition: all 0.2s; border: 1px solid transparent;
+    }
+    .btn-site { background: #f3f4f6; color: #374151; border-color: #e5e7eb; text-decoration: none; display:inline-flex; align-items:center; gap:4px;}
+    .btn-site:hover { background: #e5e7eb; }
+    .btn-logout { background: transparent; color: #ef4444; border-color: #fca5a5; }
+    .btn-logout:hover { background: #fef2f2; }
+    #save-indicator { font-size: 0.78rem; color: #16a34a; font-weight: 600; opacity: 0; transition: opacity 0.3s; }
+    #save-indicator.show { opacity: 1; }
+
+    /* ── Main layout ── */
+    .app-body { display: flex; flex: 1; overflow: hidden; height: calc(100vh - 60px); }
+
+    /* ── Sidebar Nav ── */
+    .sidebar {
+      width: 220px; flex-shrink: 0;
+      background: rgba(255,255,255,0.8); border-right: 1px solid rgba(63,191,255,0.15);
+      overflow-y: auto; padding: 1.25rem 0.75rem;
+      display: flex; flex-direction: column; gap: 0.25rem;
+    }
+    .nav-section-label { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: #9ca3af; padding: 0.5rem 0.75rem 0.25rem; }
+    .nav-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 0.75rem; border-radius: 0.65rem; cursor: pointer;
+      font-size: 0.875rem; font-weight: 500; color: #4b5563;
+      transition: all 0.15s; border: 1px solid transparent;
+    }
+    .nav-item:hover { background: rgba(63,191,255,0.08); color: #1f2937; }
+    .nav-item.active { background: rgba(63,191,255,0.12); color: #0369a1; border-color: rgba(63,191,255,0.25); font-weight: 700; }
+    .nav-item .icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+    .nav-divider { height: 1px; background: rgba(63,191,255,0.1); margin: 0.5rem 0; }
+
+    /* ── Content Area ── */
+    .content-area { flex: 1; overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    /* ── Panels ── */
+    .panel { background: rgba(255,255,255,0.95); border-radius: 1.25rem; border: 1px solid rgba(63,191,255,0.18); box-shadow: 0 4px 24px rgba(63,191,255,0.07); overflow: hidden; }
+    .panel-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(63,191,255,0.1); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .panel-header h2 { font-size: 1rem; font-weight: 800; color: #1f2937; margin: 0; }
+    .panel-header p { font-size: 0.8rem; color: #6b7280; margin: 0.2rem 0 0; }
+    .panel-body { padding: 1.5rem; }
+    .panel-body.no-pad { padding: 0; }
+
+    /* ── Form Controls ── */
+    .field-group { margin-bottom: 1.25rem; }
+    .field-group:last-child { margin-bottom: 0; }
+    .field-label { display: block; font-size: 0.78rem; font-weight: 700; color: #374151; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .field-hint { font-size: 0.72rem; color: #9ca3af; font-weight: 400; text-transform: none; letter-spacing: 0; margin-left: 0.4rem; }
+    .field-input, .field-textarea, .field-select {
+      width: 100%; padding: 0.65rem 0.875rem; border-radius: 0.625rem;
+      border: 1px solid #d1d5db; background: #fafafa; color: #1f2937;
+      font-size: 0.9rem; font-family: inherit; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .field-input:focus, .field-textarea:focus, .field-select:focus {
+      border-color: #3FBFFF; box-shadow: 0 0 0 3px rgba(63,191,255,0.15); background: #fff;
+    }
+    .field-textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+    .field-textarea.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-grid .span-2 { grid-column: span 2; }
+    .form-row { display: flex; gap: 1rem; }
+    .form-row > * { flex: 1; }
+
+    /* ── Buttons ── */
+    .btn {
+      padding: 0.55rem 1.1rem; border-radius: 0.55rem; font-weight: 600; font-size: 0.82rem;
+      cursor: pointer; border: 1px solid transparent; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.35rem;
+    }
+    .btn-primary { background: #3FBFFF; color: white; }
+    .btn-primary:hover { background: #1CAFFF; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(63,191,255,0.35); }
+    .btn-secondary { background: transparent; color: #3FBFFF; border-color: #3FBFFF; }
+    .btn-secondary:hover { background: rgba(63,191,255,0.08); }
+    .btn-danger { background: transparent; color: #ef4444; border-color: #fca5a5; }
+    .btn-danger:hover { background: #fef2f2; }
+    .btn-ghost { background: #f3f4f6; color: #374151; border-color: #e5e7eb; }
+    .btn-ghost:hover { background: #e5e7eb; }
+    .btn-sm { padding: 0.35rem 0.75rem; font-size: 0.78rem; }
+    .btn-icon { width: 32px; height: 32px; padding: 0; justify-content: center; border-radius: 0.4rem; }
+
+    /* ── Works List ── */
+    .works-toolbar { display: flex; gap: 0.75rem; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid rgba(63,191,255,0.1); flex-wrap: wrap; }
+    .works-toolbar input { flex: 1; min-width: 160px; padding: 0.5rem 0.875rem; border-radius: 0.5rem; border: 1px solid #d1d5db; font-size: 0.875rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .works-toolbar input:focus { border-color: #3FBFFF; box-shadow: 0 0 0 2px rgba(63,191,255,0.15); }
+    .works-stats { display: flex; gap: 0.75rem; }
+    .stat-chip { background: #f3f4f6; border-radius: 0.5rem; padding: 0.35rem 0.7rem; font-size: 0.78rem; font-weight: 700; color: #4b5563; }
+    .stat-chip .num { color: #3FBFFF; }
+
+    /* Works table */
+    .works-table-wrap { overflow-x: auto; }
+    table.works-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .works-table th { background: #f8fafc; padding: 0.6rem 1rem; text-align: left; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; border-bottom: 1px solid #e5e7eb; }
+    .works-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+    .works-table tr:hover td { background: rgba(63,191,255,0.04); }
+    .works-table tr.selected td { background: rgba(63,191,255,0.08); }
+    .status-badge { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+    .status-ongoing { background: rgba(63,191,255,0.12); color: #0369a1; }
+    .status-completed { background: rgba(34,197,94,0.1); color: #166534; }
+    .status-planned { background: rgba(251,191,36,0.12); color: #92400e; }
+    .dot-pulse { width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: inline-block; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+    .row-actions { display: flex; gap: 0.35rem; opacity: 0; transition: opacity 0.15s; }
+    .works-table tr:hover .row-actions { opacity: 1; }
+
+    /* ── Work Editor Drawer / Modal ── */
+    #work-modal-backdrop {
+      position: fixed; inset: 0; background: rgba(15,23,42,0.35); backdrop-filter: blur(4px);
+      z-index: 100; display: none; align-items: flex-start; justify-content: flex-end;
+    }
+    #work-modal-backdrop.open { display: flex; }
+    #work-modal {
+      width: 100%; max-width: 560px; height: 100vh; overflow-y: auto;
+      background: #fff; box-shadow: -8px 0 40px rgba(15,23,42,0.15);
+      display: flex; flex-direction: column;
+    }
+    .modal-header {
+      position: sticky; top: 0; z-index: 10;
+      background: #fff; border-bottom: 1px solid #e5e7eb;
+      padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem;
+    }
+    .modal-header h3 { font-size: 1rem; font-weight: 800; flex: 1; margin: 0; }
+    .modal-body { padding: 1.5rem; flex: 1; }
+    .modal-footer {
+      position: sticky; bottom: 0; background: #fff;
+      border-top: 1px solid #e5e7eb; padding: 1rem 1.5rem;
+      display: flex; gap: 0.75rem; justify-content: flex-end;
+    }
+
+    /* ── Tabs for completed sections ── */
+    .page-tabs { display: flex; gap: 0; border-bottom: 2px solid #e5e7eb; margin-bottom: 1.5rem; }
+    .page-tab { padding: 0.6rem 1.2rem; font-size: 0.85rem; font-weight: 600; color: #6b7280; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.15s, border-color 0.15s; }
+    .page-tab.active { color: #3FBFFF; border-color: #3FBFFF; }
+    .page-tab:hover:not(.active) { color: #374151; }
+
+    /* ── Field section headings ── */
+    .section-divider { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #3FBFFF; background: rgba(63,191,255,0.06); border-radius: 0.5rem; padding: 0.4rem 0.75rem; margin: 1.25rem 0 1rem; }
+
+    /* ── Toast ── */
+    #toast { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+      background: #1f2937; color: white; padding: 0.75rem 1.25rem; border-radius: 0.75rem;
+      font-size: 0.875rem; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      transform: translateY(80px); opacity: 0; transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+      max-width: 320px;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+    #toast.success { background: #16a34a; }
+    #toast.error { background: #ef4444; }
+
+    /* ── Loader overlay ── */
+    #page-loader { position: fixed; inset: 0; z-index: 998; background: white; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s; }
+    #page-loader.hidden { opacity: 0; pointer-events: none; }
+    .spinner { width: 40px; height: 40px; border: 3px solid rgba(63,191,255,0.2); border-top-color: #3FBFFF; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid .span-2 { grid-column: span 1; }
+    }
+
+    /* ── Empty state ── */
+    .empty-state { text-align: center; padding: 3rem 1rem; color: #9ca3af; }
+    .empty-state .icon { font-size: 3rem; margin-bottom: 0.5rem; }
+
+    /* Switch toggle */
+    .toggle-wrapper { display: flex; align-items: center; gap: 0.6rem; }
+    .toggle { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; cursor: pointer; inset: 0; background: #d1d5db; border-radius: 999px; transition: background 0.2s; }
+    .toggle-slider::before { content: ''; position: absolute; height: 16px; width: 16px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: transform 0.2s; }
+    .toggle input:checked + .toggle-slider { background: #3FBFFF; }
+    .toggle input:checked + .toggle-slider::before { transform: translateX(18px); }
+    .toggle-label { font-size: 0.875rem; color: #374151; font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<!-- Page Loader -->
+<div id="page-loader">
+  <div style="text-align:center">
+    <div class="spinner" style="margin:0 auto 1rem;"></div>
+    <p style="color:#6b7280;font-size:0.875rem;">Caricamento...</p>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<!-- ═══════════════════════════ LOGIN SCREEN ═══════════════════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <img src="./foto/LOGO.png" alt="Logo">
+    <h1>Fox Industrial</h1>
+    <p>Pannello di amministrazione — accesso riservato</p>
+    <input type="email" id="login-email" placeholder="Email" autocomplete="email">
+    <input type="password" id="login-password" placeholder="Password" autocomplete="current-password">
+    <button class="btn-login" id="login-btn">Accedi</button>
+    <div id="login-error"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ APP ═══════════════════════════ -->
+<div id="app">
+  <!-- Topbar -->
+  <header class="topbar">
+    <img src="./foto/LOGO.png" alt="Logo">
+    <span class="topbar-title">Fox Industrial CMS</span>
+    <span class="topbar-badge" id="topbar-env">Admin</span>
+    <span id="save-indicator">✓ Salvato</span>
+    <a href="/" target="_blank" class="btn btn-topbar btn-site">↗ Sito</a>
+    <button class="btn btn-topbar btn-logout" id="logout-btn">Esci</button>
+  </header>
+
+  <div class="app-body">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="nav-section-label">Pagine</div>
+      <div class="nav-item active" data-section="works">
+        <span class="icon">🏗️</span> Lavori & Cantieri
+      </div>
+      <div class="nav-item" data-section="home">
+        <span class="icon">🏠</span> Home Page
+      </div>
+      <div class="nav-item" data-section="about">
+        <span class="icon">🏢</span> Chi Siamo
+      </div>
+      <div class="nav-item" data-section="services">
+        <span class="icon">🛠️</span> Servizi
+      </div>
+      <div class="nav-item" data-section="contact">
+        <span class="icon">📞</span> Contatti
+      </div>
+      <div class="nav-divider"></div>
+      <div class="nav-section-label">Strumenti</div>
+      <div class="nav-item" data-section="export">
+        <span class="icon">📦</span> Esporta Dati
+      </div>
+    </nav>
+
+    <!-- Content Area -->
+    <main class="content-area">
+
+      <!-- ══════════ WORKS SECTION ══════════ -->
+      <section id="section-works">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>🏗️ Lavori &amp; Cantieri</h2>
+              <p>Gestisci tutti i lavori in corso e terminati che appaiono sul sito</p>
+            </div>
+            <div style="display:flex;gap:0.5rem">
+              <button class="btn btn-ghost btn-sm" id="works-upload-btn">⬆ Carica JSON</button>
+              <button class="btn btn-primary" id="work-new-btn">+ Nuovo Lavoro</button>
+            </div>
+          </div>
+          <div class="works-toolbar">
+            <input type="search" id="works-search" placeholder="🔍  Cerca cliente, luogo, descrizione...">
+            <select id="works-filter-status" class="field-select" style="width:auto;padding:0.5rem 0.75rem;font-size:0.82rem">
+              <option value="">Tutti gli stati</option>
+              <option value="ongoing">In corso</option>
+              <option value="completed">Terminati</option>
+              <option value="planned">Pianificati</option>
+            </select>
+            <div class="works-stats">
+              <div class="stat-chip">Tot: <span class="num" id="ws-total">0</span></div>
+              <div class="stat-chip">🔵 <span class="num" id="ws-ongoing">0</span></div>
+              <div class="stat-chip">✅ <span class="num" id="ws-done">0</span></div>
+            </div>
+          </div>
+          <div class="works-table-wrap panel-body no-pad">
+            <table class="works-table">
+              <thead>
+                <tr>
+                  <th>Cliente / Titolo</th>
+                  <th>Luogo</th>
+                  <th>Anno</th>
+                  <th>Stato</th>
+                  <th>Tipo</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="works-tbody"></tbody>
+            </table>
+            <div id="works-empty" class="empty-state" style="display:none">
+              <div class="icon">🔍</div>
+              <p>Nessun lavoro trovato.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════ HOME SECTION ══════════ -->
+      <section id="section-home" style="display:none">
+        <div class="panel">
+          <div class="panel-header">
+            <div><h2>🏠 Home Page</h2><p>Testi della pagina principale del sito</p></div>
+            <button class="btn btn-primary" id="home-save-btn">💾 Salva</button>
+          </div>
+          <div class="panel-body">
+            <div class="section-divider">Hero (Titolo Principale)</div>
+            <div class="form-grid">
+              <div class="field-group span-2">
+                <label class="field-label">Tag / Slogan sopra al titolo</label>
+                <input class="field-input" id="home-heroTag" value="Affidabilità certificata in tutta Europa">
+              </div>
+              <div class="field-group span-2">
+                <label class="field-label">Titolo Principale H1</label>
+                <input class="field-input" id="home-heroTitle" value="Montaggio e Manutenzione Industriale">
+              </div>
+              <div class="field-group span-2">
+                <label class="field-label">Sottotitolo</label>
+                <textarea class="field-textarea" id="home-heroSubtitle">Dalla prefabbricazione in officina al montaggio in campo, supportiamo impianti petrolchimici, siderurgici, cartari e navali con squadre qualificate e processi controllati.</textarea>
+              </div>
+            </div>
+            <div class="section-divider">Highlights (Badge sotto ai pulsanti)</div>
+            <div class="form-grid">
+              <div class="field-group"><label class="field-label">Highlight 1</label><input class="field-input" id="home-h1" value="ISO 9001:2015"></div>
+              <div class="field-group"><label class="field-label">Highlight 2</label><input class="field-input" id="home-h2" value="Procedure WEL qualificate"></div>
+              <div class="field-group span-2"><label class="field-label">Highlight 3</label><input class="field-input" id="home-h3" value="Cantieri attivi in Italia ed Europa"></div>
+            </div>
+            <div class="section-divider">Settori (Card a destra dell'immagine)</div>
+            <div class="form-grid">
+              <div class="field-group"><label class="field-label">Settore 1</label><input class="field-input" id="home-s1" value="Offshore e side shore"></div>
+              <div class="field-group"><label class="field-label">Settore 2</label><input class="field-input" id="home-s2" value="Petrolchimico e siderurgico"></div>
+              <div class="field-group span-2"><label class="field-label">Settore 3</label><input class="field-input" id="home-s3" value="Cartario, navale e pipeline"></div>
+            </div>
+            <div class="section-divider">Footer / CTA</div>
+            <div class="form-grid">
+              <div class="field-group"><label class="field-label">Titolo CTA "Unisciti"</label><input class="field-input" id="home-ctaTitle" value="Vuoi entrare a far parte del nostro team?"></div>
+              <div class="field-group"><label class="field-label">Testo CTA</label><input class="field-input" id="home-ctaText" value="Invia la tua candidatura o richiedi informazioni."></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════ ABOUT SECTION ══════════ -->
+      <section id="section-about" style="display:none">
+        <div class="panel">
+          <div class="panel-header">
+            <div><h2>🏢 Chi Siamo</h2><p>Testi della pagina About</p></div>
+            <button class="btn btn-primary" id="about-save-btn">💾 Salva</button>
+          </div>
+          <div class="panel-body">
+            <div class="section-divider">Presentazione Aziendale</div>
+            <div class="form-grid">
+              <div class="field-group span-2">
+                <label class="field-label">Titolo sezione</label>
+                <input class="field-input" id="about-title" value="Chi Siamo">
+              </div>
+              <div class="field-group span-2">
+                <label class="field-label">Descrizione principale</label>
+                <textarea class="field-textarea" id="about-desc" style="min-height:140px">Fox Industrial Contracting S.r.l. è specializzata nella fabbricazione e montaggio di impianti industriali di piping, carpenteria metallica e componenti meccanici.</textarea>
+              </div>
+              <div class="field-group span-2">
+                <label class="field-label">Missione / Paragrafo 2</label>
+                <textarea class="field-textarea" id="about-mission" style="min-height:120px">Operiamo in tutta Europa con squadre qualificate, garantendo qualità certificata ISO 9001:2015 e massima sicurezza sul lavoro.</textarea>
+              </div>
+            </div>
+            <div class="section-divider">Numeri chiave</div>
+            <div class="form-grid">
+              <div class="field-group"><label class="field-label">Numero 1 (es. anni)</label><input class="field-input" id="about-n1" value="10+"></div>
+              <div class="field-group"><label class="field-label">Label Numero 1</label><input class="field-input" id="about-n1l" value="Anni di esperienza"></div>
+              <div class="field-group"><label class="field-label">Numero 2</label><input class="field-input" id="about-n2" value="50+"></div>
+              <div class="field-group"><label class="field-label">Label Numero 2</label><input class="field-input" id="about-n2l" value="Clienti serviti"></div>
+              <div class="field-group"><label class="field-label">Numero 3</label><input class="field-input" id="about-n3" value="100%"></div>
+              <div class="field-group"><label class="field-label">Label Numero 3</label><input class="field-input" id="about-n3l" value="Qualità certificata"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════ SERVICES SECTION ══════════ -->
+      <section id="section-services" style="display:none">
+        <div class="panel">
+          <div class="panel-header">
+            <div><h2>🛠️ Servizi</h2><p>I tre servizi mostrati in homepage e nella pagina servizi</p></div>
+            <button class="btn btn-primary" id="services-save-btn">💾 Salva</button>
+          </div>
+          <div class="panel-body">
+            <div class="section-divider">Servizio 1</div>
+            <div class="form-grid">
+              <div class="field-group"><label class="field-label">Icona (emoji)</label><input class="field-input" id="srv1-icon" value="⚡" style="max-width:80px"></div>
+              <div class="field-group"><label class="field-label">Titolo</label><input class="field-input" id="srv1-title" value="Pianificazione Rapida"></div>
+              <div class="field-group span-2"><label class="field-label">Descrizione</label><textarea class="field-textarea" id="srv1-desc">Attivi in diversi campi di specializzazione, il nostro personale verrà incontro alle esigenze di ogni cliente in tempi brevi.</textarea></div>
+            </div>
+            <div class="section-divider">Servizio 2</div>
+            <div class="form-grid">
+              <div class="field-group"><label class="field-label">Icona (emoji)</label><input class="field-input" id="srv2-icon" value="👨‍💼" style="max-width:80px"></div>
+              <div class="field-group"><label class="field-label">Titolo</label><input class="field-input" id="srv2-title" value="Figure altamente specializzate"></div>
+              <div class="field-group span-2"><label class="field-label">Descrizione</label><textarea class="field-textarea" id="srv2-desc">Disponiamo di figure adatte ad ogni tipo di cantiere: Responsabili di cantiere, Saldatori qualificati, Tubisti a sketch, Carpentieri e Montatori a disegno e Meccanici provetti.</textarea></div>
+            </div>
+            <div class="section-divider">Servizio 3</div>
+            <div class="form-grid">
+              <div class="field-group"><label class="field-label">Icona (emoji)</label><input class="field-input" id="srv3-icon" value="🛡️" style="max-width:80px"></div>
+              <div class="field-group"><label class="field-label">Titolo</label><input class="field-input" id="srv3-title" value="Elevati Standard di Sicurezza"></div>
+              <div class="field-group span-2"><label class="field-label">Descrizione</label><textarea class="field-textarea" id="srv3-desc">La Sicurezza e la Qualità sono capisaldi fondamentali della nostra identità aziendale: ci avvaliamo dei più aggiornati sistemi di certificazione e dispositivi di sicurezza personale e di cantiere.</textarea></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════ CONTACT SECTION ══════════ -->
+      <section id="section-contact" style="display:none">
+        <div class="panel">
+          <div class="panel-header">
+            <div><h2>📞 Contatti</h2><p>Recapiti mostrati in tutto il sito e nel footer</p></div>
+            <button class="btn btn-primary" id="contact-save-btn">💾 Salva</button>
+          </div>
+          <div class="panel-body">
+            <div class="form-grid">
+              <div class="field-group">
+                <label class="field-label">Email principale</label>
+                <input class="field-input" type="email" id="contact-email" value="info@foxindustrialcontractingsrl.com">
+              </div>
+              <div class="field-group">
+                <label class="field-label">Telefono / WhatsApp <span class="field-hint">(con prefisso)</span></label>
+                <input class="field-input" type="tel" id="contact-phone" value="">
+              </div>
+              <div class="field-group span-2">
+                <label class="field-label">Indirizzo completo</label>
+                <input class="field-input" id="contact-address" value="Via Nazionale delle Puglie, 7 — 80013 Casalnuovo di Napoli NA">
+              </div>
+              <div class="field-group">
+                <label class="field-label">P.IVA</label>
+                <input class="field-input" id="contact-piva" value="09601321210">
+              </div>
+              <div class="field-group">
+                <label class="field-label">Capitale Sociale</label>
+                <input class="field-input" id="contact-cap" value="€ 15.000,00 i.v.">
+              </div>
+              <div class="field-group span-2">
+                <label class="field-label">Testo descrittivo footer</label>
+                <textarea class="field-textarea" id="contact-footer-desc">Eccellenza nella fabbricazione e montaggio di impianti industriali. Operiamo in tutta Europa garantendo qualità certificata ISO 9001:2015 e sicurezza senza compromessi.</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════ EXPORT SECTION ══════════ -->
+      <section id="section-export" style="display:none">
+        <div class="panel">
+          <div class="panel-header">
+            <div><h2>📦 Esporta Dati</h2><p>Backup completo di tutti i contenuti del sito</p></div>
+          </div>
+          <div class="panel-body">
+            <p style="color:#6b7280;margin-bottom:1.5rem;font-size:0.9rem">Scarica un backup completo di tutti i lavori e i contenuti presenti nel database Firebase. Puoi usare questo file per ripristinare i dati o trasferirli altrove.</p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+              <button class="btn btn-primary" id="export-works-btn">⬇ Scarica Works JSON</button>
+              <button class="btn btn-secondary" id="export-all-btn">⬇ Scarica Backup Completo</button>
+            </div>
+            <div class="section-divider" style="margin-top:2rem">Carica JSON Lavori</div>
+            <p style="color:#6b7280;font-size:0.85rem;margin-bottom:1rem">Importa un file JSON per caricare in blocco i lavori su Firebase. <strong style="color:#ef4444">Attenzione: i lavori esistenti non vengono cancellati.</strong></p>
+            <label class="btn btn-ghost" style="cursor:pointer">
+              📂 Scegli file JSON
+              <input type="file" id="import-file" accept="application/json" style="display:none">
+            </label>
+            <div id="import-status" style="margin-top:0.75rem;font-size:0.85rem;color:#6b7280"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ══════════ WORK EDITOR MODAL ══════════ -->
+<div id="work-modal-backdrop">
+  <div id="work-modal">
+    <div class="modal-header">
+      <h3 id="modal-title">Nuovo Lavoro</h3>
+      <button class="btn btn-ghost btn-sm" id="modal-close-btn">✕ Chiudi</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="modal-work-id">
+      <div class="section-divider">Informazioni Principali</div>
+      <div class="field-group">
+        <label class="field-label">Cliente / Azienda <span class="field-hint">*obbligatorio</span></label>
+        <input class="field-input" id="m-client" placeholder="Es. FINCIMEC SPA">
+      </div>
+      <div class="form-grid">
+        <div class="field-group">
+          <label class="field-label">Tipo</label>
+          <select class="field-select" id="m-type">
+            <option value="work">Lavoro / Cantiere</option>
+            <option value="project">Progetto Homepage (con foto)</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Stato</label>
+          <select class="field-select" id="m-status">
+            <option value="ongoing">🔵 In corso</option>
+            <option value="completed">✅ Terminato</option>
+            <option value="planned">📋 Pianificato</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Anno</label>
+          <input class="field-input" id="m-year" placeholder="2026">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Ordine visualizzazione</label>
+          <input class="field-input" type="number" id="m-order" placeholder="0">
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Luogo</label>
+        <input class="field-input" id="m-location" placeholder="Es. Lonigo (VI)">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Descrizione <span class="field-hint">testo visibile nella card</span></label>
+        <textarea class="field-textarea" id="m-description" placeholder="Attività svolte presso il cantiere..."></textarea>
+      </div>
+      <div class="section-divider">Media (solo Progetti con foto)</div>
+      <div class="field-group">
+        <label class="field-label">Immagine Copertina</label>
+        <input class="field-input" id="m-cover" placeholder="./foto/webp/nome-immagine.webp">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Galleria Immagini <span class="field-hint">una per riga</span></label>
+        <textarea class="field-textarea mono" id="m-gallery" placeholder="./foto/webp/img1.webp&#10;./foto/webp/img2.webp"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Tags <span class="field-hint">separati da virgola</span></label>
+        <input class="field-input" id="m-tags" placeholder="piping, saldatura, carpenteria">
+      </div>
+      <div class="field-group">
+        <label class="field-label toggle-wrapper">
+          <label class="toggle"><input type="checkbox" id="m-featured"><span class="toggle-slider"></span></label>
+          <span class="toggle-label">In evidenza in homepage</span>
+        </label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger btn-sm" id="modal-delete-btn">🗑 Elimina</button>
+      <div style="flex:1"></div>
+      <button class="btn btn-ghost" id="modal-cancel-btn">Annulla</button>
+      <button class="btn btn-primary" id="modal-save-btn">💾 Salva Lavoro</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import {
+  db, auth,
+  doc, getDoc, setDoc, collection, getDocs, addDoc, deleteDoc, updateDoc,
+  signInWithEmailAndPassword, signOut, onAuthStateChanged
+} from './js/firebase-config.js';
+
+// ── State ──
+let allWorks = [];
+let currentSection = 'works';
+
+// ── Utils ──
+function escHtml(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show ' + type;
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.className = '', 3000);
+}
+function flashSaved() {
+  const el = document.getElementById('save-indicator');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2000);
+}
+function hideLoader() {
+  const l = document.getElementById('page-loader');
+  l.classList.add('hidden');
+  setTimeout(() => l.remove(), 500);
+}
+
+// ── Auth ──
+onAuthStateChanged(auth, user => {
+  if (user) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').classList.add('visible');
+    initApp();
+    hideLoader();
+  } else {
+    document.getElementById('login-screen').style.display = '';
+    document.getElementById('app').classList.remove('visible');
+    hideLoader();
+  }
+});
+
+document.getElementById('login-btn').addEventListener('click', async () => {
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-password').value;
+  const errEl = document.getElementById('login-error');
+  errEl.textContent = '';
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+  } catch(e) {
+    errEl.textContent = 'Email o password errati. Riprova.';
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('login-screen').style.display !== 'none') {
+    document.getElementById('login-btn').click();
+  }
+});
+document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
+
+// ── Navigation ──
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const sec = item.dataset.section;
+    switchSection(sec);
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+function switchSection(sec) {
+  currentSection = sec;
+  document.querySelectorAll('[id^="section-"]').forEach(s => s.style.display = 'none');
+  const el = document.getElementById('section-' + sec);
+  if (el) el.style.display = '';
+}
+
+// ── Init ──
+async function initApp() {
+  await loadWorks();
+  await loadCMSPages();
+}
+
+// ══════════════════════════════════════
+// WORKS
+// ══════════════════════════════════════
+async function loadWorks() {
+  try {
+    const snap = await getDocs(collection(db, 'works'));
+    allWorks = [];
+    snap.forEach(d => allWorks.push({ _id: d.id, ...d.data() }));
+    allWorks.sort((a,b) => (a.order||99)-(b.order||99));
+    renderWorksTable(allWorks);
+    updateWorksStats(allWorks);
+  } catch(e) {
+    showToast('Errore caricamento lavori: ' + e.message, 'error');
+  }
+}
+
+function updateWorksStats(works) {
+  document.getElementById('ws-total').textContent = works.length;
+  document.getElementById('ws-ongoing').textContent = works.filter(w=>w.status==='ongoing').length;
+  document.getElementById('ws-done').textContent = works.filter(w=>w.status==='completed').length;
+}
+
+function renderWorksTable(works) {
+  const tbody = document.getElementById('works-tbody');
+  const empty = document.getElementById('works-empty');
+  if (!works.length) {
+    tbody.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+  empty.style.display = 'none';
+  const statusLabel = { ongoing: 'In corso', completed: 'Terminato', planned: 'Pianificato' };
+  const statusClass = { ongoing: 'status-ongoing', completed: 'status-completed', planned: 'status-planned' };
+  tbody.innerHTML = works.map(w => `
+    <tr data-id="${w._id}">
+      <td style="max-width:260px">
+        <div style="font-weight:700;color:#1f2937;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escHtml(w.client||w.title||'—')}</div>
+        <div style="font-size:0.75rem;color:#9ca3af;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escHtml((w.description||'').substring(0,80))}${(w.description||'').length>80?'…':''}</div>
+      </td>
+      <td style="color:#4b5563;font-size:0.85rem;white-space:nowrap">${escHtml(w.location||'—')}</td>
+      <td style="color:#4b5563;font-size:0.85rem">${escHtml(w.year||'—')}</td>
+      <td>
+        <span class="status-badge ${statusClass[w.status]||''}">
+          ${w.status==='ongoing'?'<span class="dot-pulse"></span>':''}
+          ${escHtml(statusLabel[w.status]||w.status)}
+        </span>
+      </td>
+      <td style="color:#9ca3af;font-size:0.78rem">${w.type==='project'?'📸 Progetto':'🔧 Cantiere'}</td>
+      <td>
+        <div class="row-actions">
+          <button class="btn btn-ghost btn-icon btn-sm edit-work-btn" title="Modifica" data-id="${w._id}">✏️</button>
+          <button class="btn btn-danger btn-icon btn-sm delete-work-btn" title="Elimina" data-id="${w._id}">🗑</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+
+  tbody.querySelectorAll('.edit-work-btn').forEach(btn => {
+    btn.addEventListener('click', () => openWorkModal(btn.dataset.id));
+  });
+  tbody.querySelectorAll('.delete-work-btn').forEach(btn => {
+    btn.addEventListener('click', () => deleteWork(btn.dataset.id));
+  });
+  tbody.querySelectorAll('tr[data-id]').forEach(row => {
+    row.addEventListener('click', e => {
+      if (e.target.closest('button')) return;
+      openWorkModal(row.dataset.id);
+    });
+  });
+}
+
+// Filter / Search
+function filterWorks() {
+  const q = (document.getElementById('works-search').value || '').toLowerCase();
+  const status = document.getElementById('works-filter-status').value;
+  const filtered = allWorks.filter(w => {
+    const matchQ = !q || [w.client, w.title, w.description, w.location].some(f => (f||'').toLowerCase().includes(q));
+    const matchS = !status || w.status === status;
+    return matchQ && matchS;
+  });
+  renderWorksTable(filtered);
+}
+document.getElementById('works-search').addEventListener('input', filterWorks);
+document.getElementById('works-filter-status').addEventListener('change', filterWorks);
+
+// ── Work Modal ──
+function openWorkModal(id) {
+  const work = id ? allWorks.find(w => w._id === id) : null;
+  document.getElementById('modal-title').textContent = work ? 'Modifica Lavoro' : 'Nuovo Lavoro';
+  document.getElementById('modal-work-id').value = id || '';
+  document.getElementById('m-client').value = work?.client || work?.title || '';
+  document.getElementById('m-type').value = work?.type || 'work';
+  document.getElementById('m-status').value = work?.status || 'ongoing';
+  document.getElementById('m-year').value = work?.year || '';
+  document.getElementById('m-order').value = work?.order ?? '';
+  document.getElementById('m-location').value = work?.location || '';
+  document.getElementById('m-description').value = work?.description || '';
+  document.getElementById('m-cover').value = work?.coverImage || '';
+  document.getElementById('m-gallery').value = (work?.galleryImages || []).join('\n');
+  document.getElementById('m-tags').value = (work?.tags || []).join(', ');
+  document.getElementById('m-featured').checked = work?.featured || false;
+  document.getElementById('modal-delete-btn').style.display = id ? '' : 'none';
+  document.getElementById('work-modal-backdrop').classList.add('open');
+  document.getElementById('m-client').focus();
+}
+
+function closeWorkModal() {
+  document.getElementById('work-modal-backdrop').classList.remove('open');
+}
+
+document.getElementById('work-new-btn').addEventListener('click', () => openWorkModal(null));
+document.getElementById('modal-close-btn').addEventListener('click', closeWorkModal);
+document.getElementById('modal-cancel-btn').addEventListener('click', closeWorkModal);
+document.getElementById('work-modal-backdrop').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeWorkModal();
+});
+
+document.getElementById('modal-save-btn').addEventListener('click', async () => {
+  const client = document.getElementById('m-client').value.trim();
+  if (!client) { showToast('Il campo Cliente è obbligatorio', 'error'); document.getElementById('m-client').focus(); return; }
+  const id = document.getElementById('modal-work-id').value;
+  const data = {
+    client,
+    title: client,
+    type: document.getElementById('m-type').value,
+    status: document.getElementById('m-status').value,
+    year: document.getElementById('m-year').value.trim(),
+    order: parseInt(document.getElementById('m-order').value) || 99,
+    location: document.getElementById('m-location').value.trim(),
+    description: document.getElementById('m-description').value.trim(),
+    coverImage: document.getElementById('m-cover').value.trim(),
+    galleryImages: document.getElementById('m-gallery').value.split('\n').map(s=>s.trim()).filter(Boolean),
+    tags: document.getElementById('m-tags').value.split(',').map(s=>s.trim()).filter(Boolean),
+    featured: document.getElementById('m-featured').checked,
+    updatedAt: new Date().toISOString()
+  };
+  try {
+    if (id) {
+      await updateDoc(doc(db, 'works', id), data);
+    } else {
+      data.createdAt = new Date().toISOString();
+      await addDoc(collection(db, 'works'), data);
+    }
+    showToast(id ? '✅ Lavoro aggiornato!' : '✅ Lavoro aggiunto!');
+    flashSaved();
+    closeWorkModal();
+    await loadWorks();
+  } catch(e) {
+    showToast('Errore: ' + e.message, 'error');
+  }
+});
+
+document.getElementById('modal-delete-btn').addEventListener('click', async () => {
+  const id = document.getElementById('modal-work-id').value;
+  if (!id) return;
+  if (!confirm('Sei sicuro di voler eliminare questo lavoro? L\'operazione è irreversibile.')) return;
+  await deleteWork(id);
+  closeWorkModal();
+});
+
+async function deleteWork(id) {
+  try {
+    await deleteDoc(doc(db, 'works', id));
+    showToast('Lavoro eliminato.');
+    await loadWorks();
+  } catch(e) {
+    showToast('Errore eliminazione: ' + e.message, 'error');
+  }
+}
+
+// ══════════════════════════════════════
+// CMS PAGES (Home, About, Services, Contact)
+// ══════════════════════════════════════
+async function loadCMSPages() {
+  try {
+    const pages = ['home','about','services','contact'];
+    for (const page of pages) {
+      const snap = await getDoc(doc(db, 'cms', page));
+      if (snap.exists()) populateCMSForm(page, snap.data());
+    }
+  } catch(e) {
+    console.warn('Could not load CMS pages:', e.message);
+  }
+}
+
+function populateCMSForm(page, data) {
+  const map = {
+    home: {
+      'home-heroTag':'heroTag','home-heroTitle':'heroTitle','home-heroSubtitle':'heroSubtitle',
+      'home-h1':'h1','home-h2':'h2','home-h3':'h3',
+      'home-s1':'s1','home-s2':'s2','home-s3':'s3',
+      'home-ctaTitle':'ctaTitle','home-ctaText':'ctaText'
+    },
+    about: {
+      'about-title':'title','about-desc':'desc','about-mission':'mission',
+      'about-n1':'n1','about-n1l':'n1l','about-n2':'n2','about-n2l':'n2l','about-n3':'n3','about-n3l':'n3l'
+    },
+    services: {
+      'srv1-icon':'srv1icon','srv1-title':'srv1title','srv1-desc':'srv1desc',
+      'srv2-icon':'srv2icon','srv2-title':'srv2title','srv2-desc':'srv2desc',
+      'srv3-icon':'srv3icon','srv3-title':'srv3title','srv3-desc':'srv3desc'
+    },
+    contact: {
+      'contact-email':'email','contact-phone':'phone','contact-address':'address',
+      'contact-piva':'piva','contact-cap':'cap','contact-footer-desc':'footerDesc'
+    }
+  };
+  const m = map[page];
+  if (!m) return;
+  Object.entries(m).forEach(([elId, key]) => {
+    const el = document.getElementById(elId);
+    if (el && data[key] !== undefined) el.value = data[key];
+  });
+}
+
+async function saveCMSPage(page) {
+  const map = {
+    home: {
+      heroTag:'home-heroTag',heroTitle:'home-heroTitle',heroSubtitle:'home-heroSubtitle',
+      h1:'home-h1',h2:'home-h2',h3:'home-h3',
+      s1:'home-s1',s2:'home-s2',s3:'home-s3',
+      ctaTitle:'home-ctaTitle',ctaText:'home-ctaText'
+    },
+    about: {
+      title:'about-title',desc:'about-desc',mission:'about-mission',
+      n1:'about-n1',n1l:'about-n1l',n2:'about-n2',n2l:'about-n2l',n3:'about-n3',n3l:'about-n3l'
+    },
+    services: {
+      srv1icon:'srv1-icon',srv1title:'srv1-title',srv1desc:'srv1-desc',
+      srv2icon:'srv2-icon',srv2title:'srv2-title',srv2desc:'srv2-desc',
+      srv3icon:'srv3-icon',srv3title:'srv3-title',srv3desc:'srv3-desc'
+    },
+    contact: {
+      email:'contact-email',phone:'contact-phone',address:'contact-address',
+      piva:'contact-piva',cap:'contact-cap',footerDesc:'contact-footer-desc'
+    }
+  };
+  const m = map[page];
+  if (!m) return;
+  const data = {};
+  Object.entries(m).forEach(([key, elId]) => {
+    const el = document.getElementById(elId);
+    if (el) data[key] = el.value;
+  });
+  data.updatedAt = new Date().toISOString();
+  try {
+    await setDoc(doc(db, 'cms', page), data);
+    showToast('✅ Dati salvati con successo!');
+    flashSaved();
+  } catch(e) {
+    showToast('Errore salvataggio: ' + e.message, 'error');
+  }
+}
+
+document.getElementById('home-save-btn').addEventListener('click', () => saveCMSPage('home'));
+document.getElementById('about-save-btn').addEventListener('click', () => saveCMSPage('about'));
+document.getElementById('services-save-btn').addEventListener('click', () => saveCMSPage('services'));
+document.getElementById('contact-save-btn').addEventListener('click', () => saveCMSPage('contact'));
+
+// ══════════════════════════════════════
+// EXPORT / IMPORT
+// ══════════════════════════════════════
+document.getElementById('export-works-btn').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(allWorks, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'fox-works-backup.json';
+  a.click(); URL.revokeObjectURL(url);
+  showToast('Download avviato!');
+});
+
+document.getElementById('export-all-btn').addEventListener('click', async () => {
+  const data = { works: allWorks, exportedAt: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'fox-cms-backup.json';
+  a.click(); URL.revokeObjectURL(url);
+  showToast('Backup completo scaricato!');
+});
+
+document.getElementById('import-file').addEventListener('change', async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const statusEl = document.getElementById('import-status');
+  statusEl.textContent = 'Lettura file...';
+  try {
+    const text = await file.text();
+    const parsed = JSON.parse(text);
+    const works = Array.isArray(parsed) ? parsed : (parsed.works || []);
+    statusEl.textContent = `Trovati ${works.length} lavori. Caricamento in corso...`;
+    let count = 0;
+    for (const w of works) {
+      const { _id, id, ...data } = w;
+      data.importedAt = new Date().toISOString();
+      await addDoc(collection(db, 'works'), data);
+      count++;
+      statusEl.textContent = `Caricati ${count}/${works.length}...`;
+    }
+    statusEl.textContent = `✅ ${count} lavori importati con successo!`;
+    showToast(`${count} lavori importati!`);
+    await loadWorks();
+  } catch(err) {
+    statusEl.textContent = '❌ Errore: ' + err.message;
+    showToast('Errore importazione: ' + err.message, 'error');
+  }
+  e.target.value = '';
+});
+</script>
+</body>
+</html>

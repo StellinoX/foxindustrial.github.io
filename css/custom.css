@@ -1223,22 +1223,20 @@ body::after {
 }
 
 .client-logo img {
-  max-width: 85%;
-  max-height: 85%;
+  height: 55px;
   width: auto;
-  height: auto;
+  max-width: 100%;
   object-fit: contain;
   filter: saturate(1);
   mix-blend-mode: multiply;
   transition: transform var(--transition-fast), filter var(--transition-fast);
 }
 
-/* Ioom and Fincimec logos are naturally large — reduce on all screens */
-#logo-ioom img,
-#logo-fincimec img {
-  max-width: 65%;
-  max-height: 65%;
-}
+/* Specific tweaks for exceptionally wide/tall logos */
+#logo-mati img { height: 35px; } /* It's very wide, so it needs to be shorter */
+#logo-safas img { height: 65px; } /* It's square */
+#logo-mac img { height: 60px; } /* It's a block */
+#logo-ioom img, #logo-fincimec img { height: 50px; }
 
 .client-logo::after {
   content: '';
