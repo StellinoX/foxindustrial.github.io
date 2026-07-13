@@ -602,10 +602,12 @@
 
 <script type="module">
 import {
-  db, auth,
-  doc, getDoc, setDoc, collection, getDocs, addDoc, deleteDoc, updateDoc,
-  signInWithEmailAndPassword, signOut, onAuthStateChanged
+  db, auth, functions,
+  doc, getDoc, collection, getDocs,
+  signInWithEmailAndPassword, signOut, onAuthStateChanged,
+  httpsCallable
 } from './js/firebase-config.js';
+import { setupSessionTimeout, checkLoginBruteForce, recordFailedLogin, clearFailedLogin, sanitizeText, sanitizeHtml, validateWorkData } from './js/security-utils.js';
 
 // ── State ──
 let allWorks = [];
@@ -613,7 +615,7 @@ let currentSection = 'works';
 
 // ── Utils ──
 function escHtml(s) {
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return sanitizeText(s); // Uses DOMPurify under the hood
 }
 function showToast(msg, type='success') {
   const t = document.getElementById('toast');
@@ -636,6 +638,7 @@ function hideLoader() {
 // ── Auth ──
 onAuthStateChanged(auth, user => {
   if (user) {
+    setupSessionTimeout(auth);
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('app').classList.add('visible');
     initApp();
@@ -653,9 +656,12 @@ document.getElementById('login-btn').addEventListener('click', async () => {
   const errEl = document.getElementById('login-error');
   errEl.textContent = '';
   try {
+    checkLoginBruteForce();
     await signInWithEmailAndPassword(auth, email, pass);
+    clearFailedLogin();
   } catch(e) {
-    errEl.textContent = 'Email o password errati. Riprova.';
+    recordFailedLogin();
+    errEl.textContent = e.message.includes('Troppi tentativi') ? e.message : 'Autenticazione fallita. Verifica le credenziali.';
   }
 });
 document.addEventListener('keydown', e => {
@@ -821,16 +827,14 @@ document.getElementById('modal-save-btn').addEventListener('click', async () => 
     coverImage: document.getElementById('m-cover').value.trim(),
     galleryImages: document.getElementById('m-gallery').value.split('\n').map(s=>s.trim()).filter(Boolean),
     tags: document.getElementById('m-tags').value.split(',').map(s=>s.trim()).filter(Boolean),
-    featured: document.getElementById('m-featured').checked,
-    updatedAt: new Date().toISOString()
+    featured: document.getElementById('m-featured').checked
   };
   try {
-    if (id) {
-      await updateDoc(doc(db, 'works', id), data);
-    } else {
-      data.createdAt = new Date().toISOString();
-      await addDoc(collection(db, 'works'), data);
-    }
+    validateWorkData(data); // Client side validation schema
+    
+    const saveWorkFn = httpsCallable(functions, 'saveWork');
+    await saveWorkFn({ workId: id || null, data });
+    
     showToast(id ? '✅ Lavoro aggiornato!' : '✅ Lavoro aggiunto!');
     flashSaved();
     closeWorkModal();
@@ -850,11 +854,12 @@ document.getElementById('modal-delete-btn').addEventListener('click', async () =
 
 async function deleteWork(id) {
   try {
-    await deleteDoc(doc(db, 'works', id));
+    const deleteWorkFn = httpsCallable(functions, 'deleteWork');
+    await deleteWorkFn({ workId: id });
     showToast('Lavoro eliminato.');
     await loadWorks();
   } catch(e) {
-    showToast('Errore eliminazione: ' + e.message, 'error');
+    showToast('Errore eliminazione: ' + (e.message || 'Errore di rete'), 'error');
   }
 }
 
@@ -932,13 +937,13 @@ async function saveCMSPage(page) {
     const el = document.getElementById(elId);
     if (el) data[key] = el.value;
   });
-  data.updatedAt = new Date().toISOString();
   try {
-    await setDoc(doc(db, 'cms', page), data);
+    const saveCMSPageFn = httpsCallable(functions, 'saveCMSPage');
+    await saveCMSPageFn({ pageId: page, data });
     showToast('✅ Dati salvati con successo!');
     flashSaved();
   } catch(e) {
-    showToast('Errore salvataggio: ' + e.message, 'error');
+    showToast('Errore salvataggio: ' + (e.message || 'Errore di rete'), 'error');
   }
 }
 
@@ -973,24 +978,26 @@ document.getElementById('import-file').addEventListener('change', async e => {
   const statusEl = document.getElementById('import-status');
   statusEl.textContent = 'Lettura file...';
   try {
+    if (file.size > 5 * 1024 * 1024) throw new Error("Il file supera la dimensione massima consentita (5MB).");
     const text = await file.text();
     const parsed = JSON.parse(text);
     const works = Array.isArray(parsed) ? parsed : (parsed.works || []);
-    statusEl.textContent = `Trovati ${works.length} lavori. Caricamento in corso...`;
-    let count = 0;
-    for (const w of works) {
-      const { _id, id, ...data } = w;
-      data.importedAt = new Date().toISOString();
-      await addDoc(collection(db, 'works'), data);
-      count++;
-      statusEl.textContent = `Caricati ${count}/${works.length}...`;
-    }
+    if (works.length > 500) throw new Error("Massimo 500 record per singola importazione.");
+    if (works.length === 0) throw new Error("Il file JSON non contiene lavori.");
+    
+    statusEl.textContent = `Trovati ${works.length} lavori. Validazione ed invio in corso...`;
+    
+    // Use Cloud Function for batch import
+    const importWorksFn = httpsCallable(functions, 'importWorks');
+    const response = await importWorksFn({ items: works, dryRun: false });
+    
+    const count = response.data.count;
     statusEl.textContent = `✅ ${count} lavori importati con successo!`;
     showToast(`${count} lavori importati!`);
     await loadWorks();
   } catch(err) {
-    statusEl.textContent = '❌ Errore: ' + err.message;
-    showToast('Errore importazione: ' + err.message, 'error');
+    statusEl.textContent = '❌ Errore: ' + (err.message || 'Importazione fallita.');
+    showToast('Errore importazione: ' + (err.message || 'Errore sconosciuto'), 'error');
   }
   e.target.value = '';
 });

@@ -1,0 +1,33 @@
+<IfModule mod_headers.c>
+    # Content Security Policy (CSP)
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://*.cloudfunctions.net;"
+    
+    # Prevents browsers from sniffing the MIME type
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Prevents clickjacking
+    Header always append X-Frame-Options DENY
+    
+    # Enables XSS filtering in browsers
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # HTTP Strict Transport Security (HSTS)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Controls how much referrer information should be included with requests
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions Policy (restrict camera, microphone, geolocation)
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Disable directory browsing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+<FilesMatch "(firebase\.json|firestore\.rules|package\.json|package-lock\.json)$">
+    Require all denied
+</FilesMatch>

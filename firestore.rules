@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if the user is authenticated and has the admin claim
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    // Default rule: Deny everything that is not explicitly allowed
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // CMS Pages Collection
+    match /cms_pages/{page} {
+      // Public read access for website content
+      allow read: if true;
+      
+      // Only admins can write, and they must use the Cloud Functions (this blocks direct client writes)
+      // Actually, since Cloud Functions bypass these rules when using admin SDK, we can deny all writes from client
+      allow write: if false;
+    }
+
+    // Works Collection
+    match /works/{work} {
+      // Public read access for website content
+      allow read: if true;
+      
+      // Block all client writes. Writes must go through Cloud Functions.
+      allow write: if false;
+    }
+    
+    // Audit Logs Collection
+    match /audit_logs/{log} {
+      // No one can read or write directly from the client.
+      allow read, write: if false;
+    }
+  }
+}
