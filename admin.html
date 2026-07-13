@@ -602,8 +602,7 @@
 
 <script type="module">
 import {
-  db, auth, functions,
-  doc, getDoc, collection, getDocs,
+  auth, functions,
   signInWithEmailAndPassword, signOut, onAuthStateChanged,
   httpsCallable
 } from './js/firebase-config.js';
@@ -636,13 +635,22 @@ function hideLoader() {
 }
 
 // ── Auth ──
-onAuthStateChanged(auth, user => {
+onAuthStateChanged(auth, async user => {
   if (user) {
-    setupSessionTimeout(auth);
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('app').classList.add('visible');
-    initApp();
-    hideLoader();
+    try {
+      // Verify admin status with server
+      const verifyFn = httpsCallable(functions, 'verifyAdmin');
+      await verifyFn();
+      
+      setupSessionTimeout(auth);
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('app').classList.add('visible');
+      initApp();
+      hideLoader();
+    } catch(e) {
+      // Not an admin or error - force logout
+      await signOut(auth);
+    }
   } else {
     document.getElementById('login-screen').style.display = '';
     document.getElementById('app').classList.remove('visible');
@@ -699,14 +707,14 @@ async function initApp() {
 // ══════════════════════════════════════
 async function loadWorks() {
   try {
-    const snap = await getDocs(collection(db, 'works'));
-    allWorks = [];
-    snap.forEach(d => allWorks.push({ _id: d.id, ...d.data() }));
+    const getWorksFn = httpsCallable(functions, 'getWorks');
+    const result = await getWorksFn();
+    allWorks = result.data.works || [];
     allWorks.sort((a,b) => (a.order||99)-(b.order||99));
     renderWorksTable(allWorks);
     updateWorksStats(allWorks);
   } catch(e) {
-    showToast('Errore caricamento lavori: ' + e.message, 'error');
+    showToast('Errore caricamento lavori', 'error');
   }
 }
 
@@ -868,13 +876,14 @@ async function deleteWork(id) {
 // ══════════════════════════════════════
 async function loadCMSPages() {
   try {
-    const pages = ['home','about','services','contact'];
-    for (const page of pages) {
-      const snap = await getDoc(doc(db, 'cms', page));
-      if (snap.exists()) populateCMSForm(page, snap.data());
-    }
+    const getCMSPagesFn = httpsCallable(functions, 'getCMSPages');
+    const result = await getCMSPagesFn();
+    const pages = result.data.pages || {};
+    Object.entries(pages).forEach(([page, data]) => {
+      if (data) populateCMSForm(page, data);
+    });
   } catch(e) {
-    console.warn('Could not load CMS pages:', e.message);
+    console.warn('Could not load CMS pages');
   }
 }
 

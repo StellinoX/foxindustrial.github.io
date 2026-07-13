@@ -1,7 +1,6 @@
 // Firebase configuration for Fox Industrial CMS
 // This file initializes the Firebase app and exports Firestore
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-import { getFirestore, doc, getDoc, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 import { getFunctions, httpsCallable } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-functions.js';
 
@@ -16,13 +15,11 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 const auth = getAuth(app);
 const functions = getFunctions(app, 'us-central1'); // Default region
 
 export { 
-  db, auth, functions, 
-  doc, getDoc, collection, getDocs, 
+  auth, functions, 
   signInWithEmailAndPassword, signOut, onAuthStateChanged,
   httpsCallable
 };

@@ -34,9 +34,7 @@ function requireAdmin(request) {
     throw new HttpsError("unauthenticated", "Authentication required.");
   }
   if (!request.auth.token.admin) {
-    // throw new HttpsError("permission-denied", "Admin privileges required.");
-    // Wait: for ease of migration if custom claims aren't set up yet, we check auth and potentially enforce email whitelist
-    // In production, use custom claims.
+    throw new HttpsError("permission-denied", "Admin privileges required.");
   }
   return true;
 }
@@ -236,4 +234,35 @@ exports.scheduledBackup = onSchedule("every day 02:00", async (event) => {
   } catch (error) {
     console.error("Backup failed", error);
   }
+});
+
+/**
+ * READ OPERATIONS (Admin Only)
+ */
+exports.getWorks = onCall({ maxInstances: 10 }, async (request) => {
+  requireAdmin(request);
+  const snapshot = await db.collection("works").get();
+  const works = [];
+  snapshot.forEach(doc => works.push({ _id: doc.id, ...doc.data() }));
+  return { works };
+});
+
+exports.getCMSPages = onCall({ maxInstances: 10 }, async (request) => {
+  requireAdmin(request);
+  const pages = ["home", "about", "services", "contact"];
+  const result = {};
+  for (const page of pages) {
+    const doc = await db.collection("cms").doc(page).get();
+    result[page] = doc.exists ? doc.data() : null;
+  }
+  return { pages: result };
+});
+
+exports.verifyAdmin = onCall({ maxInstances: 10 }, async (request) => {
+  requireAdmin(request);
+  return { 
+    status: "ok", 
+    uid: request.auth.uid,
+    isAdmin: true 
+  };
 });
