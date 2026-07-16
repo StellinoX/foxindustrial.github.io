@@ -12,8 +12,8 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
-    // CMS Pages Collection
-    match /cms_pages/{page} {
+    // CMS Collection
+    match /cms/{page} {
       // Public read access for website content
       allow read: if true;
       
